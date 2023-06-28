@@ -1,0 +1,990 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Meus Cartões</title>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="icon" type="image/x-icon" href="assets/img/fiveicon.png">
+  <link href="/node_modules_bot/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.css">
+  <link rel="stylesheet" href="assets/dist/css/style.css">
+  <link rel="stylesheet" href="assets/dist/css/cartao.css">
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+
+    .parallax {
+      /* The image used */
+      background-image: url("assets/img/p1.jpg");
+      /* Set a specific height */
+      min-height: 500px;
+
+      /* Create the parallax scrolling effect */
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    input[type=number]::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+
+    }
+
+    input[type=number] {
+      -moz-appearance: textfield;
+      appearance: textfield;
+
+    }
+    .hidden{
+      display:none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="navbar navbar-dark sticky-top bg-heade flex-md-nowrap p-0 shadow fixar">
+    <a class="navbar-brand col-md-3 col-lg-2 p-1" href="/"><img src="assets/img/logo-white.png" width="170px"
+        height="50px" alt=""></a>
+    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
+      data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <input class="form-control form-control-dark rounded-2 w-100" type="text" placeholder="Search" aria-label="Search">
+    <div class="navbar-nav">
+      <div class="nav-item d-flex align-items-center">
+        <div class=" rounded-3 mx-2 p-1">
+          <a href="#" data-bs-toggle="modal" data-bs-target="#empresasModal">
+            <img class="" src="assets/svg/hand-holding-usd-white.png" width="40" height="40" alt="Doação">
+          </a>
+        </div>
+        <% if (typeof user === 'undefined') { %>
+          <button type="button"
+            class="btn btn-outline-secondary mx-1 text-uppercase d-flex align-items-center justify-content-center"
+            style="width: 60px;
+                                                                                                                                            height: 40px;">
+            <a href="login" class="nav-link" style="font-size: small;"> Login</a></button>
+          <button type="button"
+            class="btn btn-secondary mx-1 text-uppercase d-flex align-items-center justify-content-center"
+            style="width: 90px;
+                                                                                                                                      height: 40px;">
+            <a href="cadastro" class="nav-link" style="font-size: small;"> Cadastrar</a></button>
+            <% } else { %>
+        </div>
+        <% } %>
+    </div>
+  </header>
+
+  <div class="container-fluid">
+    <div class="row">
+      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+        <div class="position-sticky pt-3">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/">
+                <span data-feather="home"></span>
+                Inicio
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="sobre">
+                <span data-feather="file"></span>
+                Sobre
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="produtos">
+                <span data-feather="shopping-bag"></span>
+                Produtos
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contato">
+                <span data-feather="users"></span>
+                Contato
+              </a>
+            </li>
+          </ul>
+
+          <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+            <span class="text-primary">Conta</span>
+          </h6>
+          <ul class="nav flex-column mb-2">
+            <li class="nav-item">
+              <a class="nav-link" href="myAcount">
+                <span data-feather="user"></span>
+                Perfil
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="myCard">
+                <span data-feather="credit-card"></span>
+                Meus Cartões
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="endereco">
+                <span data-feather="map-pin"></span>
+                Endereço
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="minhas-compras">
+                <span data-feather="briefcase"></span>
+                Minhas Compras
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="carrinho">
+                <span data-feather="shopping-cart"></span>
+                <span class=" position-relative">CARRINHO
+                  <span id="badge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    
+                    <span class="visually-hidden"></span>
+                  </span>
+                </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="dropdown mt-5">
+          <a href="#"
+            class="d-block bg-light camada border-1 rounded-5 user p-1 link-dark text-decoration-none dropdown-toggle"
+            id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+            <img id="profile-pic-preview" src="assets/svg/ghost.svg" alt="mdo" width="32" height="32"
+              class="rounded-circle"><span id="username-display">Usuario</span>
+          </a>
+          <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+            <li><a class="dropdown-item" href="logout">Sair</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <main class="col-md-9 ms-sm-auto col-lg-10 col-xl-10 m-0 p-0 back">
+        <!--space modals-->
+        <!--modal do doar-->
+        <!--modal doar-->
+        <div class="portfolio-modal modal fade" id="empresasModal" tabindex="-1" aria-labelledby="empresasModal"
+          aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content portfolioback">
+              <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal"
+                  aria-label="Close"></button></div>
+              <div class="modal-body pb-5">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 text-center">
+                      <!-- Curses Modal - Title-->
+                      <h2 class="portfolio-modal-title text-dark text-uppercase text-center">Doação</h2>
+                      <p class="portfolio-modal-title text-dark text-center mt-3">Segue o QR Code para ajudar na
+                        manutenção e
+                        suporte da plataforma</p>
+                      <div class="text-center">
+                        <img src="assets/img/pix.png" width="100" height="100" alt="">
+                        <img src="assets/img/qr.png" width="150" height="150"
+                          alt="QR Code para doar para a plataforma iPlant's">
+                      </div>
+                      <p class="mt-3"><b>Chave PIX</b></p>
+                      <div class="rounded-5 bg-success p-3 row d-flex align-items-center justify-content-between">
+                        <div class="col-9">
+                          <span class="text-white" id="dado">62f5c5e6-e95a-4cfa-92f4-2e7b027fbaf1</span>
+                        </div>
+                        <div class="col-2">
+                          <a href="#"> <img class="mx-3" src="assets/svg/copy.png" width="20" height="30" alt="copiar"
+                              onclick="copyToClickBoard()"></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--modal do mapa do site-->
+        <div class="modal fade" id="mapaSite" tabindex="-1" aria-labelledby="mapaSite" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content portfolioback">
+              <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal"
+                  aria-label="Close"></button></div>
+              <div class="modal-body pb-5">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                      <!-- Curses Modal - Title-->
+                      <h2 class="portfolio-modal-title text-dark text-uppercase text-center">Mapa do Site</h2>
+                      <hr>
+                      <ul>
+                        <li><a href="cadastro">Cadastro</a></li>
+                        <li><a href="login">Login</a></li>
+                        <li><a href="/">Home</a>
+                          <ul>
+                            <li><a href="myAcount">Usuário</a>
+                              <ul><a href="myAcount">Minha Conta</a></ul>
+                            </li>
+                          </ul>
+                        </li>
+                        <li><a href="sobre">Sobre</a>
+                          <ul>
+                            <li><a href="sobre">Sobre a Empresa</a></li>
+                            <li><a href="sobre">Sobre os Desenvolvedores</a></li>
+                          </ul>
+                        </li>
+                        <li><a href="produtos">Produtos</a>
+                          <ul>
+                            <li><a href="produtos">Todos os Produtos</a></li>
+                          </ul>
+                        </li>
+                        <li><a href="contato">Contato</a>
+                          <ul>
+                            <li><a href="contato">Formulário de Contato</li></a>
+                          </ul>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--modal termos de privacidade-->
+        <div class="modal fade" id="privacidade" tabindex="-1" role="dialog" aria-labelledby="privacidadeTitle"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title justify-content-center" id="privacidadeTitle">Aviso de Uso de Dados e Privacidade
+                </h5>
+                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <p>Aviso de Uso de Dados e Privacidade</p>
+                <p>Ao utilizar nossos serviços, você concorda com a coleta e uso de suas informações de acordo com este
+                  aviso
+                  de privacidade. Os dados que você insere em nosso site serão armazenados em um banco de dados privado
+                  e
+                  serão utilizados exclusivamente para fins de melhorar a qualidade de nossos serviços e oferecer a você
+                  uma
+                  experiência mais personalizada.</p>
+                <p>Os dados coletados podem incluir, mas não se limitam a, informações de contato, endereço de e-mail,
+                  informações demográficas e comportamentais. Essas informações podem ser compartilhadas com nossos
+                  parceiros
+                  de negócios para fins de marketing, mas somente com o seu consentimento expresso.</p>
+                <p>Comprometemo-nos a manter seus dados seguros e protegidos contra acessos não autorizados, alterações,
+                  divulgações ou destruição. Nós nunca venderemos ou alugaremos suas informações a terceiros sem o seu
+                  consentimento prévio.</p>
+                <p>Ao utilizar nossos serviços, você concorda em nos fornecer informações precisas e atualizadas. Se
+                  houver
+                  qualquer alteração em suas informações pessoais, por favor, nos informe imediatamente para que
+                  possamos
+                  atualizar nossos registros.</p>
+                <p>Ao continuar a usar nossos serviços, você reconhece que leu e entendeu este aviso de privacidade e
+                  concorda
+                  com a coleta, armazenamento e uso de suas informações pessoais como descrito acima.</p>
+                <p>Se tiver alguma dúvida ou preocupação sobre a privacidade de seus dados, entre em contato conosco
+                  através
+                  do nosso site.</p>
+              </div>
+              <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-success btn-lg" data-bs-dismiss="modal"
+                  aria-label="Close">Entendi</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--end space modals-->
+
+        <!--cartão-->
+        <div class="container arrumar">
+          <h1 class="text-dark  mt-5 mb-5 text-center">meus cartões</h1>
+          <div class="card-container">
+            <div class="comum">
+              <div class="image" id="imageHere">
+                <div>
+                  <img src="assets/img/card/chip.png" width="20%" alt="">
+                  <img src="assets/img/card/aproximação-branca.png" width="20%" alt="" id="aprox">
+                </div>
+              </div>
+              <div class="card-number-box">****************</div>
+              <div class="flexbox">
+                <div class="box">
+                  <span>Nome titular</span>
+                  <div class="card-holder-name"></div>
+                </div>
+                <div class="box">
+                  <span>expira</span>
+                  <div class="expiration">
+                    <span class="exp-month">mm</span>
+                    <span class="exp-year">yy</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="back-comum">
+              <div class="stripe"></div>
+              <div class="box" id="box-cvv">
+                <span id="cvv">cvv</span>
+                <div class="cvv-box"></div>
+              </div>
+            </div>
+
+          </div>
+
+          <!--Formulário para preenchimento do cartão-->
+          <form action="/salvarCartao" method="post" class="form-card-validation">
+            <div class="inputBox">
+              <span>número cartão*</span>
+              <input name="numeroCartao" type="number" maxlength="16" class="card-number-input" id="number-card-mycard"
+                required>
+            </div>
+            <div class="inputBox">
+              <span>nome titular*</span>
+              <input name="nomeTitular" type="text" class="card-holder-input" required>
+            </div>
+            <div class="flexbox">
+              <div class="inputBox">
+                <span>expira mês*</span>
+                <select name="expiraMes" id="mes" class="month-input" required>
+                  <option value="month" selected disabled>mês</option>
+                  <option value="01">01</option>
+                  <option value="02">02</option>
+                  <option value="03">03</option>
+                  <option value="04">04</option>
+                  <option value="05">05</option>
+                  <option value="06">06</option>
+                  <option value="07">07</option>
+                  <option value="08">08</option>
+                  <option value="09">09</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                </select>
+              </div>
+              <div class="inputBox">
+                <span>expira ano*</span>
+                <select name="expiraAno" id="ano" class="year-input" required>
+                  <option value="year" selected disabled>ano</option>
+                  <option value="2024">2024</option>
+                  <option value="2025">2025</option>
+                  <option value="2026">2026</option>
+                  <option value="2027">2027</option>
+                  <option value="2028">2028</option>
+                  <option value="2029">2029</option>
+                  <option value="2030">2030</option>
+                  <option value="2031">2031</option>
+                  <option value="2032">2032</option>
+                  <option value="2033">2033</option>
+                </select>
+              </div>
+              <div class="inputBox">
+                <span>cvv*</span>
+                <input name="cvv" type="number" maxlength="3" class="cvv-input" id="number-card-cvv-mycard" required>
+              </div>
+            </div>
+            <div class="centralizar-botoes d-flex justify-content-center style=" gap: 5px;">
+              <input name="tipoCartao" type="text" style="display: none;" id="tipoCartao">
+              <button class="submit-btn-comum salvar-dados w-50" id="adicionar" value="0">ADICIONAR</button>
+              <button class="submit-btn-comum  w-50" id="excluir" style="display: none;"></button>
+            </div>
+          </form>
+
+          <div class="container p-0 d-none justify-content-center" id="card-insert-here">
+            <!--Cartão 1-->
+            <div class="cartao-create">
+              <div class="img-chip ms-2 mt-3 d-flex align-items-center">
+                <img src="assets/img/chip.png" alt="chip" width="40px">
+                <img src="assets/img/aproximação-preta.png" alt="Aproximação" width="30px">
+              </div>
+              <div class="number-card-insert mt-2 ms-2">
+                <div class="box-value">
+                  <div class="d-flex flex-column w-100">
+                    <span class="number-card-insert-here"></span>
+                    <div class="central-name-date" style="display: flex;gap: 10px;">
+                      <div class="w-100">
+                        <span class="name-card-insert-here w-75"></span>
+                      </div>
+                      <div class="w-50">
+                        <span class="month-insert-here" style="font-size: 12px;"></span>
+                        <span class="year-insert-here" style="font-size: 12px;"></span>
+                        <div class="cvv-insert">
+                          <span class="cvv-insert-here" style="font-size: 11px;"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--bandeiras de bancos-->
+          <div class="container-fluid mt-5">
+            <div class="row p-0 text-center">
+              <div class="col-md-12 col-sm-12 logos-cartoes-foot">
+                <img class="img-fluid mx-5 mt-2" src="assets/img/visa.png" width="150px" height="150px" alt="..." />
+                <img class="img-fluid mx-5 mt-2" src="assets/img/elo.png" width="150px" height="150px" alt="..." />
+                <img class="img-fluid mx-5 mt-2" src="assets/img/mastercard.png" width="150px" height="150px"
+                  alt="..." />
+              </div>
+            </div>
+          </div>
+          <!--cartões cadastrados-->
+          <div class="container-fluid rounded-3 mt-5 text-dark bg-light">
+            <div class="row d-flex justify-content-center">
+              <h3 class="mt-3 text-center rounded-2">Cartões Cadastrados</h3>
+              <div class="col-sm-4 col-md-4 col-lg-4 mt-5 mb-5 text-center d-flex justify-content-center">
+                <span class="d-flex" style="gap: 30px;">
+                  <% cartoes.forEach((cartao) => { %>
+                    <% const primeirosNumeros = cartao.numeroCartao.substring(0, 4); %>
+                    <div class="cartao-create" style="<% if (primeirosNumeros === '1616') { %>background-color: #2bc1c1;<% } else if (primeirosNumeros === '3232') { %>background-color: #c57316;<% } else if (primeirosNumeros === '3838') { %>background-color: #222; color: whitesmoke;<% } %>">
+                      <div class="img-chip ms-2 mt-3 d-flex align-items-center">
+                        <img src="/assets/img/card/chip.png" alt="chip" width="40px">
+                        <img src="assets/img/card/aproximação-preta.png" alt="Aproximação" width="30px">
+                        <div class="delecao ms-5">
+                          <button class="deletar-cartao" data-id="<%= cartao.id %>" style="margin-left: 5px;">Deletar</button>
+                        </div>
+                      </div>
+                      <div class="number-card-insert mt-2 ms-2">
+                        <div class="box-value">
+                          <div class="d-flex flex-column w-100">
+                            <div style="margin-right: 80px;">
+                              <span class="number-card-insert-here">
+                                <strong>
+                                  <%= cartao.numeroCartao %>
+                                </strong>
+                              </span>
+                            </div>
+                            <div class="central-name-date" style="display: flex; gap: 5px;">
+                              <div class="w-100">
+                                <span class="name-card-insert-here w-100 d-flex ms-1">
+                                  <strong>
+                                    <%= cartao.nomeTitular %>
+                                  </strong>
+                                </span>
+                              </div>
+                              <div class="w-50">
+                                <span class="month-insert-here" style="font-size: 12px;">
+                                  <strong>
+                                    <%= cartao.expiraMes %>
+                                  </strong>
+                                </span>
+                                <span class="year-insert-here" style="font-size: 12px;">
+                                  <strong>
+                                    <%= cartao.expiraAno %>
+                                  </strong>
+                                </span>
+                                <div class="cvv-insert">
+                                  <span class="cvv-insert-here" style="font-size: 11px;">
+                                    <strong>
+                                      <%= cartao.cvv %>
+                                    </strong>
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  <% }) %>
+                </span>                                  
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <script>
+          // Seletor para os botões de deletar
+          const btnDeletar = document.querySelectorAll('.deletar');
+
+          // Adicionar evento de clique para cada botão de deletar
+          btnDeletar.forEach((btn) => {
+            btn.addEventListener('click', async (event) => {
+              const cartaoId = event.target.dataset.id;
+              console.log('ID do cartão:', cartaoId);
+              try {
+                // Faça uma solicitação para excluir o cartão usando o cartaoId
+                fetch(`/myCard/${cartaoId}`, { method: 'DELETE' });
+
+                // Remova o elemento do cartão da página
+                const cartao = event.target.closest('.cartao-create');
+                cartao.style.display = 'none';
+              } catch (error) {
+                console.error('Erro ao deletar cartão:', error);
+                // Exiba uma mensagem de erro ou tome a ação apropriada
+              }
+            });
+          });
+
+
+
+
+          // Resgata os valores do Cartão;
+          var cartao = document.querySelector(".comum");
+          var cartaoAtras = document.querySelector(".back-comum");
+          var botao = document.querySelector(".submit-btn-comum");
+          var botao2 = document.querySelector(".salvar-dados");
+          var inputNumero = document.querySelector(".card-number-input");
+          var imgAp = document.querySelector("#aprox");
+          var inputNome = document.querySelector(".card-holder-input");
+          var expiraMes = document.querySelector(".month-input");
+          var expiraAno = document.querySelector(".year-input");
+          var cvv = document.querySelector(".cvv-input");
+          var tipoCartao = document.querySelector("#tipoCartao");
+          var quantidadeCartao = document.querySelector("#adicionar");
+          var excluirCartao = document.querySelector("#excluir");
+          var numeroParaContar = localStorage.getItem("numeroParaContar") || 0;
+          var cartaoPequeno = document.querySelector(".cartao-create");
+
+          var isCartaoVisible = localStorage.getItem("isCartaoVisible") === "true";
+          atualizarDiv(numeroParaContar, isCartaoVisible);
+
+
+          excluirCartao.addEventListener("click", () => {
+            if (numeroParaContar === 0) {
+              alert("Não há cartões para excluir!");
+              return;
+            }
+
+            numeroParaContar -= 1;
+            atualizarLocalStorage(numeroParaContar, false);
+            atualizarDiv(numeroParaContar, false);
+          });
+
+          function atualizarDiv(numero, isVisible) {
+            if (isVisible) {
+              cartaoPequeno.classList.remove('cartao-create-snone');
+              cartaoPequeno.classList.add('cartao-create');
+
+              const inputValorNumero = document.querySelector(".card-number-input");
+              const inputInserirValorNumero = document.querySelector(".number-card-insert-here");
+              const inputValorNome = document.querySelector(".card-holder-input");
+              const inputInserirValorNome = document.querySelector(".name-card-insert-here");
+              const inputValorMes = document.querySelector(".month-input");
+              const inputInserirValorMes = document.querySelector(".month-insert-here");
+              const inputValorAno = document.querySelector(".year-input");
+              const inputInserirValorAno = document.querySelector(".year-insert-here");
+              const inputValorCVV = document.querySelector(".cvv-input");
+              const inputInserirValorCVV = document.querySelector(".cvv-insert-here");
+
+              inputValorNumero.onkeyup = () => {
+                inputInserirValorNumero.innerText = inputValorNumero.value;
+                atualizarLocalStorage(numeroParaContar, isVisible);
+              };
+
+              inputValorNome.onkeyup = () => {
+                inputInserirValorNome.textContent = inputValorNome.value;
+                atualizarLocalStorage(numeroParaContar, isVisible);
+              };
+
+              inputValorMes.onchange = () => {
+                inputInserirValorMes.innerText = inputValorMes.value;
+                atualizarLocalStorage(numeroParaContar, isVisible);
+              };
+
+              inputValorAno.onchange = () => {
+                inputInserirValorAno.innerText = inputValorAno.value;
+                atualizarLocalStorage(numeroParaContar, isVisible);
+              };
+
+              inputValorCVV.onkeyup = () => {
+                inputInserirValorCVV.innerText = inputValorCVV.value;
+                atualizarLocalStorage(numeroParaContar, isVisible);
+              };
+            } else {
+              // Oculta o cartão
+              cartaoPequeno.style.display = "none";
+
+              document.querySelector(".card-number-input").value = "";
+              document.querySelector(".number-card-insert-here").innerText = "";
+              document.querySelector(".card-holder-input").value = "";
+              document.querySelector(".name-card-insert-here").textContent = "";
+              document.querySelector(".month-input").value = "";
+              document.querySelector(".month-insert-here").innerText = "";
+              document.querySelector(".year-input").value = "";
+              document.querySelector(".year-insert-here").innerText = "";
+              document.querySelector(".cvv-input").value = "";
+              document.querySelector(".cvv-insert-here").innerText = "";
+            }
+          }
+
+          function atualizarLocalStorage(numero, isVisible) {
+            localStorage.setItem("numeroParaContar", numero);
+            localStorage.setItem("isCartaoVisible", isVisible);
+          }
+
+          const profilePicPreview = document.getElementById('profile-pic-preview');
+          const localStorageKey = 'profilePicUrl';
+
+          const storedImageUrl = localStorage.getItem(localStorageKey);
+          if (storedImageUrl) {
+            profilePicPreview.src = storedImageUrl;
+          }
+
+          const inputCardNumber = document.getElementById('number-card-mycard');
+          inputCardNumber.addEventListener('input', function (event) {
+            if (event.target.value.length >= 16) {
+              event.target.value = event.target.value.slice(0, 16);
+            }
+          });
+
+          const inputCardCvv = document.getElementById('number-card-cvv-mycard');
+          inputCardCvv.addEventListener('input', function (event) {
+            if (event.target.value.length >= 3) {
+              event.target.value = event.target.value.slice(0, 3);
+            }
+          });
+
+          /*
+          const cartoes = [
+          {"numero": "1111", "nome": "fulano", "expiraMes": "1", "expriraAno": "2031", "cvv": "111"}, 
+          {"numero": "2222", "nome": "beltrano", "expiraMes": "2", "expriraAno": "2032", "cvv": "222"}, 
+          {"numero": "3333", "nome": "ciclano", "expiraMes": "3", "expriraAno": "2033", "cvv": "333"}, 
+          ];
+          localStorage.setItem('cartoes', JSON.stringify(cartoes));
+          */
+
+
+          // Valores a serem preenchidos no campo do cartão, com base no que se escreve no input;
+          document.querySelector('.card-number-input').oninput = () => {
+            document.querySelector('.card-number-box').innerText = document.querySelector('.card-number-input').value;
+          }
+
+          document.querySelector('.card-holder-input').oninput = () => {
+            document.querySelector('.card-holder-name').innerText = document.querySelector('.card-holder-input').value;
+          }
+
+          document.querySelector('.month-input').oninput = () => {
+            document.querySelector('.exp-month').innerText = document.querySelector('.month-input').value;
+          }
+
+          document.querySelector('.year-input').oninput = () => {
+            document.querySelector('.exp-year').innerText = document.querySelector('.year-input').value;
+          }
+
+          document.querySelector('.cvv-input').onmouseenter = () => {
+            document.querySelector('.comum').style.transform = 'perspective(1000px) rotateY(-180deg)';
+            document.querySelector('.back-comum').style.transform = 'perspective(1000px) rotateY(0deg)';
+          }
+
+          document.querySelector('.cvv-input').onmouseleave = () => {
+            document.querySelector('.comum').style.transform = 'perspective(1000px) rotateY(0deg)';
+            document.querySelector('.back-comum').style.transform = 'perspective(1000px) rotateY(180deg)';
+          }
+
+          document.querySelector('.cvv-input').oninput = () => {
+            document.querySelector('.cvv-box').innerText = document.querySelector('.cvv-input').value;
+          }
+
+
+
+          // Verificação de caracter especial para os campos de preenchimento
+          var selectAno = document.querySelector("#ano").value;
+          botao2.addEventListener("click", (event) => {
+            if (inputNome.value === '' || inputNumero.value === '' || expiraMes.value === 'month' || expiraAno.value === 'year' || cvv.value === '') {
+              event.preventDefault();
+              alert("Preencha todos os campos requisitados!");
+            }
+          });
+
+          // Apenas Letras 
+          inputNome.onkeypress = function isInputCharacter(evt) {
+            var ch = String.fromCharCode(evt.which);
+
+            if (!(/[a-z. A-Z]/.test(ch))) {
+              evt.preventDefault();
+            }
+          }
+
+          // Apenas Números
+          inputNumero.onkeypress = function isInputCharacter(evt) {
+            var ch = String.fromCharCode(evt.which);
+            if (!(/[0-9]/.test(ch))) {
+              evt.preventDefault();
+            }
+          }
+
+          cvv.onkeypress = function isInputCharacter(evt) {
+            var ch = String.fromCharCode(evt.which);
+
+            if (!(/[0-9]/.test(ch))) {
+              evt.preventDefault();
+            }
+          }
+
+          // Script para validação do tipo do cartão com base nos 4 primeiros números do input
+          let visaAdded = false;
+          let mastercardAdded = false;
+          let eloAdded = false;
+          inputNumero.addEventListener('input', () => {
+            const lastFourDigits = inputNumero.value.slice(0, 4);
+
+            if (lastFourDigits === '1616' && !visaAdded) {
+              // Adiciona classe Visa
+              cartao.classList.add("visa");
+              cartaoAtras.classList.add("back-visa");
+              botao.classList.add("submit-btn-visa");
+              botao2.classList.add("submit-btn-visa");
+              cartaoPequeno.classList.add("cartao-create-visa");
+              tipoCartao.value = "Visa";
+
+              let imgEl = document.createElement("img");
+              let imgPath = "assets/img/card/visa.png";
+              imgEl.src = imgPath;
+              let divSelec = document.getElementById("imageHere");
+              divSelec.appendChild(imgEl);
+
+              let imgElAtras = document.createElement("img");
+              let imgPathAtras = "assets/img/card/visa.png";
+              imgElAtras.src = imgPathAtras;
+              let divSelecAtras = document.getElementById("box-cvv");
+              divSelecAtras.appendChild(imgElAtras);
+
+              visaAdded = true;
+            } else if (lastFourDigits !== '1616' && visaAdded) {
+              // Remove classe Visa
+              cartao.classList.remove("visa");
+              cartaoAtras.classList.remove("back-visa");
+              botao.classList.remove("submit-btn-visa");
+              botao2.classList.remove("submit-btn-visa");
+              cartaoPequeno.classList.remove("cartao-create-visa");
+              tipoCartao.value = "Comum";
+
+              let idSelec = document.getElementById("imageHere");
+              let imgElRem = idSelec.getElementsByTagName("img")[2];
+              idSelec.removeChild(imgElRem);
+
+              let idSelecAtras = document.getElementById("box-cvv");
+              let imgElRemBack = idSelecAtras.getElementsByTagName("img")[0];
+              idSelecAtras.removeChild(imgElRemBack);
+
+              visaAdded = false;
+            }
+            if (lastFourDigits === '3232' && !mastercardAdded) {
+              // Adiciona classe Mastercard 
+              cartao.classList.add("mastercard");
+              cartaoAtras.classList.add("back-mastercard");
+              botao.classList.add("submit-btn-mastercard");
+              botao2.classList.add("submit-btn-mastercard");
+              cartaoPequeno.classList.add("cartao-create-master");
+              tipoCartao.value = "Mastercard";
+
+              let imgEl = document.createElement("img");
+              let imgPath = "assets/img/card/mastercard-cor.png";
+              imgEl.src = imgPath;
+              let divSelec = document.getElementById("imageHere");
+              divSelec.appendChild(imgEl);
+
+              let imgElAtras = document.createElement("img");
+              let imgPathAtras = "assets/img/card/mastercard-cor.png";
+              imgElAtras.src = imgPathAtras;
+              let divSelecAtras = document.getElementById("box-cvv");
+              divSelecAtras.appendChild(imgElAtras);
+
+              mastercardAdded = true;
+            } else if (lastFourDigits !== '3232' && mastercardAdded) {
+              // Remove classe Mastercard
+              cartao.classList.remove("mastercard");
+              cartaoAtras.classList.remove("back-mastercard");
+              botao.classList.remove("submit-btn-mastercard");
+              botao2.classList.remove("submit-btn-mastercard");
+              cartaoPequeno.classList.remove("cartao-create-master");
+              tipoCartao.value = "Comum";
+
+              let idSelec = document.getElementById("imageHere");
+              let imgElRem = idSelec.getElementsByTagName("img")[2];
+              idSelec.removeChild(imgElRem);
+
+              let idSelecAtras = document.getElementById("box-cvv");
+              let imgElRemBack = idSelecAtras.getElementsByTagName("img")[0];
+              idSelecAtras.removeChild(imgElRemBack);
+
+              mastercardAdded = false;
+            }
+
+            if (lastFourDigits === '3838' && !eloAdded) {
+              // Adiciona classe Elo 
+              cartao.classList.add("elo");
+              cartaoAtras.classList.add("back-elo");
+              botao.classList.add("submit-btn-elo");
+              botao2.classList.add("submit-btn-elo");
+              cartaoPequeno.classList.add("cartao-create-elo");
+              tipoCartao.value = "Elo";
+
+              let imgEl = document.createElement("img");
+              let imgPath = "assets/img/card/elo.png";
+              imgEl.src = imgPath;
+              let divSelec = document.getElementById("imageHere");
+              divSelec.appendChild(imgEl);
+
+              let imgElAtras = document.createElement("img");
+              let imgPathAtras = "assets/img/card/elo.png";
+              imgElAtras.src = imgPathAtras;
+              let divSelecAtras = document.getElementById("box-cvv");
+              divSelecAtras.appendChild(imgElAtras);
+
+              eloAdded = true;
+            } else if (lastFourDigits !== '3838' && eloAdded) {
+              // Remove classe Elo
+              cartao.classList.remove("elo");
+              cartaoAtras.classList.remove("back-elo");
+              botao.classList.remove("submit-btn-elo");
+              botao2.classList.remove("submit-btn-elo");
+              cartaoPequeno.classList.remove("cartao-create-elo");
+              tipoCartao.value = "Comum";
+
+              let idSelec = document.getElementById("imageHere");
+              let imgElRem = idSelec.getElementsByTagName("img")[2];
+              idSelec.removeChild(imgElRem);
+
+              let idSelecAtras = document.getElementById("box-cvv");
+              let imgElRemBack = idSelecAtras.getElementsByTagName("img")[0];
+              idSelecAtras.removeChild(imgElRemBack);
+              eloAdded = false;
+            }
+          });
+
+
+          // Função Copiar do Modal Doar
+          function copyToClickBoard() {
+            var content = document.getElementById('dado').innerHTML;
+            navigator.clipboard.writeText(content)
+
+          }
+
+        </script>
+ <!--===== as ondinhas ====-->
+ <section id="hero1">
+  <svg class="hero-waves1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+    viewBox="0 24 150 28 " preserveAspectRatio="none">
+    <defs>
+      <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z">
+    </defs>
+    <g class="wave11">
+      <use xlink:href="#wave-path" x="50" y="3" fill="rgba(161,161,161, .4)">
+    </g>
+    <g class="wave21">
+      <use xlink:href="#wave-path" x="50" y="0" fill="rgba(161,161,161, .5)">
+    </g>
+    <g class="wave31">
+      <use xlink:href="#wave-path" x="50" y="9" fill="#a1a1a1">
+    </g>
+  </svg>
+</section>
+        <!--fim do conteudo-->
+        <footer class="footer mt-auto text-center p-0 ">
+          <div class="container-fluid footer-back p-0">
+            <div class="nav-scroller">
+              <nav class="nav nav-underline footer-sub " aria-label="Secondary navigation">
+                <a class="nav-link" data-bs-toggle="modal" data-bs-target="#mapaSite" href="#">Mapa do Site</a>
+                <a class="nav-link" data-bs-toggle="modal" data-bs-target="#privacidade" href="#">Termo de
+                  Privacidade</a>
+                <a class="nav-link" href="contato">Fale Conosco</a>
+              </nav>
+            </div>
+            <div>
+              <img src="assets/img/logo-cinza.png" width="190" height="70" alt="">
+            </div>
+            <p class="mt-3">Redes Sociais</p>
+            <div class="text-center mt-1 foter-imagem">
+              <img src="assets/svg/instagram.png" width="30" height="30" alt="Instagram">
+              <img src="assets/svg/youtube.png" width="36" height="36" alt="Youtube">
+              <img src="assets/svg/facebook-square.png" width="30" height="30" alt="Facebook">
+            </div>
+            <hr>
+            <span class="text-dark">iPlant's | Av. Bahia - Instituto Federal - Caraguatatuba - São Paulo</span>
+          </div>
+        </footer>
+
+    </div>
+    </main>
+
+
+    <!--dependencias do bootstrap-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+      integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+      crossorigin="anonymous"></script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <!-- Inicialize os Feather Icons (opcional) -->
+    <script>
+      feather.replace();
+    </script>
+    <script>
+      // Nome do usuario
+      // seleciona elementos do HTML
+      const usernameInput = document.getElementById("username-input");
+      const submitButton = document.getElementById("submit-button");
+      const usernameDisplay = document.getElementById("username-display");
+
+
+      // função para atualizar a exibição do nome do usuário
+      function updateUsernameDisplay() {
+        const username = localStorage.getItem("username");
+        if (username) {
+          // se o nome do usuário estiver definido na localStorage, atualiza a exibição em todos os documentos HTML
+          usernameDisplay.textContent = username;
+        }
+      }
+      updateUsernameDisplay();
+    </script>
+
+    <script src="assets/dist/js/script.js"></script>
+    <script>
+      // Adicione esse código em um arquivo JavaScript vinculado à sua página
+
+      // Captura o evento de clique no botão "Deletar" do cartão
+      document.addEventListener('click', (event) => {
+        const target = event.target;
+
+        // Verifica se o botão "Deletar" do cartão foi clicado
+        if (target.classList.contains('deletar-cartao')) {
+          const cartaoId = target.dataset.id; // Obtém o ID do cartão a ser deletado
+
+          // Envia a requisição AJAX para remover o cartão
+          const xhr = new XMLHttpRequest();
+          xhr.open('POST', '/removerCartao', true);
+          xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+          xhr.onload = function () {
+            if (xhr.status === 200) {
+              // Remove o cartão da página sem atualizá-la
+              const cartaoDiv = target.closest('.cartao-create');
+              if (cartaoDiv) {
+                cartaoDiv.remove();
+              }
+            } else {
+              console.error('Erro ao deletar o cartão');
+            }
+          };
+          xhr.onerror = function () {
+            console.error('Erro ao enviar a requisição');
+          };
+          xhr.send('cartaoId=' + encodeURIComponent(cartaoId));
+        }
+      });
+      updateBadge();
+    </script>
+</body>
+
+</html>
+<!-- meus cartões-->

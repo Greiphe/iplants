@@ -1,0 +1,45 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  background-color: #8f9ead;
+}
+
+.form-signin {
+  width: 100%;
+  margin: auto;
+}
+
+.form-signin .checkbox {
+  font-weight: 400;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: -1px;
+}
+.bgcadastro{
+  background-color: #70d369a3;
+}
+.bgcadastro2{
+  box-shadow: 5px 5px 3px 3px #00000036;
+}
+
+.label-ajustado {
+  margin-right: 10px;
+  padding: 5px;
+  position: relative;
+  top: -5px;
+  display: block;
+  width: 100px;
+}

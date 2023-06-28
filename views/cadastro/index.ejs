@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Hugo 0.84.0">
+  <title>Cadastro</title>
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
+  <link rel="icon" type="image/x-icon" href="assets/img/fiveicon.png">
+
+  <!-- Bootstrap core CSS -->
+  <link href="node_modules_bot/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+
+      .texto-tamanho {
+        font-size: 11px;
+      }
+    }
+
+    @media (min-width: 992px) {
+      .texto-tamanho {
+        font-size: 13px;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .texto-tamanho {
+        font-size: 14px;
+      }
+    }
+
+    @media (min-width: 1400px) {
+      .texto-tamanho {
+        font-size: 15px;
+      }
+    }
+  </style>
+  <link href="/assets/dist/css/cadastro.css" rel="stylesheet">
+</head>
+
+<body class="text-center">
+
+  <main class="form-signin">
+
+    <form action="/cadastre" method="post">
+      <img class="mb-4" src="assets/img/logo.png" width="250px">
+
+      <div class="container mt-2 mb-4">
+        <div class="row justify-content-center">
+          <div class="col-md-4 col-sm-12 bgcadastro rounded-4 mx-2">
+            <h1 class="h3 title-cadastre mb-3 fw-normal text-white mt-3">Cadastre-se</h1>
+            <div class="d-flex" id="duas-divs" style="gap: 10px;">
+              <div class="input-group mb-1 form-floating mt-3">
+                <input type="text" name="usuario" id="usuario" class="form-control" required
+                  style="border-radius: 10px 10px 10px 10px;">
+                <label>Usuário*</label>
+              </div>
+
+              <div class="input-group mb-1 form-floating mt-3">
+                <input type="text" class="form-control" name="cpf" maxlength="11" id="cpf" required
+                  style="border-radius: 10px 10px 10px 10px;">
+                <label>CPF*</label>
+              </div>
+            </div>
+
+            <div class="input-group mb-3 form-floating mt-3">
+              <input type="password" class="form-control" name="senha" id="senha1" required
+                style="border-radius: 10px 0px 0px 10px;">
+              <label>Senha*</label>
+              <div class="input-group-append">
+                <a href="#" onclick="fun1()">
+                <button class="btn btn-light h-100" type="button" style="border-radius: 0px 10px 10px 0px;">
+                    <img class="form-floating" src="assets/img/olho.png" width="20px" alt="visualizar senha">
+                  </button>
+                </a>
+              </div>
+            </div>
+
+            <div class="input-group mb-3 form-floating">
+              <input type="password" class="form-control" name="confirmar_senha" id="confirmar_senha" required
+                style="border-radius: 10px 0px 0px 10px;">
+              <label>Confirmar Senha*</label>
+              <div class="input-group-append">
+                <a href="#" onclick="fun2()">
+                <button class="btn btn-light h-100" type="button" style="border-radius: 0px 10px 10px 0px;">
+                    <img class="form-floating" src="assets/img/olho.png" width="20px" alt="visualizar senha">
+                  </button>
+                </a>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-success shadonw bgcadastro2 btn-lg" value="Cadastrar" id="Cadastrar">Cadastrar</button>
+            <div class="mb-3 form-floating mt-2 mb-2">
+              <p><a href="login" class="text-white">Ja criou sua conta?, faça login!</a></p>
+            </div>
+    </form>
+
+    </div>
+    <div class="col-md-4 col-sm-12 bg-success rounded-4">
+      <div class="d-flex justify-content-center flex-column align-items-center">
+        <div class="d-flex align-items-center mb-3 text-white">
+          <div class="mx-3 mt-3">
+            <h4>Por que doar?<h4>
+          </div>
+          <img src="assets/svg/hand-holding-usd-white.png" alt="Doar" height="30px">
+        </div>
+        <p class="text-white fw-normal texto-tamanho">Com a sua ajuda, podemos continuar a oferecer produtos e serviços
+          de alta qualidade e
+          manter o nosso site em funcionamento, contribuindo assim para a sociedade como um todo.
+
+          Se você é um dos nossos clientes ou apenas gosta do nosso site e acredita que estamos fazendo um bom trabalho,
+          pedimos que considere fazer uma doação. Qualquer contribuição é bem-vinda e ajudará a garantir que possamos
+          continuar a fornecer o nosso serviço. Agradecemos antecipadamente pelo seu apoio e generosidade.</p>
+      </div>
+
+      <div>
+        <button type="button" class="btn btn-success bgcadastro2 btn-lg ">
+          <a class="nav-link " href=" #" data-bs-toggle="modal" data-bs-target="#empresasModal"><span>Doar</span></a>
+        </button>
+      </div>
+    </div>
+    <!--modal doar-->
+    <div class="portfolio-modal modal fade" id="empresasModal" tabindex="-1" aria-labelledby="empresasModal"
+      aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content portfolioback">
+          <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal"
+              aria-label="Close"></button></div>
+          <div class="modal-body pb-5">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 text-center">
+                  <!-- Curses Modal - Title-->
+                  <h2 class="portfolio-modal-title text-dark text-uppercase text-center">Doação</h2>
+                  <p class="portfolio-modal-title text-dark text-center mt-3">Segue o QR Code para ajudar na
+                    manutenção e
+                    suporte da plataforma</p>
+                  <div class="text-center">
+                    <img src="assets/img/pix.png" width="100" height="100" alt="">
+                    <img src="assets/img/qr.png" width="150" height="150"
+                      alt="QR Code para doar para a plataforma iPlant's">
+                  </div>
+                  <p class="mt-3">Chave PIX</p>
+                  <div class="rounded-5 bg-success p-3 row d-flex align-items-center justify-content-between">
+                    <div class="col-9">
+                      <span class="text-white" id="dado">62f5c5e6-e95a-4cfa-92f4-2e7b027fbaf1</span>
+                    </div>
+                    <div class="col-2">
+                      <a href="#"> <img class="mx-3" src="assets/svg/copy.png" width="20" height="30" alt="copiar"
+                          onclick="copyToClickBoard()"></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="mt-5 mb-3 text-dark">Iplants &copy; 2023</p>
+
+    <script>
+      // Resgatando os valores
+
+      const usuarioNome = document.querySelector("#usuario-nome");
+      const senha1 = document.querySelector("#senha");
+      const senha2 = document.querySelector("#confirmar_senha");
+      const cadastrar = document.querySelector("#cadastrar");
+
+      cadastrar.addEventListener("click", (event) => {
+        if (usuarioNome.value === '' || senha1.value === '' || senha2.value === '') {
+          event.preventDefault()
+          alert("Digite os campos requisitados!");
+        }
+      })
+      //copiar qr
+      function copyToClickBoard() {
+        var content = document.getElementById('dado').innerHTML;
+
+        navigator.clipboard.writeText(content)
+
+      }
+      // mostrar senha
+      function fun1() {
+        var x = document.getElementById("senha1");
+        if (x.type === "password") {
+          x.type = "text";
+        } else {
+          x.type = "password";
+        }
+      }
+
+      function fun2() {
+        var x = document.getElementById("confirmar_senha");
+        if (x.type === "password") {
+          x.type = "text";
+        } else {
+          x.type = "password";
+        }
+      }
+    </script>
+    <script>
+      // exibir nos o nome em todos os documentos 
+      function updateUsernameDisplay() {
+        const username = localStorage.getItem("username");
+        const username2 = localStorage.getItem("username");
+        if (username) {
+          usernameDisplay.textContent = username;
+          usernameDisplay.textContent = username2;
+        }
+      }
+      updateUsernameDisplay();
+    </script>
+
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+    crossorigin="anonymous"></script>
+  </script>
+</body>
+
+</html>

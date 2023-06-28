@@ -1,0 +1,772 @@
+body {
+  font-size: .875rem;
+}
+
+.feather {
+  width: 16px;
+  height: 16px;
+  vertical-align: text-bottom;
+}
+.hidden {
+  display: none;
+}
+
+/*
+ * Sidebar
+ */
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  /* rtl:raw:
+  right: 0;
+  */
+  bottom: 0;
+  /* rtl:remove */
+  left: 0;
+  z-index: 100; /* Behind the navbar */
+  padding: 48px 0 0; /* Height of navbar */
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+}
+
+@media (max-width: 767.98px) {
+  .sidebar {
+    top: 5rem;
+  }
+}
+
+.sidebar-sticky {
+  position: relative;
+  top: 0;
+  height: calc(100vh - 48px);
+  padding-top: .5rem;
+  overflow-x: hidden;
+  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+}
+
+.sidebar .nav-link {
+  font-weight: 500;
+  color: #333;
+}
+
+.sidebar .nav-link .feather {
+  margin-right: 4px;
+  color: #727272;
+}
+
+.sidebar .nav-link.active {
+  color: #2470dc;
+}
+
+.sidebar .nav-link:hover .feather,
+.sidebar .nav-link.active .feather {
+  color: inherit;
+}
+
+.sidebar-heading {
+  font-size: .75rem;
+  text-transform: uppercase;
+}
+
+/*background das pages conta*/
+.back{
+  background-color: #eee;
+}
+
+/*
+ * Navbar
+ */
+
+.navbar-brand {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  font-size: 1rem;
+  background-color: rgb(87 77 96);
+  box-shadow: inset -1px 0 0 rgb(87 77 96);
+}
+
+.navbar .navbar-toggler {
+  top: .25rem;
+  right: 1rem;
+}
+
+.navbar .form-control {
+  padding: .75rem 1rem;
+  border-width: 0;
+  border-radius: 0;
+  height: 37px;
+}
+
+.form-control-dark {
+  color: #fff;
+  background-color: rgba(255, 255, 255, .5);
+  border-color: rgba(255, 255, 255, .5);
+}
+
+.form-control-dark:focus {
+  border-color: transparent;
+  box-shadow: 0 0 0 3px rgb(87 77 96);
+}
+.bg-heade{
+  background-color: rgb(87 77 96);
+}
+.ponto{
+  background-color: #a1a1a1;
+}
+
+@media (max-width: 767.98px) {
+  .footer-back {
+    margin-left: 0px;
+  }
+}
+.fixar{
+  position: fixed !important;
+  width: 100%;
+}
+
+/*----------------------------------------------------------------
+margin top para as paginas perfil, endereço, minhas compras, 
+carrinho
+----------------------------------------------------------------*/
+
+@media (max-width: 1920px) {
+  .arrumar {
+    margin-top: 70px;
+  }
+}  
+@media (max-width: 1366px) {
+  .arrumar {
+    margin-top: 60px;
+  }
+}  
+@media (max-width: 768px) {
+  .arrumar {
+    margin-top: 90px;
+    height: 300px;
+  }
+}
+@media (max-width: 375px) {
+  .arrumar {
+    margin-top: 150px;
+    height: 300px;
+  }
+}
+@media (max-width: 414px) {
+  .arrumar {
+    margin-top: 150px;
+    height: 300px;
+  }
+}
+
+/*----------------------------------------------------------------
+carrossel para a pagina index, produtos, shows, contato
+----------------------------------------------------------------*/
+@media (max-width: 1920px) {
+  .carrossell {
+    margin-top: 70px;
+  }
+}  
+@media (max-width: 1366px) {
+  .carrossell {
+    margin-top: 60px;
+  }
+}  
+@media (max-width: 768px) {
+  .carrossell {
+    margin-top: 90px;
+    height: 300px;
+  }
+  
+  .botaoComprar{
+    padding: 0px;
+    margin: 0px;
+    height: 50px;
+    font-size: small;
+  }
+  .navbar .form-control {
+    height: 33px;
+  }
+}
+@media (max-width: 375px) {
+  .carrossell {
+    margin-top: 150px;
+    height: 300px;
+  }
+  
+  .botaoComprar{
+    padding: 0px;
+    margin: 0px;
+    height: 50px;
+    font-size: small;
+  }
+  .navbar .form-control {
+    height: 33px;
+  }
+}
+@media (max-width: 414px) {
+  .carrossell {
+    margin-top: 150px;
+    height: 300px;
+  }
+  
+  .botaoComprar{
+    padding: 0px;
+    margin: 0px;
+    height: 50px;
+    font-size: small;
+  }
+  .navbar .form-control {
+    height: 33px;
+  }
+}
+/*----------------------------------------------------------------
+end carrossel
+----------------------------------------------------------------*/
+
+/*----------------------------------------------------------------
+carrossel para a pagina pedidos
+----------------------------------------------------------------*/
+@media (max-width: 1920px) {
+  .carrossel2 {
+    margin-top: 70px;
+  }
+}  
+@media (max-width: 1366px) {
+  .carrossel2 {
+    margin-top: 90px;
+  }
+}  
+@media (max-width: 768px) {
+  .carrossel2 {
+    margin-top: 90px;
+  }
+}
+@media (max-width: 375px) {
+  .carrossel2 {
+    margin-top: 150px;
+  }
+}
+@media (max-width: 414px) {
+  .carrossel2 {
+    margin-top: 150px;
+  }
+}
+/*----------------------------------------------------------------
+end pedidos
+----------------------------------------------------------------*/
+/*---------------------------------------------------------------
+produtos visual
+----------------------------------------------------------------*/
+@media (min-width: 40em) {
+  /* Bump up size of carousel content */
+  .carousel-caption p {
+    margin-bottom: 1.25rem;
+    font-size: 1.25rem;
+    line-height: 1.4;
+  }
+
+  .featurette-heading {
+    font-size: 50px;
+  }
+}
+.camada{
+  z-index: 1001;
+}
+
+/*servicos*/
+.servico{
+  color: #72b54a;
+}
+/*footer*/
+.footer-sub{
+  display: flex;
+  justify-content: center;
+}
+.footer-sub a{
+  color: rgb(28, 25, 25);
+}
+.footer-sub a:hover{
+  color: rgb(0, 102, 0);
+}
+.footer-sub a:visited{
+  color: rgb(28, 25, 25);
+}
+.foter-imagem{
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  align-items: center;
+}
+.footer-back{
+  background-color: #a1a1a1;
+}
+
+/*Produtos*/
+
+.cor-fundo-main{
+  background-color: #F9F5EC;
+}
+
+.card-buy-icon{
+  width: 25px;
+}
+
+.space-buy-card{
+  gap: 10px;
+}
+
+.cor-font{
+  color: black;
+}
+
+
+/*bandeiras de cartão de creditos*/
+@media (min-width: 768px) {
+  .bandeiras{
+    width: 70px;
+    margin-left: 15px;
+    margin-right: 45px;
+  }
+}
+
+/*bandeiras de cartão de creditos*/
+@media (max-width: 1366px) {
+  .bandeiras{
+    width: 120px;
+    margin-left: 45px;
+    margin-right: 45px;
+  }
+}
+
+/*bandeiras de cartão de creditos*/
+@media (min-width: 1920px) {
+  .bandeiras{
+    width: 150px;
+    margin-left: 45px;
+    margin-right: 45px;
+  }
+}
+
+
+/*categorias home*/
+@media (max-width: 768px) {
+  .categoriasMidea{
+    width: 50px;
+  }
+}
+
+
+
+/*--------------------------------------------------------------
+# Hero Section  das paginas index, sobre, contato e produtos
+--------------------------------------------------------------*/
+#hero {
+  width: 100%;
+  background: url("../img/hero-bg.jpg");
+  position: relative;
+  padding: 120px 0 0 0;
+}
+
+#hero:before {
+  content: "";
+  background: rgb(255, 255, 255);
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+@media (min-width: 1024px) {
+  #hero {
+    background-attachment: fixed;
+  }
+}
+
+@media (max-width: 991px) {
+  #hero {
+    padding-top: 80px;
+  }
+
+  #hero .animated {
+    animation: none;
+  }
+
+  #hero .hero-img {
+    text-align: center;
+  }
+
+  #hero .hero-img img {
+    max-width: 50%;
+  }
+
+  #hero h1 {
+    font-size: 28px;
+    line-height: 32px;
+    margin-bottom: 10px;
+  }
+
+  #hero h2 {
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 575px) {
+  #hero .hero-img img {
+    width: 80%;
+  }
+}
+
+@keyframes up-down {
+  0% {
+    transform: translateY(10px);
+  }
+
+  100% {
+    transform: translateY(-10px);
+  }
+}
+
+.hero-waves {
+  display: block;
+  margin-top: 60px;
+  width: 100%;
+  height: 60px;
+  z-index: 5;
+  position: relative;
+}
+
+.wave1 use {
+  animation: move-forever1 10s linear infinite;
+  animation-delay: -2s;
+}
+
+.wave2 use {
+  animation: move-forever2 8s linear infinite;
+  animation-delay: -2s;
+}
+
+.wave3 use {
+  animation: move-forever3 6s linear infinite;
+  animation-delay: -2s;
+}
+
+@keyframes move-forever1 {
+  0% {
+    transform: translate(85px, 0%);
+  }
+
+  100% {
+    transform: translate(-90px, 0%);
+  }
+}
+
+@keyframes move-forever2 {
+  0% {
+    transform: translate(-90px, 0%);
+  }
+
+  100% {
+    transform: translate(85px, 0%);
+  }
+}
+
+@keyframes move-forever3 {
+  0% {
+    transform: translate(-90px, 0%);
+  }
+
+  100% {
+    transform: translate(85px, 0%);
+  }
+}
+
+
+
+
+/*--------------------------------------------------------------
+# Hero Section das paginas perfil, meus cartões, endereço, minhas compras e carrinho
+--------------------------------------------------------------*/
+#hero1 {
+  width: 100%;
+  background: url("../img/hero-bg.jpg");
+  position: relative;
+  padding: 120px 0 0 0;
+}
+
+#hero1:before {
+  content: "";
+  background: rgba(238, 238, 238, 0);
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+@media (min-width: 1024px) {
+  #hero1 {
+    background-attachment: fixed;
+  }
+}
+
+@media (max-width: 991px) {
+  #hero1 {
+    padding-top: 80px;
+  }
+
+  #hero1 .animated {
+    animation: none;
+  }
+
+  #hero1 .hero1-img {
+    text-align: center;
+  }
+
+  #hero1 .hero1-img img {
+    max-width: 50%;
+  }
+
+  #hero1 h1 {
+    font-size: 28px;
+    line-height: 32px;
+    margin-bottom: 10px;
+  }
+
+  #hero1 h2 {
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 575px) {
+  #hero1 .hero1-img img {
+    width: 80%;
+  }
+}
+
+@keyframes up-down {
+  0% {
+    transform: translateY(10px);
+  }
+
+  100% {
+    transform: translateY(-10px);
+  }
+}
+
+.hero-waves1 {
+  display: block;
+  margin-top: 60px;
+  width: 100%;
+  height: 60px;
+  z-index: 5;
+  position: relative;
+}
+
+.wave11 use {
+  animation: move-forever1 10s linear infinite;
+  animation-delay: -2s;
+}
+
+.wave21 use {
+  animation: move-forever2 8s linear infinite;
+  animation-delay: -2s;
+}
+
+.wave31 use {
+  animation: move-forever3 6s linear infinite;
+  animation-delay: -2s;
+}
+
+@keyframes move-forever1 {
+  0% {
+    transform: translate(85px, 0%);
+  }
+
+  100% {
+    transform: translate(-90px, 0%);
+  }
+}
+
+@keyframes move-forever2 {
+  0% {
+    transform: translate(-90px, 0%);
+  }
+
+  100% {
+    transform: translate(85px, 0%);
+  }
+}
+
+@keyframes move-forever3 {
+  0% {
+    transform: translate(-90px, 0%);
+  }
+
+  100% {
+    transform: translate(85px, 0%);
+  }
+}
+
+
+
+/*--------------------------------------------------------------
+# Hero Section da pagina shows (detalhes de produtos)
+--------------------------------------------------------------*/
+#hero2 {
+  width: 100%;
+  background: url("../img/hero-bg.jpg");
+  position: relative;
+  padding: 120px 0 0 0;
+}
+
+#hero2:before {
+  content: "";
+  background: rgb(249, 245, 236, 1);
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+@media (min-width: 1024px) {
+  #hero2 {
+    background-attachment: fixed;
+  }
+}
+
+@media (max-width: 991px) {
+  #hero2 {
+    padding-top: 80px;
+  }
+
+  #hero2 .animated {
+    animation: none;
+  }
+
+  #hero2 .hero2-img {
+    text-align: center;
+  }
+
+  #hero2 .hero2-img img {
+    max-width: 50%;
+  }
+
+  #hero2 h1 {
+    font-size: 28px;
+    line-height: 32px;
+    margin-bottom: 10px;
+  }
+
+  #hero2 h2 {
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 575px) {
+  #hero2 .hero2-img img {
+    width: 80%;
+  }
+}
+
+@keyframes up-down {
+  0% {
+    transform: translateY(10px);
+  }
+
+  100% {
+    transform: translateY(-10px);
+  }
+}
+
+.hero-waves2 {
+  display: block;
+  margin-top: 60px;
+  width: 100%;
+  height: 60px;
+  z-index: 5;
+  position: relative;
+}
+
+.wave12 use {
+  animation: move-forever1 10s linear infinite;
+  animation-delay: -2s;
+}
+
+.wave22 use {
+  animation: move-forever2 8s linear infinite;
+  animation-delay: -2s;
+}
+
+.wave32 use {
+  animation: move-forever3 6s linear infinite;
+  animation-delay: -2s;
+}
+
+@keyframes move-forever1 {
+  0% {
+    transform: translate(85px, 0%);
+  }
+
+  100% {
+    transform: translate(-90px, 0%);
+  }
+}
+
+@keyframes move-forever2 {
+  0% {
+    transform: translate(-90px, 0%);
+  }
+
+  100% {
+    transform: translate(85px, 0%);
+  }
+}
+
+@keyframes move-forever3 {
+  0% {
+    transform: translate(-90px, 0%);
+  }
+
+  100% {
+    transform: translate(85px, 0%);
+  }
+}
+
+.custom-div {
+  background-color: #2bc1c1;
+}
+
+.custom-div2 {
+  background-color: #c57316;
+}
+
+.custom-div3 {
+  background-color: #222;
+  color: whitesmoke;
+}
+/*--------------------------------------------------------------
+# footer essa é a posição na tela de 1902x1080
+--------------------------------------------------------------*/
+
+@media (min-width: 1920px) {
+  .compras{
+    margin-bottom: 55vh;
+  }
+
+  .carrinho{
+    margin-bottom: 25vh;
+  }
+}
+@media (min-width: 1366px) {
+  .compras{
+    margin-bottom: 45vh;
+  }
+}

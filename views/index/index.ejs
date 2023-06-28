@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <!doctype html>
+    <html lang="pt-br">
+    
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>iPlant's</title>
+      <!--svgs-->
+      <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+    
+      <!-- Bootstrap core CSS -->
+      <link rel="icon" type="image/x-icon" href="assets/img/fiveicon.png">
+      <link rel="stylesheet" href="assets/dist/css/aos.min.css">
+      <link rel="stylesheet" href="assets/dist/css/animate.min.css">
+      <link href="node_modules_bot/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.css">
+      <link rel="stylesheet" href="assets/dist/css/style.css">
+      <style>
+        .bd-placeholder-img {
+          font-size: 1.125rem;
+          text-anchor: middle;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          user-select: none;
+        }
+    
+        @media (min-width: 768px) {
+          .bd-placeholder-img-lg {
+            font-size: 3.5rem;
+          }
+        }
+        @media (min-width: 768px) {
+          .bd-placeholder-img-lg {
+            font-size: 3.5rem;
+          }
+        }
+        @media screen and (max-width: 1366px)  {
+          .some-texto{
+            display: none;
+          }
+        }
+        .parallax {
+          /* The image used */
+          background-image: url("assets/img/p1.jpg");
+          /* Set a specific height */
+          min-height: 500px;
+    
+          /* Create the parallax scrolling effect */
+          background-attachment: fixed;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
+        .hidden {
+      display: none;
+    }
+      </style>
+    </head>
+    
+    <body>
+    
+      <header class="navbar navbar-dark sticky-top bg-heade flex-md-nowrap p-0 shadow fixar">
+        <a class="navbar-brand col-md-3 col-lg-2 p-1" href="/"><img src="assets/img/logo-white.png" width="170px"
+            height="50px" alt=""></a>
+        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
+          data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <input class="form-control form-control-dark rounded-2 w-100" type="text" placeholder="Search" aria-label="Search">
+        <div class="navbar-nav">
+          <div class="nav-item d-flex align-items-center">
+            <div class=" rounded-3 mx-2 p-1">
+              <a href="#" data-bs-toggle="modal" data-bs-target="#empresasModal">
+                <img class="" src="assets/svg/hand-holding-usd-white.png" width="40" height="40" alt="Doação">
+              </a>
+            </div>
+            <% if (typeof user === 'undefined') { %>
+              <button type="button"
+                class="btn btn-outline-secondary mx-1 text-uppercase d-flex align-items-center justify-content-center"
+                style="width: 60px;
+                                                                                                                                                height: 40px;">
+                <a href="login" class="nav-link" style="font-size: small;"> Login</a></button>
+              <button type="button"
+                class="btn btn-secondary mx-1 text-uppercase d-flex align-items-center justify-content-center"
+                style="width: 90px;
+                                                                                                                                          height: 40px;">
+                <a href="cadastro" class="nav-link" style="font-size: small;"> Cadastrar</a></button>
+                <% } else { %>
+            </div>
+            <% } %>
+        </div>
+      </header>
+    
+      <div class="container-fluid">
+        <div class="row">
+          <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse text-uppercase">
+            <div class="position-sticky pt-3">
+              <ul class="nav flex-column">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="/">
+                    <span data-feather="home"></span>
+                    Inicio
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="sobre">
+                    <span data-feather="file"></span>
+                    Sobre
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="produtos">
+                    <span data-feather="shopping-bag"></span>
+                    Produtos
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="contato">
+                    <span data-feather="users"></span>
+                    Contato
+                  </a>
+                </li>
+              </ul>
+    
+              <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                <span class="text-primary">Conta</span>
+              </h6>
+              <ul class="nav flex-column mb-2">
+                <li class="nav-item">
+                  <a class="nav-link" href="myAcount">
+                    <span data-feather="user"></span>
+                    Perfil
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="myCard">
+                    <span data-feather="credit-card"></span>
+                    Meus Cartões
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="endereco">
+                    <span data-feather="map-pin"></span>
+                    Endereço
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="minhas-compras">
+                    <span data-feather="briefcase"></span>
+                    Minhas Compras
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="carrinho">
+                    <span data-feather="shopping-cart"></span>
+                    <span class=" position-relative">CARRINHO
+                      <span id="badge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                        
+                        <span class="visually-hidden"></span>
+                      </span>
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="dropdown mt-5">
+              <a href="#"
+                class="d-block bg-light camada border-1 rounded-5 user p-1 link-dark text-decoration-none dropdown-toggle"
+                id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                <img id="profile-pic-preview" src="assets/svg/ghost.svg" alt="mdo" width="32" height="32"
+                  class="rounded-circle"><span id="username-display">Usuario</span>
+              </a>
+              <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+                <li><a class="dropdown-item" href="logout">Sair</a></li>
+              </ul>
+            </div>
+          </nav>
+    
+          <main class="col-md-9 ms-sm-auto col-lg-10 col-xl-10 m-0 p-0">
+            <!--space modals-->
+            <!--modal do doar-->
+            <div class="portfolio-modal modal fade" id="empresasModal" tabindex="-1" aria-labelledby="empresasModal"
+              aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content portfolioback">
+                  <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal"
+                      aria-label="Close"></button></div>
+                  <div class="modal-body pb-5">
+                    <div class="container-fluid">
+                      <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 text-center">
+                          <!-- Curses Modal - Title-->
+                          <h2 class="portfolio-modal-title text-dark text-uppercase text-center">Doação</h2>
+                          <p class="portfolio-modal-title text-dark text-center mt-3">Segue o QR Code para ajudar na
+                            manutenção e
+                            suporte da plataforma</p>
+                          <div class="text-center">
+                            <img src="assets/img/pix.png" width="100" height="100" alt="">
+                            <img src="assets/img/qr.png" width="150" height="150"
+                              alt="QR Code para doar para a plataforma iPlant's">
+                          </div>
+                          <p class="mt-3"><b>Chave PIX</b></p>
+                          <div class="rounded-5 bg-success p-3 row d-flex align-items-center justify-content-between">
+                            <div class="col-9">
+                              <span class="text-white" id="dado">62f5c5e6-e95a-4cfa-92f4-2e7b027fbaf1</span>
+                            </div>
+                            <div class="col-2">
+                              <a href="#"> <img class="mx-3" src="assets/svg/copy.png" width="20" height="30" alt="copiar"
+                                  onclick="copyToClickBoard()"></a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--modal do mapa do site-->
+            <div class="modal fade" id="mapaSite" tabindex="-1" aria-labelledby="mapaSite" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content portfolioback">
+                  <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal"
+                      aria-label="Close"></button></div>
+                  <div class="modal-body pb-5">
+                    <div class="container-fluid">
+                      <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                          <!-- Curses Modal - Title-->
+                          <h2 class="portfolio-modal-title text-dark text-uppercase text-center">Mapa do Site</h2>
+                          <hr>
+                          <ul>
+                            <li><a href="cadastro">Cadastro</a></li>
+                            <li><a href="login">Login</a></li>
+                            <li><a href="/">Home</a>
+                              <ul>
+                                <li><a href="myAcount">Usuário</a>
+                                  <ul><a href="myAcount">Minha Conta</a></ul>
+                                </li>
+                              </ul>
+                            </li>
+                            <li><a href="sobre">Sobre</a>
+                              <ul>
+                                <li><a href="sobre">Sobre a Empresa</a></li>
+                                <li><a href="sobre">Sobre os Desenvolvedores</a></li>
+                              </ul>
+                            </li>
+                            <li><a href="produtos">Produtos</a>
+                              <ul>
+                                <li><a href="produtos">Todos os Produtos</a></li>
+                              </ul>
+                            </li>
+                            <li><a href="contato">Contato</a>
+                              <ul>
+                                <li><a href="contato">Formulário de Contato</li></a>
+                              </ul>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--modal termos de privacidade-->
+            <div class="modal fade" id="privacidade" tabindex="-1" role="dialog" aria-labelledby="privacidadeTitle"
+              aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title justify-content-center" id="privacidadeTitle">Aviso de Uso de Dados e Privacidade
+                    </h5>
+                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <p>Aviso de Uso de Dados e Privacidade</p>
+                    <p>Ao utilizar nossos serviços, você concorda com a coleta e uso de suas informações de acordo com este
+                      aviso
+                      de privacidade. Os dados que você insere em nosso site serão armazenados em um banco de dados privado
+                      e
+                      serão utilizados exclusivamente para fins de melhorar a qualidade de nossos serviços e oferecer a você
+                      uma
+                      experiência mais personalizada.</p>
+                    <p>Os dados coletados podem incluir, mas não se limitam a, informações de contato, endereço de e-mail,
+                      informações demográficas e comportamentais. Essas informações podem ser compartilhadas com nossos
+                      parceiros
+                      de negócios para fins de marketing, mas somente com o seu consentimento expresso.</p>
+                    <p>Comprometemo-nos a manter seus dados seguros e protegidos contra acessos não autorizados, alterações,
+                      divulgações ou destruição. Nós nunca venderemos ou alugaremos suas informações a terceiros sem o seu
+                      consentimento prévio.</p>
+                    <p>Ao utilizar nossos serviços, você concorda em nos fornecer informações precisas e atualizadas. Se
+                      houver
+                      qualquer alteração em suas informações pessoais, por favor, nos informe imediatamente para que
+                      possamos
+                      atualizar nossos registros.</p>
+                    <p>Ao continuar a usar nossos serviços, você reconhece que leu e entendeu este aviso de privacidade e
+                      concorda
+                      com a coleta, armazenamento e uso de suas informações pessoais como descrito acima.</p>
+                    <p>Se tiver alguma dúvida ou preocupação sobre a privacidade de seus dados, entre em contato conosco
+                      através
+                      do nosso site.</p>
+                  </div>
+                  <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-success btn-lg" data-bs-dismiss="modal"
+                      aria-label="Close">Entendi</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--end space modals-->
+    
+            <!--carrossel produtos-->
+            <div class="container-fluid w-100 p-0 carrossell">
+              <!--tulipa item 1-->
+              <div id="carouselExampleDark" class="carousel carousel-dark slide carrossell" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                  <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                  <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+                  <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                  <div class="carousel-item active" data-bs-interval="5000">
+                    <div class="col-md-6 col-lg-4 mb-5 d-block w-100">
+                      <div
+                        class="col-md-6 col-lg-4 mb-2 d-block d-flex align-items-center justify-content-center h-100 w-100">
+                        <a class="p-0 rounded nav-link text-white" href="/produtos/2">
+                          <img class="img-fluid " src="assets/img/carrossel1.png" alt="Girassol" />
+                        </a>
+                      </div>
+                      <div class="py-3 col-sm-12 mb-3 col-md-12 col-lg-12 d-flex align-items-center justify-content-center ">
+                        <button class="btn btn-success  btn-lg btn-block rounded-2 botaoComprar">
+                          <a class="p-3 nav-link rounded text-white" href="/produtos/2">Comprar
+                            Agora</a>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="carousel-item" data-bs-interval="5000">
+                    <!-- rosa Item 2-->
+                    <div class="col-md-6 col-lg-4 mb-5 d-block w-100">
+                      <div
+                        class="col-md-6 col-lg-4 mb-2 d-block d-flex align-items-center justify-content-center h-100 w-100">
+                        <a class="p-0 rounded nav-link text-white" href="/produtos/9">
+                          <img class="img-fluid" src="assets/img/carrossel2.png" alt="Margarida" />
+                        </a>
+                      </div>
+                      <div
+                        class="py-3 mb-5  col-sm-12 col-md-12 col-lg-12 d-flex align-items-center justify-content-center ">
+                        <button class="btn btn-success btn-lg btn-block rounded-2 botaoComprar">
+                          <a class="p-3 rounded nav-link text-white" href="/produtos/9">Comprar
+                            Agora</a>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="carousel-item" data-bs-interval="5000">
+                    <!-- margarita Item 3-->
+                    <div class="col-md-6 col-lg-4 mb-5 d-block w-100">
+                      <div
+                        class="col-md-6 col-lg-4 mb-2 d-block d-flex align-items-center justify-content-center h-100 w-100">
+                        <a class="p-0 rounded nav-link text-white" href="/produtos/4">
+                          <img class="img-fluid" src="assets/img/carrossel3.png" alt="begonia" />
+                        </a>
+                      </div>
+                      <div class="py-3 mb-5 col-sm-12 col-md-12 col-lg-12 d-flex align-items-center justify-content-center ">
+                        <button class="btn btn-success  btn-lg btn-block  rounded-2 botaoComprar">
+                          <a class="p-3 rounded nav-link text-white" href="/produtos/4">Comprar
+                            Agora</a>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark"
+                  data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark"
+                  data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+
+
+              <!--categorias-->
+              <h1 class="mt-5 text-center">Categorias</h1>
+              <p class="lead text-center mt-2">As melhores flores para os melhores ambientes</p>
+              <div class="container text-center mt-5 mb-5 ">
+                <div class="row row-cols-3 row-cols-sm-2 row-cols-md-6 row-cols-md-12 ">
+                  <div class="col" data-aos="fade-up" data-aos-duration="150" data-aos-delay="50">
+                    <img class="rounded-circle img-fluid categoriasMidea" src="assets/img/categoria1.png" width="30%" height="60%" alt="">
+                    <p>Janela</p>
+                  </div>
+                  <div class="col" data-aos="fade-up" data-aos-duration="250" data-aos-delay="150">
+                    <img class="rounded-circle img-fluid categoriasMidea" src="assets/img/categoria2.png" width="30%" height="60%" alt="">
+                    <p>Escritório</p>
+                  </div>
+                  <div class="col" data-aos="fade-up" data-aos-duration="350" data-aos-delay="250">
+                    <img class="rounded-circle img-fluid categoriasMidea" src="assets/img/categoria3.png" width="30%" height="60%" alt="">
+                    <p>Jardim</p>
+                  </div>
+                  <div class="col" data-aos="fade-up" data-aos-duration="450" data-aos-delay="350">
+                    <img class="rounded-circle img-fluid categoriasMidea" src="assets/img/categoria4.png" width="30%" height="60%" alt="">
+                    <p>Casamento</p>
+                  </div>
+                  <div class="col" data-aos="fade-up" data-aos-duration="550" data-aos-delay="450">
+                    <img class="rounded-circle img-fluid categoriasMidea" src="assets/img/categoria5.png" width="30%" height="60%" alt="">
+                    <p>Apartamento</p>
+                  </div>
+                  <div class="col" data-aos="fade-up" data-aos-duration="650" data-aos-delay="550">
+                    <img class="rounded-circle img-fluid categoriasMidea" src="assets/img/categoria6.png" width="30%" height="60%" alt="">
+                    <p>Casa</p>
+                  </div>
+                </div>
+                <button class="btn btn-lg col-12 btn-warning mb-5">
+                  <a class="nav-link " href="produtos">Todas as Categorias</a>
+                </button>
+              </div>
+    
+              <!--produtos visual 1-->
+              <h1 class="mt-5 text-center">Sugestão</h1>
+              <p class="lead text-center mt-2">Descubra as flores para cada ocasião</p>
+              <div class="row p-2 featurette bg-light mt-5 mb-5 border border-1 border-light rounded-2 shadow-sm w-100"
+                data-aos="fade-right" data-aos-duration="750" data-aos-delay="250">
+                <div class="col-md-7">
+                  <h2 class="featurette-heading">A rosa é a melhor opcão. <span class="text-muted">Para dar de
+                      presente.</span>
+                  </h2>
+                  <p class="lead mt-5">As rosas são flores que possuem um significado simbólico forte em muitas culturas ao
+                    redor do mundo. Elas representam amor, beleza, paixão, respeito e gratidão. <span class="some-texto"> Ao presentear alguém com
+                    rosas, a mensagem transmitida pode variar dependendo da cor das flores escolhidas.
+    
+                    As rosas vermelhas são as mais comuns quando se trata de expressar amor e paixão, enquanto as rosas
+                    brancas simbolizam pureza e inocência. As rosas amarelas são frequentemente associadas à amizade e
+                    alegria, enquanto as rosas cor-de-rosa são um símbolo de gratidão e apreciação.
+    
+                    Independentemente da cor escolhida, as rosas são uma forma elegante e atemporal de demonstrar afeto e
+                    carinho por alguém. Além disso, elas também são uma maneira popular de celebrar ocasiões especiais, como
+                    aniversários, Dia dos Namorados e aniversários de casamento. </span></p>
+                  <br>
+                  <p>
+                    <a href="/produtos/1">
+                      <button class="btn btn-success p-3">Saiba Mais</button>
+                    </a>
+                  </p>
+                </div>
+                <div class="col-md-5 mastheadtext-dark text-center">
+                  <video class="w-100" autoplay muted loop>
+                    <source src="assets/img/rosa.mp4" type="video/mp4">
+                  </video>
+                </div>
+              </div>
+              <!--produtos visual 2-->
+              <div class="row p-2 featurette bg-light mt-5 mb-5 border border-1 border-light rounded-2 shadow-sm w-100"
+                data-aos="fade-right" data-aos-duration="750" data-aos-delay="250">
+                <div class="col-md-7 order-md-2">
+                  <h2 class="featurette-heading">Florescer o amor: <span class="text-muted">Margaridas pode deixar seu
+                      casamento
+                      ainda mais especial.</span></h2>
+                  <p class="lead mt-5">As margaridas são flores com uma beleza simples e delicada, que muitas vezes são
+                    utilizadas em arranjos florais para enfeitar casamentos e outras celebrações.<span class="some-texto"> Seu significado simbólico
+                    também as torna uma escolha popular para eventos como esses.
+    
+                    Além de representarem inocência, pureza e fidelidade, as margaridas também são frequentemente associadas
+                    à esperança e à simplicidade. Sua aparência branca e amarela, com pétalas brancas e miolo amarelo, cria
+                    um contraste suave que combina bem com outras flores em um buquê ou arranjo.
+    
+                    As margaridas são especialmente populares em casamentos rústicos ou ao ar livre, onde sua simplicidade e
+                    beleza natural combinam perfeitamente com o ambiente. Elas podem ser usadas em buquês de noiva,
+                    boutonnieres para o noivo e padrinhos, e em arranjos para decorar o altar e as mesas de recepção.</span></p>
+                  <p>
+                    <a href="/produtos/9">
+                      <button class="btn btn-success p-3 mt-3">Saiba Mais</button>
+                    </a>
+                  </p>
+                </div>
+                <div class="col-md-5 order-md-1 mastheadtext-dark text-center">
+                  <video class="w-100" autoplay muted loop>
+                    <source src="assets/img/casamento.mp4" type="video/mp4">
+                  </video>
+                </div>
+              </div>
+              <!--produtos visual 3-->
+              <div class="row p-2 featurette bg-light mt-5 mb-5 border border-1 border-light rounded-2 shadow-sm w-100"
+                data-aos="fade-right" data-aos-duration="750" data-aos-delay="250">
+                <div class="col-md-7">
+                  <h2 class="featurette-heading">Qual é a melhor maneira.<span class="text-muted"> De criar um jardim
+                      orgânico e
+                      sustentável em casa?</span></h2>
+                  <p class="lead">
+                    Utilizar compostagem para enriquecer o solo é uma prática sustentável e eficaz para garantir a saúde e a
+                    fertilidade do solo.<span class="some-texto"> A compostagem é um processo de decomposição de matéria orgânica, como restos de
+                    alimentos, folhas e galhos secos, que produz um adubo rico em nutrientes para as plantas.
+    
+                    Ao adicionar composto ao solo, é possível melhorar sua estrutura e aumentar sua capacidade de retenção
+                    de água, o que é essencial para o desenvolvimento das plantas. Além disso, o uso de composto reduz a
+                    necessidade de fertilizantes químicos, que podem ter impactos negativos no meio ambiente.
+    
+                    Outra prática importante para garantir a saúde das plantas é escolher espécies nativas da região. As
+                    plantas nativas são aquelas que se adaptaram naturalmente às condições climáticas e ao solo da região em
+                    que são encontradas. Por isso, elas geralmente requerem menos cuidados e manutenção do que plantas de
+                    outras regiões.</span></p>
+                  <br>
+                  <p>
+                    <a href="/produtos/3">
+                      <button class="btn btn-success p-3">Saiba Mais</button>
+                    </a>
+                  </p>
+                </div>
+                <div class="col-md-5 mastheadtext-dark text-center">
+                  <video class="w-100" autoplay muted loop>
+                    <source src="assets/img/jardim.mp4" type="video/mp4">
+                  </video>
+                </div>
+              </div>
+    
+              <!--serviço-->
+              <div class="container mt-5 mb-5">
+                <div class="text-center ">
+                  <h2 class="section-heading text-uppercase mt-5">Serviços</h2>
+                  <h3 class="section-subheading lead">Nossos serviços de qualidade tornam sua vida mais fácil e eficiente.
+                  </h3>
+                </div>
+                <div class="row text-center mt-5">
+                  <div class="col-md-4" data-aos="fade-up" data-aos-duration="750" data-aos-delay="250">
+                    <span class="fa-stack fa-4x">
+                      <i class="fas fa-circle fa-stack-2x servico"></i>
+                      <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h4 class="my-3">E-Commerce</h4>
+                    <p class="text-muted">E-commerce é a compra e venda de bens e serviços através da internet. É uma forma
+                      conveniente de comprar produtos de qualquer lugar e a qualquer hora, através de lojas online que
+                      oferecem
+                      uma ampla variedade de opções para os consumidores.</p>
+                  </div>
+                  <div class="col-md-4" data-aos="fade-up" data-aos-duration="750" data-aos-delay="350">
+                    <span class="fa-stack fa-4x">
+                      <i class="fas fa-circle fa-stack-2x servico"></i>
+                      <img class="fa-stack-1x fa-inverse" src="assets/img/fast.png" width="140px" height="100px" alt="">
+                    </span>
+                    <h4 class="my-3">Velocidade</h4>
+                    <p class="text-muted">Entregas Nós temos um sistema de entrega de produtos digitais rápido, ágil e
+                      seguro
+                      que garante que você receba seu item em poucos dias após a compra. Nós nos orgulhamos em fornecer um
+                      serviço eficiente e seguro que satisfaz as suas necessidades.</p>
+                  </div>
+                  <div class="col-md-4" data-aos="fade-up" data-aos-duration="750" data-aos-delay="450">
+                    <span class="fa-stack fa-4x">
+                      <i class="fas fa-circle fa-stack-2x servico"></i>
+                      <i class="fas fa-lock fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h4 class="my-3">Segurança</h4>
+                    <p class="text-muted">Nós oferecemos um ambiente seguro e confiável para compras on-line. O nosso
+                      sistema
+                      utiliza tecnologia de ponta para proteger as informações pessoais e financeiras dos nossos clientes,
+                      garantindo assim a segurança das transações.</p>
+                  </div>
+                </div>
+              </div>
+              <section class="parallax py-5 mb-5">
+                <div class="container-fluid">
+                  <div class="row justify-content-sm-center justify-content-md-center justify-content-lg-center">
+                    <div class="container-fluid">
+                      <div class="col-sm-12 col-md-12 col-lg-12">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <!--perguntas frequentes-->
+              <h2 class="mt-5 text-center">Perguntas Frequentes</h2>
+              <p class="lead text-center mb-4">Para sanar as suas dúvidas</p>
+              <div class="container" data-aos="fade" data-aos-duration="650" data-aos-delay="350">
+              <div class="accordion mb-5 shadow" id="accordionPanelsStayOpenExample">
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                    <button class="accordion-button border-1 border border-secondary" style="background-color: rgba(238, 242, 247, 1);" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                      Qual é o prazo de entrega para meus pedidos?
+                    </button>
+                  </h2>
+                  <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+                    <div class="accordion-body">
+                      O prazo de entrega varia de acordo com o produto e a localização de entrega. Normalmente, enviamos os produtos dentro de 1 a 3 dias úteis após a confirmação do pagamento. O tempo de trânsito estimado é de 3 a 7 dias úteis para entregas nacionais. Para entregas internacionais, o prazo pode variar de 7 a 14 dias úteis, dependendo do destino.
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                    <button class="accordion-button collapsed border-1 border border-secondary"  style="background-color: rgba(238, 242, 247, 1);" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                      Posso devolver um produto se não estiver satisfeito?
+                    </button>
+                  </h2>
+                  <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+                    <div class="accordion-body">
+                      Sim, oferecemos uma política de devolução. Se você não estiver satisfeito com o produto recebido, entre em contato conosco dentro de 7 dias após o recebimento para solicitar uma devolução. Certifique-se de que o produto esteja em sua embalagem original e em condições de revenda. Consulte nossa política de devolução para obter mais detalhes e instruções sobre como proceder.
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                    <button class="accordion-button collapsed border-1 border border-secondary" type="button"  style="background-color: rgba(238, 242, 247, 1);" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                      Quais são as opções de pagamento aceitas em seu site?
+                    </button>
+                  </h2>
+                  <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+                    <div class="accordion-body">
+                      Aceitamos várias formas de pagamento, incluindo cartões de crédito (Visa, Mastercard e Elo).
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="panelsStayOpen-headingFour">
+                    <button class="accordion-button collapsed border-1 border border-secondary" type="button"  style="background-color: rgba(238, 242, 247, 1);" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false" aria-controls="panelsStayOpen-collapseFour">
+                      Vocês oferecem frete grátis?
+                    </button>
+                  </h2>
+                  <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFour">
+                    <div class="accordion-body">
+                      Sim, oferecemos frete grátis em pedidos acima de um determinado valor. O valor mínimo para frete grátis pode variar de acordo com a região e a disponibilidade do serviço de entrega. Ao fazer seu pedido, verifique se o valor total atinge o limite necessário para se qualificar para frete grátis.
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="panelsStayOpen-headingFive">
+                    <button class="accordion-button collapsed border-1 border border-secondary" type="button"  style="background-color: rgba(238, 242, 247, 1);" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFive" aria-expanded="false" aria-controls="panelsStayOpen-collapseFive">
+                      Quais medidas de segurança vocês têm para proteger os dados do meu cartão de crédito?
+                    </button>
+                  </h2>
+                  <div id="panelsStayOpen-collapseFive" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFive">
+                    <div class="accordion-body">
+                      Levamos a segurança dos dados do cliente muito a sério. Nosso site utiliza criptografia SSL para proteger as informações transmitidas durante o processo de pagamento. Além disso, não armazenamos detalhes completos de cartões de crédito em nossos servidores. Usamos provedores de serviços de pagamento confiáveis e certificados, que seguem padrões rigorosos de segurança para garantir a proteção dos dados do seu cartão de crédito.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+              <!--bandeiras de bancos-->
+              <h2 class="mt-5 text-center">Parceiros</h2>
+              <p class="lead text-center mb-4">As melhores empresas para as suas compras serem mais seguras</p>
+              <div class="container-fluid mt-5 p-3 ">
+                <div class="row p-0 text-center">
+                  <div class="col-md-12 col-lg-12 col-sm-4">
+                    <img class=" img-fluid mt-2 bandeiras" src="assets/img/fedex.png" width="130px" height="130px" alt="..." />
+                    <img class="img-fluid mt-2 bandeiras" src="assets/img/pix.svg" width="58px" height="85px"
+                    alt="..." />
+                    <img class="img-fluid mt-2 bandeiras" src="assets/img/visa.png" width="130px" height="130px" alt="..." />
+                    <img class="img-fluid mt-2 bandeiras" src="assets/img/elo.png" width="130px" height="130px" alt="..." />
+                    <img class="img-fluid mt-2 bandeiras" src="assets/img/mastercard.png" width="130px" height="130px"
+                      alt="..." />
+                  </div>
+                </div>
+              </div>
+              <!--===== as ondinhas ====-->
+              <section id="hero">
+                <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28 " preserveAspectRatio="none">
+                <defs>
+                  <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z">
+                </defs>
+                <g class="wave1">
+                  <use xlink:href="#wave-path" x="50" y="3" fill="rgba(161,161,161, .4)">
+                </g>
+                <g class="wave2">
+                  <use xlink:href="#wave-path" x="50" y="0" fill="rgba(161,161,161, .5)">
+                </g>
+                <g class="wave3">
+                  <use xlink:href="#wave-path" x="50" y="9" fill="#a1a1a1">
+                </g>
+              </svg>
+            </section>
+    
+              <!--fim do conteudo-->
+              <footer class="footer mt-auto text-center p-0">
+                <div class="container-fluid footer-back p-0">
+                  <div class="nav-scroller">
+                    <nav class="nav nav-underline footer-sub " aria-label="Secondary navigation">
+                      <a class="nav-link" data-bs-toggle="modal" data-bs-target="#mapaSite" href="#">Mapa do Site</a>
+                      <a class="nav-link" data-bs-toggle="modal" data-bs-target="#privacidade" href="#">Termo de
+                        Privacidade</a>
+                      <a class="nav-link" href="contato">Fale Conosco</a>
+                    </nav>
+                  </div>
+                  <div>
+                    <img src="assets/img/logo-cinza.png" width="190" height="70" alt="">
+                  </div>
+                  <p class="mt-3">Redes Sociais</p>
+                  <div class="text-center mt-1 foter-imagem">
+                    <img src="assets/svg/instagram.png" width="30" height="30" alt="Instagram">
+                    <img src="assets/svg/youtube.png" width="36" height="36" alt="Youtube">
+                    <img src="assets/svg/facebook-square.png" width="30" height="30" alt="Facebook">
+                  </div>
+                  <hr>
+                  <span class="text-dark">iPlant's | Av. Bahia - Instituto Federal - Caraguatatuba - São Paulo</span>
+                </div>
+              </footer>
+    
+            </div>
+          </main>
+          <script>
+            const profilePicPreview = document.getElementById('profile-pic-preview');
+            const localStorageKey = 'profilePicUrl';
+    
+            const storedImageUrl = localStorage.getItem(localStorageKey);
+            if (storedImageUrl) {
+              profilePicPreview.src = storedImageUrl;
+            }
+          </script>
+    
+          <script>
+            //copiar qr
+            function copyToClickBoard() {
+              var content = document.getElementById('dado').innerHTML;
+    
+              navigator.clipboard.writeText(content)
+    
+            }
+          </script>
+          <script>
+            // Nome do usuario
+            // seleciona elementos do HTML
+            const usernameInput = document.getElementById("username-input");
+            const submitButton = document.getElementById("submit-button");
+            const usernameDisplay = document.getElementById("username-display");
+    
+    
+            // função para atualizar a exibição do nome do usuário
+            function updateUsernameDisplay() {
+              const username = localStorage.getItem("username");
+              if (username) {
+                // se o nome do usuário estiver definido na localStorage, atualiza a exibição em todos os documentos HTML
+                usernameDisplay.textContent = username;
+              }
+            }
+            updateUsernameDisplay();
+          </script>
+            <script src="assets/dist/js/script.js"></script>
+          <script src="assets/dist/js/bootstrap.min.js"></script>
+          <script src="assets/dist/js/aos.min.js"></script>
+          <script src="assets/dist/js/bs-init.js"></script>
+          <!--dependencias do bootstrap-->
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.js"
+          integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+          crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+          integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+          crossorigin="anonymous"></script>
+    
+    
+          <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+          <!-- Inicialize os Feather Icons (opcional) -->
+          <script>
+            feather.replace();
+            updateBadge();
+          </script>
+    
+    </body>
+    
+    </html>

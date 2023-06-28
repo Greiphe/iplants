@@ -1,0 +1,770 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.container {
+    min-height: 100vh;
+    background: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column;
+    padding-bottom: 60px;
+}
+
+.container form {
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, .1);
+    padding: 20px;
+    width: 600px;
+    padding-top: 160px;
+}
+
+.container form .inputBox {
+    margin-top: 20px;
+}
+
+.container form .inputBox span {
+    display: block;
+    color: #000000;
+    padding-bottom: 5px;
+}
+
+.container form .inputBox input,
+.container form .inputBox select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, .3);
+    color: #444;
+}
+
+.container form .flexbox {
+    display: flex;
+    gap: 15px;
+}
+
+.container form .flexbox .inputBox {
+    flex: 1 1 150px;
+}
+
+/* Botão Comum */
+.container form .submit-btn-comum {
+    width: 100%;
+    background: #5e5e5e;
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 20px;
+    color: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all .5s ease-in-out;
+}
+
+.container form .submit-btn-comum:hover {
+    letter-spacing: 2px;
+    opacity: .8;
+}
+
+/* Botão Visa */
+
+.container form .submit-btn-visa {
+    width: 100%;
+    background: #2bc1c1;
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 20px;
+    color: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all .5s ease-in-out;
+}
+
+.container form .submit-btn-visa:hover {
+    letter-spacing: 2px;
+    opacity: .8;
+}
+
+/* Botão Mastercard */
+
+.container form .submit-btn-mastercard {
+    width: 100%;
+    background: #c57316;
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 20px;
+    color: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all .5s ease-in-out;
+}
+
+.container form .submit-btn-mastercard:hover {
+    letter-spacing: 2px;
+    opacity: .8;
+}
+
+/* Botão Elo */
+.container form .submit-btn-elo {
+    width: 100%;
+    background: #222;
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 20px;
+    color: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all .5s ease-in-out;
+}
+
+.container form .submit-btn-elo:hover {
+    letter-spacing: 2px;
+    opacity: .8;
+}
+
+.container .card-container {
+    margin-bottom: -150px;
+    position: relative;
+    height: 250px;
+    width: 400px;
+}
+
+/* CLASSE COMUM */
+
+
+.container .card-container .comum {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: #5a5a5a;
+    border-radius: 5px;
+    backface-visibility: hidden;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, .2);
+    padding: 20px;
+    transform: perspective(1000px) rotateY(0deg);
+    transition: transform .1s ease-out;
+    transition: all 1s ease-in-out;
+}
+
+.container .card-container .comum .image {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 10px;
+}
+
+.container .card-container .comum .image img {
+    height: 50px;
+}
+
+.container .card-container .comum .image #aprox {
+    height: 43px;
+}
+
+.container .card-container .comum .card-number-box {
+    padding: 30px 0;
+    font-size: 22px;
+    color: #fff;
+}
+
+.container .card-container .comum .flexbox {
+    display: flex;
+}
+
+.container .card-container .comum .flexbox .box:nth-child(1) {
+    margin-right: auto;
+}
+
+.container .card-container .comum .flexbox .box {
+    font-size: 15px;
+    color: #fff;
+}
+
+.container .card-container .back-comum {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: #5e5e5e;
+    border-radius: 5px;
+    padding: 20px 0;
+    text-align: right;
+    backface-visibility: hidden;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, .2);
+    transform: perspective(1000px) rotateY(180deg);
+    transition: transform .1s ease-out;
+    transition: all 1s ease-in-out;
+}
+
+.container .card-container .back-comum .stripe {
+    background: #000;
+    width: 100%;
+    margin: 10px 0;
+    height: 50px;
+}
+
+.container .card-container .back-comum .box {
+    padding: 0 20px;
+}
+
+.container .card-container .back-comum .box span {
+    color: #fff;
+    font-size: 15px;
+}
+
+.container .card-container .back-comum .box .cvv-box {
+    height: 50px;
+    padding: 10px;
+    margin-top: 5px;
+    color: #333;
+    background: #fff;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.container .card-container .back-comum .box img {
+    margin-top: 30px;
+    height: 30px;
+}
+
+
+
+/* CLASSE VISA */
+
+.container .card-container .visa {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: #2bc1c1;
+    border-radius: 5px;
+    backface-visibility: hidden;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, .2);
+    padding: 20px;
+    transform: perspective(1000px) rotateY(0deg);
+    transition: transform .1s ease-out;
+    transition: all 1s ease-in-out;
+}
+
+.container .card-container .visa .image {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 10px;
+}
+
+.container .card-container .visa .image img {
+    height: 50px;
+}
+
+.container .card-container .visa .card-number-box {
+    padding: 30px 0;
+    font-size: 22px;
+    color: #fff;
+}
+
+.container .card-container .visa .flexbox {
+    display: flex;
+}
+
+.container .card-container .visa .flexbox .box:nth-child(1) {
+    margin-right: auto;
+}
+
+.container .card-container .visa .flexbox .box {
+    font-size: 15px;
+    color: #fff;
+}
+
+.container .card-container .back-visa {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: #2bc1c1;
+    border-radius: 5px;
+    padding: 20px 0;
+    text-align: right;
+    backface-visibility: hidden;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, .2);
+    transform: perspective(1000px) rotateY(180deg);
+    transition: transform .1s ease-out;
+    transition: all 1s ease-in-out;
+}
+
+.container .card-container .back-visa .stripe {
+    background: #000;
+    width: 100%;
+    margin: 10px 0;
+    height: 50px;
+}
+
+.container .card-container .back-visa .box {
+    padding: 0 20px;
+}
+
+.container .card-container .back .box span {
+    color: #fff;
+    font-size: 15px;
+}
+
+.container .card-container .back-visa .box .cvv-box {
+    height: 50px;
+    padding: 10px;
+    margin-top: 5px;
+    color: #333;
+    background: #fff;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.container .card-container .back-visa .box img {
+    margin-top: 30px;
+    height: 30px;
+}
+
+
+
+/* CLASSE MASTERCARD */
+
+.container .card-container .mastercard {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: #c57316;
+    border-radius: 5px;
+    backface-visibility: hidden;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, .2);
+    padding: 20px;
+    transform: perspective(1000px) rotateY(0deg);
+    transition: all 1s linear ease-in-out;
+}
+
+.container .card-container .mastercard .image img {
+    height: 50px;
+}
+
+.container .card-container .mastercard .image {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 10px;
+}
+
+.container .card-container .mastercard .card-number-box {
+    padding: 30px 0;
+    font-size: 22px;
+    color: #fff;
+}
+
+.container .card-container .mastercard .flexbox {
+    display: flex;
+}
+
+.container .card-container .mastercard .flexbox .box:nth-child(1) {
+    margin-right: auto;
+}
+
+.container .card-container .back-mastercard {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: #c57316;
+    border-radius: 5px;
+    padding: 20px 0;
+    text-align: right;
+    backface-visibility: hidden;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, .2);
+    transform: perspective(1000px) rotateY(180deg);
+    transition: transform .1s ease-out;
+    transition: all 1s ease-in-out;
+}
+
+.container .card-container .back-mastercard .stripe {
+    background: #000;
+    width: 100%;
+    margin: 10px 0;
+    height: 50px;
+}
+
+.container .card-container .back-mastercard .box {
+    padding: 0 20px;
+}
+
+.container .card-container .back-mastercard .box span {
+    color: #fff;
+    font-size: 15px;
+}
+
+.container .card-container .back-mastercard .box .cvv-box {
+    height: 50px;
+    padding: 10px;
+    margin-top: 5px;
+    color: #333;
+    background: #fff;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.container .card-container .back-visa .box img {
+    margin-top: 30px;
+    height: 30px;
+}
+
+
+/* CLASSE ELO */
+
+.container .card-container .elo {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: #222;
+    border-radius: 5px;
+    backface-visibility: hidden;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, .2);
+    padding: 20px;
+    transform: perspective(1000px) rotateY(0deg);
+    transition: transform .1s ease-out;
+    transition: all 1s ease-in-out;
+}
+
+.container .card-container .elo .image {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 10px;
+}
+
+.container .card-container .elo .image img {
+    height: 50px;
+}
+
+.container .card-container .elo .card-number-box {
+    padding: 30px 0;
+    font-size: 22px;
+    color: #fff;
+}
+
+.container .card-container .elo .flexbox {
+    display: flex;
+}
+
+.container .card-container .elo .flexbox .box:nth-child(1) {
+    margin-right: auto;
+}
+
+.container .card-container .elo .flexbox .box {
+    font-size: 15px;
+    color: #fff;
+}
+
+.container .card-container .back-elo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: #222;
+    border-radius: 5px;
+    padding: 20px 0;
+    text-align: right;
+    backface-visibility: hidden;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, .2);
+    transform: perspective(1000px) rotateY(180deg);
+    transition: transform .1s ease-out;
+    transition: all 1s ease-in-out;
+}
+
+.container .card-container .back-elo .stripe {
+    background: #000;
+    width: 100%;
+    margin: 10px 0;
+    height: 50px;
+}
+
+.container .card-container .back-elo .box {
+    padding: 0 20px;
+}
+
+.container .card-container .back .box span {
+    color: #fff;
+    font-size: 15px;
+}
+
+.container .card-container .back-elo .box .cvv-box {
+    height: 50px;
+    padding: 10px;
+    margin-top: 5px;
+    color: #333;
+    background: #fff;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.container .card-container .back-elo .box img {
+    margin-top: 30px;
+    height: 30px;
+}
+
+@media(max-width: 575px) {
+    .container form {
+        background: #fff;
+        border-radius: 5px;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, .1);
+        padding: 20px;
+        width: 560px;
+        padding-top: 160px;
+    }
+}
+
+@media(max-width: 565px) {
+    .container form {
+        background: #fff;
+        border-radius: 5px;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, .1);
+        padding: 20px;
+        width: 540px;
+        padding-top: 160px;
+    }
+}
+
+@media(max-width: 530px) {
+    .container form {
+        background: #fff;
+        border-radius: 5px;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, .1);
+        padding: 20px;
+        width: 490px;
+        padding-top: 160px;
+    }
+}
+
+
+@media(max-width: 480px) {
+    .container form {
+        background: #fff;
+        border-radius: 5px;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, .1);
+        padding: 20px;
+        width: 460px;
+        padding-top: 160px;
+    }
+}
+
+@media(max-width: 450px) {
+    .container form {
+        background: #fff;
+        border-radius: 5px;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, .1);
+        padding: 20px;
+        width: 430px;
+        padding-top: 160px;
+    }
+}
+
+@media(max-width: 430px) {
+    .container form {
+        background: #fff;
+        border-radius: 5px;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, .1);
+        padding: 20px;
+        width: 400px;
+        padding-top: 160px;
+    }
+}
+
+@media(max-width: 375px) {
+    .container .card-container {
+        margin-bottom: -150px;
+        position: relative;
+        height: 250px;
+        width: 330px;
+    }
+    .container form {
+        background: #fff;
+        border-radius: 5px;
+        box-shadow: 0 10px 15px rgba(0,0,0,.1);
+        padding: 20px;
+        width: 340px;
+        padding-top: 160px;
+    }
+}
+
+@media(max-width: 340px) {
+    .container .card-container {
+        margin-bottom: -150px;
+        position: relative;
+        height: 250px;
+        width: 310px;
+    }
+    .container form {
+        background: #fff;
+        border-radius: 5px;
+        box-shadow: 0 10px 15px rgba(0,0,0,.1);
+        padding: 20px;
+        width: 330px;
+        padding-top: 160px;
+    }
+}
+@media(max-width: 340px) {
+    .container .card-container {
+        margin-bottom: -150px;
+        position: relative;
+        height: 250px;
+        width: 310px;
+    }
+    .container form {
+        background: #fff;
+        border-radius: 5px;
+        box-shadow: 0 10px 15px rgba(0,0,0,.1);
+        padding: 20px;
+        width: 310px;
+        padding-top: 160px;
+    }
+}
+@media(max-width: 310px) {
+    .container .card-container {
+        margin-bottom: -150px;
+        position: relative;
+        height: 250px;
+        width: 280px;
+    }
+    .container form {
+        background: #fff;
+        border-radius: 5px;
+        box-shadow: 0 10px 15px rgba(0,0,0,.1);
+        padding: 20px;
+        width: 310px;
+        padding-top: 160px;
+    }
+}
+@media(max-width: 281px){
+    .card-container{
+        margin-bottom: -150px;
+        position: relative;
+        height: 260px;
+        width: 270px;
+    }
+    .container form {
+        background: #fff;
+        border-radius: 5px;
+        box-shadow: 0 10px 15px rgba(0,0,0,.1);
+        padding: 20px;
+        width: 280px;
+        padding-top: 160px;
+    }
+    .logos-cartoes-foot{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+    }
+    .container .card-container .visa .image img {
+        height: 41px;
+    }
+    .container .card-container .mastercard .image img {
+        height: 44px;
+    }
+    .container .card-container .elo .image img {
+        height: 40px;
+    }
+    .container form .inputBox span {
+        display: block;
+        color: #999;
+        padding-bottom: 5px;
+        font-size: 12px;
+    }
+}
+
+#card-insert-here{
+    max-width: 600px;
+    min-height: 160px;
+    gap: 10px;
+    flex-direction: row;
+}
+
+
+@media(max-width: 829px){
+    #card-insert-here{
+        max-width: 600px;
+        min-height: 160px;
+        gap: 10px;
+        flex-direction: column;
+    }
+}
+
+
+.cartao-create{
+    width: 200px; 
+    height: 130px;
+    border-radius: 5px;
+    background-color:#5a5a5a;
+    transition: all 0.8s ease-in-out;
+}
+.cartao-create2{
+    width: 200px; 
+    height: 130px;
+    border-radius: 5px;
+    background-color:#5a5a5a;
+    display: none;
+    transition: all 0.8s ease-in-out;
+}
+.cartao-create3{
+    width: 200px; 
+    height: 130px;
+    border-radius: 5px;
+    background-color:#5a5a5a;
+    display: none;
+    transition: all 0.8s ease-in-out;
+}
+.cartao-create-visa{
+    width: 200px; 
+    height: 130px;
+    border-radius: 5px;
+    background-color:#2bc1c1;
+    transition: all 0.8s ease-in-out;
+}
+.cartao-create-master{
+    width: 200px; 
+    height: 130px;
+    border-radius: 5px;
+    background-color: #c57316;
+    transition: all 0.8s ease-in-out;
+}
+.cartao-create-elo{
+    width: 200px; 
+    height: 130px;
+    border-radius: 5px;
+    background-color: #222;
+    transition: all 0.8s ease-in-out;
+    color: white;
+}
+
+.number-card-insert-here{
+    font-size: 12px;
+}
+
+.name-card-insert-here{
+    font-size: 11px;
+}

@@ -1,0 +1,873 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Detalhes de Flores</title>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="icon" type="image/x-icon" href="/assets/img/fiveicon.png">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+    integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+    integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.css">
+  <link href="/node_modules_bot/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/dist/css/detalhes-produtos.css">
+  <link rel="stylesheet" href="/assets/dist/css/style.css">
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+
+    .parallax {
+      /* The image used */
+      background-image: url("/assets/img/p1.jpg");
+      /* Set a specific height */
+      min-height: 500px;
+
+      /* Create the parallax scrolling effect */
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    .hidden{
+      display:none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="navbar navbar-dark sticky-top bg-heade flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-md-3 col-lg-2 p-1" href="/"><img src="/assets/img/logo-white.png" width="170px"
+        height="50px" alt=""></a>
+    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
+      data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <input class="form-control form-control-dark rounded-2 w-100" type="text" placeholder="Search" aria-label="Search">
+    <div class="navbar-nav">
+      <div class="nav-item d-flex align-items-center">
+        <div class=" rounded-3 mx-2 p-1">
+          <a href="#" data-bs-toggle="modal" data-bs-target="#empresasModal">
+            <img class="" src="/assets/svg/hand-holding-usd-white.png" width="40" height="40" alt="Doação">
+          </a>
+        </div>
+        <% if (typeof user === 'undefined') { %>
+          <button type="button"
+            class="btn btn-outline-secondary mx-1 text-uppercase d-flex align-items-center justify-content-center"
+            style="width: 60px;
+                                                                                                                                            height: 40px;">
+            <a href="/login" class="nav-link" style="font-size: small;"> Login</a></button>
+          <button type="button"
+            class="btn btn-secondary mx-1 text-uppercase d-flex align-items-center justify-content-center"
+            style="width: 90px;
+                                                                                                                                      height: 40px;">
+            <a href="/cadastro" class="nav-link" style="font-size: small;"> Cadastrar</a></button>
+            <% } else { %>
+        </div>
+        <% } %>
+    </div>
+  </header>
+
+  <div class="container-fluid">
+    <div class="row">
+      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse text-uppercase">
+        <div class="position-sticky pt-3">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/">
+                <span data-feather="home"></span>
+                Inicio
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/sobre">
+                <span data-feather="file"></span>
+                Sobre
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/produtos">
+                <span data-feather="shopping-bag"></span>
+                Produtos
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/contato">
+                <span data-feather="users"></span>
+                Contato
+              </a>
+            </li>
+          </ul>
+
+          <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+            <span class="text-primary">Conta</span>
+          </h6>
+          <ul class="nav flex-column mb-2">
+            <li class="nav-item">
+              <a class="nav-link" href="/myAcount">
+                <span data-feather="user"></span>
+                Perfil
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/myCard">
+                <span data-feather="credit-card"></span>
+                Meus Cartões
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/endereco">
+                <span data-feather="map-pin"></span>
+                Endereço
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/minhas-compras">
+                <span data-feather="briefcase"></span>
+                Minhas Compras
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/carrinho">
+                <span data-feather="shopping-cart"></span>
+                <span class=" position-relative">CARRINHO
+                  <span id="badge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    
+                    <span class="visually-hidden"></span>
+                  </span>
+                </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="dropdown mt-5">
+          <a href="#"
+            class="d-block bg-light camada border-1 rounded-5 user p-1 link-dark text-decoration-none dropdown-toggle"
+            id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+            <img id="profile-pic-preview" src="/assets/svg/ghost.svg" alt="mdo" width="32" height="32"
+              class="rounded-circle"><span id="username-display">Usuario</span>
+          </a>
+          <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+            <li><a class="dropdown-item" href="/logout">Sair</a></li>
+          </ul>
+        </div>
+      </nav>
+      <main class="col-md-9 ms-sm-auto col-lg-10 col-xl-10 m-0 p-0">
+        <!--space modals-->
+        <!--modal do doar-->
+        <!--modal doar-->
+        <div class="portfolio-modal modal fade" id="empresasModal" tabindex="-1" aria-labelledby="empresasModal"
+          aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content portfolioback">
+              <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal"
+                  aria-label="Close"></button></div>
+              <div class="modal-body pb-5">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 text-center">
+                      <!-- Curses Modal - Title-->
+                      <h2 class="portfolio-modal-title text-dark text-uppercase text-center">Doação</h2>
+                      <p class="portfolio-modal-title text-dark text-center mt-3">Segue o QR Code para ajudar na
+                        manutenção e
+                        suporte da plataforma</p>
+                      <div class="text-center">
+                        <img src="/assets/img/pix.png" width="100" height="100" alt="">
+                        <img src="/assets/img/qr.png" width="150" height="150"
+                          alt="QR Code para doar para a plataforma iPlant's">
+                      </div>
+                      <p class="mt-3"><b>Chave PIX</b></p>
+                      <div class="rounded-5 bg-success p-3 row d-flex align-items-center justify-content-between">
+                        <div class="col-9">
+                          <span class="text-white" id="dado">62f5c5e6-e95a-4cfa-92f4-2e7b027fbaf1</span>
+                        </div>
+                        <div class="col-2">
+                          <a href="#"> <img class="mx-3" src="/assets/svg/copy.png" width="20" height="30" alt="copiar"
+                              onclick="copyToClickBoard()"></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--modal do mapa do site-->
+        <div class="modal fade" id="mapaSite" tabindex="-1" aria-labelledby="mapaSite" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content portfolioback">
+              <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal"
+                  aria-label="Close"></button></div>
+              <div class="modal-body pb-5">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                      <!-- Curses Modal - Title-->
+                      <h2 class="portfolio-modal-title text-dark text-uppercase text-center">Mapa do Site</h2>
+                      <hr>
+                      <ul>
+                        <li><a href="/cadastro">Cadastro</a></li>
+                        <li><a href="/login">Login</a></li>
+                        <li><a href="/">Home</a>
+                          <ul>
+                            <li><a href="/myAcount">Usuário</a>
+                              <ul><a href="/myAcount">Minha Conta</a></ul>
+                            </li>
+                          </ul>
+                        </li>
+                        <li><a href="/sobre">Sobre</a>
+                          <ul>
+                            <li><a href="/sobre">Sobre a Empresa</a></li>
+                            <li><a href="/sobre">Sobre os Desenvolvedores</a></li>
+                          </ul>
+                        </li>
+                        <li><a href="/produtos">Produtos</a>
+                          <ul>
+                            <li><a href="/produtos">Todos os Produtos</a></li>
+                          </ul>
+                        </li>
+                        <li><a href="/contato">Contato</a>
+                          <ul>
+                            <li><a href="/contato">Formulário de Contato</li></a>
+                          </ul>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--modal termos de privacidade-->
+        <div class="modal fade" id="privacidade" tabindex="-1" role="dialog" aria-labelledby="privacidadeTitle"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title justify-content-center" id="privacidadeTitle">Aviso de Uso de Dados e Privacidade
+                </h5>
+                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <p>Aviso de Uso de Dados e Privacidade</p>
+                <p>Ao utilizar nossos serviços, você concorda com a coleta e uso de suas informações de acordo com este
+                  aviso
+                  de privacidade. Os dados que você insere em nosso site serão armazenados em um banco de dados privado
+                  e
+                  serão utilizados exclusivamente para fins de melhorar a qualidade de nossos serviços e oferecer a você
+                  uma
+                  experiência mais personalizada.</p>
+                <p>Os dados coletados podem incluir, mas não se limitam a, informações de contato, endereço de e-mail,
+                  informações demográficas e comportamentais. Essas informações podem ser compartilhadas com nossos
+                  parceiros
+                  de negócios para fins de marketing, mas somente com o seu consentimento expresso.</p>
+                <p>Comprometemo-nos a manter seus dados seguros e protegidos contra acessos não autorizados, alterações,
+                  divulgações ou destruição. Nós nunca venderemos ou alugaremos suas informações a terceiros sem o seu
+                  consentimento prévio.</p>
+                <p>Ao utilizar nossos serviços, você concorda em nos fornecer informações precisas e atualizadas. Se
+                  houver
+                  qualquer alteração em suas informações pessoais, por favor, nos informe imediatamente para que
+                  possamos
+                  atualizar nossos registros.</p>
+                <p>Ao continuar a usar nossos serviços, você reconhece que leu e entendeu este aviso de privacidade e
+                  concorda
+                  com a coleta, armazenamento e uso de suas informações pessoais como descrito acima.</p>
+                <p>Se tiver alguma dúvida ou preocupação sobre a privacidade de seus dados, entre em contato conosco
+                  através
+                  do nosso site.</p>
+              </div>
+              <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-success btn-lg" data-bs-dismiss="modal"
+                  aria-label="Close">Entendi</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--end space modals-->
+
+        <!--Titulo principal-->
+        <!--Conteúdo que desce-->
+        <div class="container-fluid">
+          <div class="row g-2">
+            <div class="col-md-8">
+              <div class="d-flex justify-content-center caroucelPrincipal">
+                <!--==== caroucel infinito para o pruduto principal===-->
+                <div id="owl-one" class="owl-carousel owl-theme w-100">
+                  <div class="item">
+                    <div class="col">
+                      <div class="card shadow-sm">
+                        <img class="img-fluid" src="<%= produtosId.foto1 %>" alt="<%= produtosId.nome %>"
+                          title="<%= produtosId.nome %>" id="<%= produtosId.categoria %>">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <div class="col">
+                      <div class="card shadow-sm">
+                        <img class="img-fluid" src="<%= produtosId.foto2 %>" alt="<%= produtosId.nome %>"
+                          title="<%= produtosId.nome %>" id="<%= produtosId.categoria %>">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+              <div class="d-flex justify-content-center mt-15 flex-column align-items-center preco">
+                <div class="w-75 conteudo">
+                  <div class="estrela">
+                    <img src="/assets/img/star1.png" id="s1" style="width: 25px;">
+                    <img src="/assets/img/star1.png" id="s2" style="width: 25px;">
+                    <img src="/assets/img/star1.png" id="s3" style="width: 25px;">
+                    <img src="/assets/img/star1.png" id="s4" style="width: 25px;">
+                    <img src="/assets/img/star1.png" id="s5" style="width: 25px;">
+                  </div>
+                  <h3 class="titulo pt-2 mt-4" id="Referencia"><%= produtosId.nome %></h3>
+                  <h4 class="m-0 p-0">para <%= produtosId.categoria %>
+                      <%= produtosId.tamanho %> Peso <%= produtosId.peso %>
+                  </h4>
+                  <hr>
+
+                  <div class="container-fluid">
+                    <div class="row">
+                      <div class="col-12">
+                        <del style="color: gray;">De: R$</del><del id="preco-antigo" style="color: gray;"><%= produtosId.preco_oferta %></del>
+                      </div>
+                      <div class="col-12">
+                        <h4 class="por-apenas">por R$<strong id="preco-produto"><%= produtosId.preco %></strong></h4>
+                      </div>
+                      <div class="col-12">
+                        <span class="text-primary oferta" style="font-size: 20px;"><%= produtosId.off %> OFF</span>
+                      </div>
+                      <div class="col-12 mt-2">
+                        <span class="text-primary frete" style="font-size: 20px;">Frete Grátis</span>
+                      </div>
+                      <div class="col-12 mt-2">
+                        <p><b class="lead">Quantidade:</b><input type="number" name="number" id="number-qtd" min="1"
+                            class="qtd-number mx-2" value="1" onchange="atualizarPreco()" />(Disponíveis 320)</p>
+                      </div>
+                      <div class="col-12 mt-2">
+                        
+                        <form action="/carrinho" method="post">
+                          <input type="hidden" name="produto" value="<%= produtosId.nome %>">
+                          <input type="hidden" name="quantidade" value="1"  id="value-qtd-aqui">
+                          <input type="hidden" name="preco" value="25.00" id="preco-produto-input">
+                          <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 mt-2">
+                            <button class="btn btn-success buy-now w-100 " style="font-size: 20px;">Compre Agora</button><br>
+                          </div>
+                          <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 mt-2">
+                            <button class="btn btn-outline-success buy-now w-100 mt-2 " style="font-size: 15px;" type="submit">Adicionar ao Carrinho</button>
+                          </div>
+                        </form>
+                      </div>
+
+                      <div class="col-12 mt-4">
+                        <p class="lead"><b>Formas de Pagamentos</b></p>
+                      </div>
+                      <div class="col-12">
+                        <p> <img src="/assets/img/cartao crédito.png" alt="Cartão" width="20px"
+                            style="margin-right: 10px;">Até 12x <span class="m-0" id="preco-juros"
+                            style="display: contents;"> </span> no cartão sem juros.</p>
+                      </div>
+                      <div class="col-12 mt-1">
+                        <img class="img-fluid" src="/assets/img/visa.png" width="60px" height="60px" alt="..." />
+                        <img class="img-fluid" src="/assets/img/elo.png" width="60px" height="60px" alt="..." />
+                        <img class="img-fluid" src="/assets/img/mastercard.png" width="50px" height="60px" alt="..." />
+                      </div>
+                      <div class="col-12 mt-4">
+                        <img src="/assets/svg/money.png" alt="Money" style="width: 27px;">
+                        <span><b>Retirada no local</b></span>
+                      </div>
+                      <div class="col-12 mt-2">
+                        <p>Endereço: Av Bahia, 1739- indaiá, Caraguatatuba-sp, 11665-071</p>
+                      </div>
+                      <div class="col-12 mt-2">
+                        <img src="/assets/img/pix.png" alt="Money" style="width: 30px;">
+                        <span><b>PIX</b></span>
+                      </div>
+                      <div class="col-12 mt-2">
+                        <p>Chave PIX e QR code</p>
+                      </div>
+                    </div>
+                  </div>
+                  <hr>
+                </div>
+
+                <h3 class="lead mt-3"><b>Descrição</b></h3>
+                <div class="d-flex lead w-75">
+                  <p>
+                    <%= produtosId.descricao %>
+                      <br>
+                  </p>
+                </div>
+                <h3 class="lead mb-2 "><b>Detalhes Principais</b></h3>
+                <div class="d-flex lead w-75">
+                  <p>
+                    Categoria: <%= produtosId.categoria %>
+                      <br>
+                      Tamanho: <%= produtosId.tamanho %>
+                        <br>
+                        Peso: <%= produtosId.peso %>
+                          <br>
+                          Vendido por: <%= produtosId.vendido_por %>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!--Barra Lateral Fixa-->
+            <div class="col-md-4">
+              <div class="position-sticky" style="top: 2rem;">
+                <div class="p-4 mb-3 bg-light rounded">
+                  <!--Comentário Lateral-->
+                  <div class="p-4">
+                    <div class="barra-lateral-comentario-principal">
+                      <h6>Comentários</h6>
+                      <div class="estrela-comentario pb-2">
+                        <img src="/assets/img/star1.png" id="s1" style="width: 12px;"></a>
+                        <img src="/assets/img/star1.png" id="s1" style="width: 12px;"></a>
+                        <img src="/assets/img/star1.png" id="s1" style="width: 12px;"></a>
+                        <img src="/assets/img/star1.png" id="s1" style="width: 12px;"></a>
+                        <img src="/assets/img/star1.png" id="s1" style="width: 12px;"></a>
+                      </div>
+                      <div class="pessoa-comentario">
+                        <h6>
+                          <%= produtosId.autor1 %>
+                        </h6>
+                        <p>
+                          <%= produtosId.mensagem1 %>
+                        </p>
+                      </div>
+                      <div class="estrela-comentario pb-2">
+                        <img src="/assets/img/star1.png" id="s1" style="width: 12px;"></a>
+                        <img src="/assets/img/star1.png" id="s1" style="width: 12px;"></a>
+                        <img src="/assets/img/star1.png" id="s1" style="width: 12px;"></a>
+                        <img src="/assets/img/star0.png" id="s1" style="width: 12px;"></a>
+                        <img src="/assets/img/star0.png" id="s1" style="width: 12px;"></a>
+                      </div>
+                      <div class="pessoa-comentario">
+                        <h6>
+                          <%= produtosId.autor2 %>
+                        </h6>
+                        <p>
+                          <%= produtosId.mensagem2 %>
+                        </p>
+                      </div>
+                      <div class="estrela-comentario pb-2">
+                        <img src="/assets/img/star1.png" id="s1" style="width: 12px;"></a>
+                        <img src="/assets/img/star1.png" id="s1" style="width: 12px;"></a>
+                        <img src="/assets/img/star1.png" id="s1" style="width: 12px;"></a>
+                        <img src="/assets/img/star1.png" id="s1" style="width: 12px;"></a>
+                        <img src="/assets/img/star0.png" id="s1" style="width: 12px;"></a>
+                      </div>
+                      <div class="pessoa-comentario">
+                        <h6>
+                          <%= produtosId.autor3 %>
+                        </h6>
+                        <p>
+                          <%= produtosId.mensagem3 %>
+                        </p>
+                      </div>
+                      <div class="comentario-texto-escrito w-100">
+                        <form>
+                          <textarea class="w-100" name="Comentario" id="comentario-text" cols="25" rows="5"></textarea>
+                          <button class="btn  btn-secondary w-100" type="submit">Enviar</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!--carousel infinito-->
+            <div class="bg-light mt-5 mb-5">
+              <h3 class="text-center mt-5 mb-5">Produtos Semelhantes</h3>
+
+              <div id="owl-two" class="owl-carousel owl-theme">
+                <div class="item">
+
+                  <div class="col">
+                    <div class="card shadow-sm">
+                      <a href="/produtos/12">
+                        <img class="img-fluid" src="/assets/flores/violetas/12.png" alt="Violeta" title="Violeta">
+                      </a>
+                      <!--Card 10-->
+                      <div class="card-body">
+                        <p class="card-text">
+                        <h5 style="color: violet;">Violeta</h5>
+                        <h6 style="color:violet; font-size: 15px;">Categoria: Apartamento</h6>
+                        <div class="estrela-comentario d-flex pb-2">
+                          <img src="/assets/img/star1.png" id="s1" style="width: 12px;"></a>
+                          <img src="/assets/img/star1.png" id="s1" style="width: 12px;"></a>
+                          <img src="/assets/img/star1.png" id="s1" style="width: 12px;"></a>
+                          <img src="/assets/img/star1.png" id="s1" style="width: 12px;"></a>
+                          <img src="/assets/img/star0.png" id="s1" style="width: 12px;"></a>
+                        </div>
+                        </p>
+                        <div class="d-flex justify-content-center align-items-center">
+                          <div class="btn-group space-buy-card">
+                            <a href="/produtos/12">
+                              <button type="button" class="btn btn-sm btn-outline-secondary cor-font">Comprar</button>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--card 2-->
+                <div class="item">
+                  <div class="col">
+                    <div class="card shadow-sm">
+                      <a href="/produtos/4">
+                        <img class="img-fluid" src="/assets/flores/Begônias/2.png" alt="Begônia" title="Begônia">
+                      </a>
+                      <!--Card 2-->
+                      <div class="card-body">
+                        <p class="card-text">
+                        <h5 style="color: tomato;">Begônia</h5>
+                        <h6 style="color:tomato; font-size: 15px;">Categoria: Jardim</h6>
+                        <div class="estrela-comentario d-flex pb-2">
+                          <img src="/assets/img/star1.png" id="s1" style="width: 12px;"></a>
+                          <img src="/assets/img/star1.png" id="s1" style="width: 12px;"></a>
+                          <img src="/assets/img/star0.png" id="s1" style="width: 12px;"></a>
+                          <img src="/assets/img/star0.png" id="s1" style="width: 12px;"></a>
+                          <img src="/assets/img/star0.png" id="s1" style="width: 12px;"></a>
+                        </div>
+                        </p>
+                        <div class="d-flex justify-content-center align-items-center">
+                          <div class="btn-group space-buy-card">
+                            <a href="/produtos/4">
+                              <button type="button" class="btn btn-sm btn-outline-secondary cor-font">Comprar</button>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--card 3-->
+                <div class="item">
+
+                  <div class="col">
+                    <div class="card shadow-sm">
+                      <a href="/produtos/3">
+                        <img class="img-fluid" src="/assets/flores/azaleias/1.png" alt="Azaleia" title="Azaleia"
+                          id="escritorio">
+                      </a>
+
+                      <!--Card 3-->
+                      <div class="card-body">
+                        <p class="card-text">
+                        <h5 style="color: palevioletred;">Azaleia</h5>
+                        <h6 style="color: palevioletred; font-size: 15px;">Categoria: Escritório</h6>
+                        <div class="estrela-comentario d-flex pb-2">
+                          <img src="/assets/img/star1.png" id="s1" style="width: 12px;"></a>
+                          <img src="/assets/img/star1.png" id="s1" style="width: 12px;"></a>
+                          <img src="/assets/img/star1.png" id="s1" style="width: 12px;"></a>
+                          <img src="/assets/img/star1.png" id="s1" style="width: 12px;"></a>
+                          <img src="/assets/img/star0.png" id="s1" style="width: 12px;"></a>
+                        </div>
+                        </p>
+                        <div class="d-flex justify-content-center align-items-center">
+                          <div class="btn-group space-buy-card">
+                            <a href="/produtos/3">
+                              <button type="button" class="btn btn-sm btn-outline-secondary cor-font">Comprar</button>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--card 4-->
+                <div class="item">
+
+                  <div class="col">
+                    <div class="card shadow-sm">
+                      <a href="/produtos/6">
+                        <img class="img-fluid" src="/assets/flores/cravos_flor/4.png" alt="Cravo-Rosa"
+                          title="Cravo-Rosa">
+                      </a>
+
+                      <!--Card 4-->
+                      <div class="card-body">
+                        <p class="card-text">
+                        <h5 style="color: pink;">Cravo-Rosa</h5>
+                        <h6 style="color:pink; font-size: 15px;">Categoria: Escritório</h6>
+                        <div class="estrela-comentario d-flex pb-2">
+                          <img src="/assets/img/star1.png" id="s1" style="width: 12px;"></a>
+                          <img src="/assets/img/star1.png" id="s1" style="width: 12px;"></a>
+                          <img src="/assets/img/star1.png" id="s1" style="width: 12px;"></a>
+                          <img src="/assets/img/star0.png" id="s1" style="width: 12px;"></a>
+                          <img src="/assets/img/star0.png" id="s1" style="width: 12px;"></a>
+                        </div>
+                        </p>
+                        <div class="d-flex justify-content-center align-items-center">
+                          <div class="btn-group space-buy-card">
+                            <a href="/produtos/6">
+                              <button type="button" class="btn btn-sm btn-outline-secondary cor-font">Comprar</button>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--card 5-->
+                <div class="item">
+
+                  <div class="col">
+                    <div class="card shadow-sm">
+                      <a href="/produtos/9">
+                        <img class="img-fluid" src="/assets/flores/margarida/8.png" alt="Margarida" title="Margarida">
+                      </a>
+                      <!--Card 6-->
+                      <div class="card-body">
+                        <p class="card-text">
+                        <h5 style="color: grey;">Margarida</h5>
+                        <h6 style="color:grey; font-size: 15px;">Categoria: Janela</h6>
+                        <div class="estrela-comentario d-flex pb-2">
+                          <img src="/assets/img/star1.png" id="s1" style="width: 12px;"></a>
+                          <img src="/assets/img/star1.png" id="s1" style="width: 12px;"></a>
+                          <img src="/assets/img/star1.png" id="s1" style="width: 12px;"></a>
+                          <img src="/assets/img/star1.png" id="s1" style="width: 12px;"></a>
+                          <img src="/assets/img/star1.png" id="s1" style="width: 12px;"></a>
+                        </div>
+                        </p>
+                        <div class="d-flex justify-content-center align-items-center">
+                          <div class="btn-group space-buy-card">
+                            <a href="/produtos/9">
+                              <button type="button" class="btn btn-sm btn-outline-secondary cor-font">Comprar</button>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="item">
+
+                  <div class="col">
+                    <div class="card shadow-sm">
+                      <a href="/produtos/11">
+                        <img class="img-fluid" src="/assets/flores/tulipas/11.png" alt="Tulipas" title="Tulipas"
+                          id="apartamento">
+                      </a>
+                      <!--Card 9-->
+                      <div class="card-body">
+                        <p class="card-text">
+                        <h5 style="color: orangered;">Tulípa</h5>
+                        <h6 style="color:orangered; font-size: 15px;">Categoria: Apartamento</h6>
+                        <div class="estrela-comentario d-flex pb-2">
+                          <img src="/assets/img/star1.png" id="s1" style="width: 12px;"></a>
+                          <img src="/assets/img/star1.png" id="s1" style="width: 12px;"></a>
+                          <img src="/assets/img/star1.png" id="s1" style="width: 12px;"></a>
+                          <img src="/assets/img/star1.png" id="s1" style="width: 12px;"></a>
+                          <img src="/assets/img/star0.png" id="s1" style="width: 12px;"></a>
+                        </div>
+                        </p>
+                        <div class="d-flex justify-content-center align-items-center">
+                          <div class="btn-group space-buy-card">
+                            <a href="/produtos/11">
+                              <button type="button" class="btn btn-sm btn-outline-secondary cor-font">Comprar</button>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--fim do conteudo-->
+<!--===== as ondinhas ====-->
+<section id="hero2">
+  <svg class="hero-waves2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+    viewBox="0 24 150 28 " preserveAspectRatio="none">
+    <defs>
+      <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z">
+    </defs>
+    <g class="wave12">
+      <use xlink:href="#wave-path" x="50" y="3" fill="rgba(161,161,161, .4)">
+    </g>
+    <g class="wave22">
+      <use xlink:href="#wave-path" x="50" y="0" fill="rgba(161,161,161, .5)">
+    </g>
+    <g class="wave32">
+      <use xlink:href="#wave-path" x="50" y="9" fill="#a1a1a1">
+    </g>
+  </svg>
+</section>
+            <footer class="footer mt-auto text-center p-0 ">
+              <div class="container-fluid footer-back p-0">
+                <div class="nav-scroller">
+                  <nav class="nav nav-underline footer-sub " aria-label="Secondary navigation">
+                    <a class="nav-link" data-bs-toggle="modal" data-bs-target="#mapaSite" href="#">Mapa do Site</a>
+                    <a class="nav-link" data-bs-toggle="modal" data-bs-target="#privacidade" href="#">Termo de
+                      Privacidade</a>
+                    <a class="nav-link" href="/contato">Fale Conosco</a>
+                  </nav>
+                </div>
+                <div>
+                  <img src="/assets/img/logo-cinza.png" width="190" height="70" alt="">
+                </div>
+                <p class="mt-3">Redes Sociais</p>
+                <div class="text-center mt-1 foter-imagem">
+                  <img src="/assets/svg/instagram.png" width="30" height="30" alt="Instagram">
+                  <img src="/assets/svg/youtube.png" width="36" height="36" alt="Youtube">
+                  <img src="/assets/svg/facebook-square.png" width="30" height="30" alt="Facebook">
+                </div>
+                <hr>
+                <span class="text-dark">iPlant's | Av. Bahia - Instituto Federal - Caraguatatuba - São Paulo</span>
+              </div>
+            </footer>
+
+          </div>
+
+      </main>
+      <script src="/assets/dist/js/calculo.js"></script>
+      <script>
+        const profilePicPreview = document.getElementById('profile-pic-preview');
+        const localStorageKey = 'profilePicUrl';
+
+        const storedImageUrl = localStorage.getItem(localStorageKey);
+        if (storedImageUrl) {
+          profilePicPreview.src = storedImageUrl;
+        }
+      </script>
+      <script>
+        //copiar qr
+        function copyToClickBoard() {
+          var content = document.getElementById('dado').innerHTML;
+          navigator.clipboard.writeText(content)
+        }
+      </script>
+
+      <!--dependencias do bootstrap-->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+
+      <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+      <!-- Inicialize os Feather Icons (opcional) -->
+      <script>
+        feather.replace();
+      </script>
+
+      <script src="/assets/dist/js/script.js"></script>
+      <!--carousel infinito-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
+        integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+        integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+      <script>
+        //carousel infinito
+        $('#owl-one').owlCarousel({
+          loop: true,
+          margin: 10,
+          nav: true,
+          singleItem: true,
+          responsive: {
+            0: {
+              items: 1
+            },
+            600: {
+              items: 1
+            },
+            1000: {
+              items: 1
+            }
+          }
+        })
+
+        //carousel infinito
+        $('#owl-two').owlCarousel({
+          loop: true,
+          margin: 10,
+          nav: true,
+          stagePadding: 80,
+          responsive: {
+            0: {
+              items: 1
+            },
+            600: {
+              items: 3
+            },
+            1000: {
+              items: 4
+            }
+          }
+        })
+      </script>
+      <script>
+        //carousel infinito
+        $('.caroucelproduto').owlCarousel({
+          loop: true,
+          margin: 10,
+          nav: true,
+          stagePadding: 80,
+          responsive: {
+            0: {
+              items: 1
+            },
+            600: {
+              items: 3
+            },
+            1000: {
+              items: 4
+            }
+          }
+        })
+      </script>
+      <script>
+        // Nome do usuario
+        // seleciona elementos do HTML
+        const usernameInput = document.getElementById("username-input");
+        const submitButton = document.getElementById("submit-button");
+        const usernameDisplay = document.getElementById("username-display");
+
+
+        // função para atualizar a exibição do nome do usuário
+        function updateUsernameDisplay() {
+          const username = localStorage.getItem("username");
+          if (username) {
+            // se o nome do usuário estiver definido na localStorage, atualiza a exibição em todos os documentos HTML
+            usernameDisplay.textContent = username;
+          }
+        }
+        updateUsernameDisplay();
+        updateBadge();
+
+      </script>
+</body>
+
+</html>

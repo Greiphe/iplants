@@ -1,0 +1,639 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Endereço</title>
+  <link rel="icon" type="image/x-icon" href="assets/img/fiveicon.png">
+  <!-- Bootstrap core CSS -->
+  <link href="/node_modules_bot/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.css">
+  <link rel="stylesheet" href="assets/dist/css/style.css">
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+
+    .parallax {
+      /* The image used */
+      background-image: url("assets/img/p1.jpg");
+      /* Set a specific height */
+      min-height: 500px;
+
+      /* Create the parallax scrolling effect */
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    input[type=number]::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+
+    }
+
+    input[type=number] {
+      -moz-appearance: textfield;
+      appearance: textfield;
+
+    }
+    .hidden{
+      display:none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="navbar navbar-dark sticky-top bg-heade flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-md-3 col-lg-2 p-1" href="/"><img src="assets/img/logo-white.png" width="170px"
+        height="50px" alt=""></a>
+    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
+      data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <input class="form-control form-control-dark rounded-2 w-100" type="text" placeholder="Search" aria-label="Search">
+    <div class="navbar-nav">
+      <div class="nav-item d-flex align-items-center">
+        <div class=" rounded-3 mx-2 p-1">
+          <a href="#" data-bs-toggle="modal" data-bs-target="#empresasModal">
+            <img class="" src="assets/svg/hand-holding-usd-white.png" width="40" height="40" alt="Doação">
+          </a>
+        </div>
+        <% if (typeof user === 'undefined') { %>
+          <button type="button"
+            class="btn btn-outline-secondary mx-1 text-uppercase d-flex align-items-center justify-content-center"
+            style="width: 60px;
+                                                                                                                                            height: 40px;">
+            <a href="login" class="nav-link" style="font-size: small;"> Login</a></button>
+          <button type="button"
+            class="btn btn-secondary mx-1 text-uppercase d-flex align-items-center justify-content-center"
+            style="width: 90px;
+                                                                                                                                      height: 40px;">
+            <a href="cadastro" class="nav-link" style="font-size: small;"> Cadastrar</a></button>
+            <% } else { %>
+        </div>
+        <% } %>
+    </div>
+  </header>
+
+  <div class="container-fluid">
+    <div class="row">
+      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse text-uppercase">
+        <div class="position-sticky pt-3">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/">
+                <span data-feather="home"></span>
+                Inicio
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="sobre">
+                <span data-feather="file"></span>
+                Sobre
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="produtos">
+                <span data-feather="shopping-bag"></span>
+                Produtos
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contato">
+                <span data-feather="users"></span>
+                Contato
+              </a>
+            </li>
+          </ul>
+
+          <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+            <span class="text-primary">Conta</span>
+          </h6>
+          <ul class="nav flex-column mb-2">
+            <li class="nav-item">
+              <a class="nav-link" href="myAcount">
+                <span data-feather="user"></span>
+                Perfil
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="myCard">
+                <span data-feather="credit-card"></span>
+                Meus Cartões
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="endereco">
+                <span data-feather="map-pin"></span>
+                Endereço
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="minhas-compras">
+                <span data-feather="briefcase"></span>
+                Minhas Compras
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="carrinho">
+                <span data-feather="shopping-cart"></span>
+                <span class=" position-relative">CARRINHO
+                  <span id="badge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    
+                    <span class="visually-hidden"></span>
+                  </span>
+                </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="dropdown mt-5">
+          <a href="#"
+            class="d-block bg-light camada border-1 rounded-5 user p-1 link-dark text-decoration-none dropdown-toggle"
+            id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+            <img id="profile-pic-preview" src="assets/svg/ghost.svg" alt="mdo" width="32" height="32"
+              class="rounded-circle"><span id="username-display">Usuario</span>
+          </a>
+          <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+            <li><a class="dropdown-item" href="logout">Sair</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <main class="col-md-9 ms-sm-auto col-lg-10 col-xl-10 p-0 m-0">
+        <!--space modals-->
+        <!--modal doar-->
+        <div class="portfolio-modal modal fade" id="empresasModal" tabindex="-1" aria-labelledby="empresasModal"
+          aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content portfolioback">
+              <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal"
+                  aria-label="Close"></button></div>
+              <div class="modal-body pb-5">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 text-center">
+                      <!-- Curses Modal - Title-->
+                      <h2 class="portfolio-modal-title text-dark text-uppercase text-center">Doação</h2>
+                      <p class="portfolio-modal-title text-dark text-center mt-3">Segue o QR Code para ajudar na
+                        manutenção e
+                        suporte da plataforma</p>
+                      <div class="text-center">
+                        <img src="assets/img/pix.png" width="100" height="100" alt="">
+                        <img src="assets/img/qr.png" width="150" height="150"
+                          alt="QR Code para doar para a plataforma iPlant's">
+                      </div>
+                      <p class="mt-3"><b>Chave PIX</b></p>
+                      <div class="rounded-5 bg-success p-3 row d-flex align-items-center justify-content-between">
+                        <div class="col-9">
+                          <span class="text-white" id="dado">62f5c5e6-e95a-4cfa-92f4-2e7b027fbaf1</span>
+                        </div>
+                        <div class="col-2">
+                          <a href="#"> <img class="mx-3" src="assets/svg/copy.png" width="20" height="30" alt="copiar"
+                              onclick="copyToClickBoard()"></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--modal do mapa do site-->
+        <div class="modal fade" id="mapaSite" tabindex="-1" aria-labelledby="mapaSite" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content portfolioback">
+              <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal"
+                  aria-label="Close"></button></div>
+              <div class="modal-body pb-5">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                      <!-- Curses Modal - Title-->
+                      <h2 class="portfolio-modal-title text-dark text-uppercase text-center">Mapa do Site</h2>
+                      <hr>
+                      <ul>
+                        <li><a href="cadastro">Cadastro</a></li>
+                        <li><a href="login">Login</a></li>
+                        <li><a href="/">Home</a>
+                          <ul>
+                            <li><a href="myAcount">Usuário</a>
+                              <ul><a href="myAcount">Minha Conta</a></ul>
+                            </li>
+                          </ul>
+                        </li>
+                        <li><a href="sobre">Sobre</a>
+                          <ul>
+                            <li><a href="sobre">Sobre a Empresa</a></li>
+                            <li><a href="sobre">Sobre os Desenvolvedores</a></li>
+                          </ul>
+                        </li>
+                        <li><a href="produtos">Produtos</a>
+                          <ul>
+                            <li><a href="produtos">Todos os Produtos</a></li>
+                          </ul>
+                        </li>
+                        <li><a href="contato">Contato</a>
+                          <ul>
+                            <li><a href="contato">Formulário de Contato</li></a>
+                          </ul>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--modal termos de privacidade-->
+        <div class="modal fade" id="privacidade" tabindex="-1" role="dialog" aria-labelledby="privacidadeTitle"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title justify-content-center" id="privacidadeTitle">Aviso de Uso de Dados e Privacidade
+                </h5>
+                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <p>Aviso de Uso de Dados e Privacidade</p>
+                <p>Ao utilizar nossos serviços, você concorda com a coleta e uso de suas informações de acordo com este
+                  aviso
+                  de privacidade. Os dados que você insere em nosso site serão armazenados em um banco de dados privado
+                  e
+                  serão utilizados exclusivamente para fins de melhorar a qualidade de nossos serviços e oferecer a você
+                  uma
+                  experiência mais personalizada.</p>
+                <p>Os dados coletados podem incluir, mas não se limitam a, informações de contato, endereço de e-mail,
+                  informações demográficas e comportamentais. Essas informações podem ser compartilhadas com nossos
+                  parceiros
+                  de negócios para fins de marketing, mas somente com o seu consentimento expresso.</p>
+                <p>Comprometemo-nos a manter seus dados seguros e protegidos contra acessos não autorizados, alterações,
+                  divulgações ou destruição. Nós nunca venderemos ou alugaremos suas informações a terceiros sem o seu
+                  consentimento prévio.</p>
+                <p>Ao utilizar nossos serviços, você concorda em nos fornecer informações precisas e atualizadas. Se
+                  houver
+                  qualquer alteração em suas informações pessoais, por favor, nos informe imediatamente para que
+                  possamos
+                  atualizar nossos registros.</p>
+                <p>Ao continuar a usar nossos serviços, você reconhece que leu e entendeu este aviso de privacidade e
+                  concorda
+                  com a coleta, armazenamento e uso de suas informações pessoais como descrito acima.</p>
+                <p>Se tiver alguma dúvida ou preocupação sobre a privacidade de seus dados, entre em contato conosco
+                  através
+                  do nosso site.</p>
+              </div>
+              <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-success btn-lg" data-bs-dismiss="modal"
+                  aria-label="Close">Entendi</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--end space modals-->
+
+        <!--endereço-->
+        <div class="back">
+          <div class="row justify-content-md-center w-100">
+            <div class="col-md-7 col-sm-12 bg-light">
+
+              <h1 class="text-dark text-center mt-5">Endereço <img src="assets/svg/map.svg" width="30px" height="30px"
+                  alt="endereço"></h1>
+              <form class="needs-validation p-5" method="POST" action="/endereco" novalidate>
+                <div class="row">
+                  <div class="col-md-12 mb-3">
+                    <label for="validationCustom01">Rua*</label>
+                    <input type="text" name="rua" class="form-control border border-1 border-secondary" id="rua"
+                      placeholder="Rua" oninput="validarLetras()" required>
+                    <div class="invalid-feedback"></div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="validationCustom02">CEP*</label>
+                    <input type="number" name="cep" maxlength="8" pattern="\d*"
+                      class="form-control border border-1 border-secondary" id="CEP" placeholder="CEP"
+                      oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                      required>
+                    <div class="invalid-feedback"></div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="validationCustom03">Nº*</label>
+                    <input type="number" name="numero" maxlength="4" pattern="\d*"
+                      class="form-control border border-1 border-secondary" id="Numero-Casa"
+                      placeholder="Numero da Residência"
+                      oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                      required>
+                    <div class="valid-feedback"></div>
+                  </div>
+                  <div class="col-md-12 mb-3">
+                    <label for="validationCustom04">Bairro*</label>
+                    <input type="text" name="bairro" class="form-control border border-1 border-secondary" id="Bairro"
+                      placeholder="Bairro" oninput="validarLetrasBairro()" required>
+                    <div class="valid-feedback"></div>
+                  </div>
+                  <div class="col-md-12 mb-3">
+                    <label for="validationCustom05">Cidade*</label>
+                    <input type="text" name="cidade" class="form-control border border-1 border-secondary" id="Cidade"
+                      placeholder="Cidade" oninput="validarLetrasCidade()" required>
+                    <div class="invalid-feedback"></div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-10 mb-3">
+                    <label for="validationCustom06">País*</label>
+                    <input type="text" name="pais" class="form-control border border-1 border-secondary" id="Pais"
+                      placeholder="País" oninput="validarLetrasPais()" required>
+                    <div class="invalid-feedback"></div>
+                  </div>
+                  <div class="col-md-2 mb-3">
+                    <label for="validationCustom07">UF*</label>
+                    <select type="text" class="form-control border border-1 border-secondary" id="UF" placeholder="UF"
+                      name="uf" required>
+                      <option value="AC">AC</option>
+                      <option value="AL">AL</option>
+                      <option value="AP">AP</option>
+                      <option value="AM">AM</option>
+                      <option value="BA">BA</option>
+                      <option value="CE">CE</option>
+                      <option value="DF">DF</option>
+                      <option value="ES">ES</option>
+                      <option value="GO">GO</option>
+                      <option value="MA">MA</option>
+                      <option value="MT">MT</option>
+                      <option value="MS">MS</option>
+                      <option value="MG">MG</option>
+                      <option value="PA">PA</option>
+                      <option value="PB">PB</option>
+                      <option value="PR">PR</option>
+                      <option value="PE">PE</option>
+                      <option value="PI">PI</option>
+                      <option value="RJ">RJ</option>
+                      <option value="RN">RN</option>
+                      <option value="RS">RS</option>
+                      <option value="RO">RO</option>
+                      <option value="RR">RR</option>
+                      <option value="SC">SC</option>
+                      <option value="SP">SP</option>
+                      <option value="SE">SE</option>
+                      <option value="TO">TO</option>
+                    </select>
+                    <div class="invalid-feedback"></div>
+                  </div>
+                </div>
+                <div class="text-center mt-3">
+                  <button class="btn btn-primary btn-lg" type="submit">Enviar</button>
+                </div>
+              </form>
+            </div>
+          </div>
+          <!--endereços cadastrados-->
+          <div class="container-fluid rounded-3 mt-5 text-dark">
+            <div class="row bg-light">
+              <h3 class="mt-3 text-center rounded-2">Seus Endereços</h3>
+              <div class="col-sm-12 col-md-12 col-lg-12 mt-5 mb-5 text-center d-flex justify-content-center">
+                <span class="d-flex justify-content-center">
+                  <% for (const endereco of enderecos) { %>
+                    <ul class="d-flex flex-column align-items-start mx-4 p-3 rounded-2" style="list-style-type: none; background-color: #0d6efd30;">
+                      <li style="display: none;"><strong>Id:</strong>
+                        <%= endereco.id %>
+                      </li>
+                      <li><strong>Rua:</strong>
+                        <%= endereco.rua %>
+                      </li>
+                      <li><strong>Bairro:</strong>
+                        <%= endereco.bairro %>
+                      </li>
+                      <li><strong>CEP:</strong>
+                        <%= endereco.cep %>
+                      </li>
+                      <li><strong>Numero:</strong>
+                        <%= endereco.numero %>
+                      </li>
+                      <li><strong>Cidade:</strong>
+                        <%= endereco.cidade %>
+                      </li>
+                      <li><strong>País:</strong>
+                        <%= endereco.pais %>
+                      </li>
+                      <li><strong>UF:</strong>
+                        <%= endereco.uf %>
+                      </li>
+                      <button class="btn btn-primary btn-deletar" data-id="<%= endereco.id %>">Deletar</button>
+                    </ul>
+                    <% } %>
+                </span>
+              </div>
+            </div>
+            <!--fim do conteudo-->
+ <!--===== as ondinhas ====-->
+ <section id="hero1">
+  <svg class="hero-waves1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+    viewBox="0 24 150 28 " preserveAspectRatio="none">
+    <defs>
+      <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z">
+    </defs>
+    <g class="wave11">
+      <use xlink:href="#wave-path" x="50" y="3" fill="rgba(161,161,161, .4)">
+    </g>
+    <g class="wave21">
+      <use xlink:href="#wave-path" x="50" y="0" fill="rgba(161,161,161, .5)">
+    </g>
+    <g class="wave31">
+      <use xlink:href="#wave-path" x="50" y="9" fill="#a1a1a1">
+    </g>
+  </svg>
+</section>
+            <footer class="footer mt-auto text-center p-0 ">
+              <div class="container-fluid footer-back p-0">
+                <div class="nav-scroller">
+                  <nav class="nav nav-underline footer-sub " aria-label="Secondary navigation">
+                    <a class="nav-link" data-bs-toggle="modal" data-bs-target="#mapaSite" href="#">Mapa do Site</a>
+                    <a class="nav-link" data-bs-toggle="modal" data-bs-target="#privacidade" href="#">Termo de
+                      Privacidade</a>
+                    <a class="nav-link" href="contato">Fale Conosco</a>
+                  </nav>
+                </div>
+                <div>
+                  <img src="assets/img/logo-cinza.png" width="190" height="70" alt="">
+                </div>
+                <p class="mt-3">Redes Sociais</p>
+                <div class="text-center mt-1 foter-imagem">
+                  <img src="assets/svg/instagram.png" width="30" height="30" alt="Instagram">
+                  <img src="assets/svg/youtube.png" width="36" height="36" alt="Youtube">
+                  <img src="assets/svg/facebook-square.png" width="30" height="30" alt="Facebook">
+                </div>
+                <hr>
+                <span class="text-dark">iPlant's | Av. Bahia - Instituto Federal - Caraguatatuba - São Paulo</span>
+              </div>
+            </footer>
+
+          </div>
+      </main>
+      <script>
+        // Adicione esse código em um arquivo JavaScript vinculado à sua página
+
+        // Captura o evento de clique no botão "Deletar"
+        document.addEventListener('click', async (event) => {
+          const target = event.target;
+
+          // Verifica se o botão "Deletar" foi clicado
+          if (target.classList.contains('btn-deletar')) {
+            const enderecoId = target.dataset.id; // Obtém o ID do endereço a ser deletado
+
+            try {
+              // Envia uma requisição POST para o servidor para remover o endereço
+              const response = await fetch('/deletarEndereco', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ enderecoId })
+              });
+
+              if (response.ok) {
+                // Atualiza a página ou realiza alguma ação após a remoção bem-sucedida
+                location.reload();
+              } else {
+                console.error('Erro ao deletar o endereço');
+              }
+            } catch (error) {
+              console.error('Erro ao enviar a requisição:', error);
+            }
+          }
+        });
+
+      </script>
+      <script>
+        const profilePicPreview = document.getElementById('profile-pic-preview');
+        const localStorageKey = 'profilePicUrl';
+
+        const storedImageUrl = localStorage.getItem(localStorageKey);
+        if (storedImageUrl) {
+          profilePicPreview.src = storedImageUrl;
+        }
+      </script>
+      <!--validação do formulario-->
+      <script>
+
+        // Validação somente de letras  para o campo Rua
+        function validarLetras() {
+          let inputRua = document.getElementById("rua");
+          let rua = inputRua.value;
+          let regex = /^[a-zA-Z ]+$/; // expressão regular que permite somente letras e espaços
+
+          if (!regex.test(rua)) {
+            inputRua.value = rua.replace(/[^a-zA-Z ]/gi, ""); // remove caracteres que não são letras ou espaços
+          }
+        }
+
+        function validarLetrasBairro() {
+          let inputBairro = document.getElementById("Bairro");
+          let Bairro = inputBairro.value;
+          let regex = /^[a-zA-Z ]+$/; // expressão regular que permite somente letras e espaços
+
+          if (!regex.test(Bairro)) {
+            inputBairro.value = Bairro.replace(/[^a-zA-Z ]/gi, ""); // remove caracteres que não são letras ou espaços
+          }
+        }
+
+        function validarLetrasCidade() {
+          let inputCidade = document.getElementById("Cidade");
+          let Cidade = inputCidade.value;
+          let regex = /^[a-zA-Z ]+$/; // expressão regular que permite somente letras e espaços
+
+          if (!regex.test(Cidade)) {
+            inputCidade.value = Cidade.replace(/[^a-zA-Z ]/gi, ""); // remove caracteres que não são letras ou espaços
+          }
+        }
+
+        function validarLetrasPais() {
+          let inputPais = document.getElementById("Pais");
+          let Pais = inputPais.value;
+          let regex = /^[a-zA-Z ]+$/; // expressão regular que permite somente letras e espaços
+
+          if (!regex.test(Pais)) {
+            inputPais.value = Pais.replace(/[^a-zA-Z ]/gi, ""); // remove caracteres que não são letras ou espaços
+          }
+        }
+
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function () {
+          'use strict'
+
+          // Fetch all the forms we want to apply custom Bootstrap validation styles to
+          var forms = document.querySelectorAll('.needs-validation')
+
+          // Loop over them and prevent submission
+          Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+              form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                  event.preventDefault()
+                  event.stopPropagation()
+                }
+
+                form.classList.add('was-validated')
+              }, false)
+            })
+        })()
+        //copiar qr
+        function copyToClickBoard() {
+          var content = document.getElementById('dado').innerHTML;
+
+          navigator.clipboard.writeText(content)
+
+        }
+      </script>
+      <script>
+        // Nome do usuario
+        // seleciona elementos do HTML
+        const usernameInput = document.getElementById("username-input");
+        const submitButton = document.getElementById("submit-button");
+        const usernameDisplay = document.getElementById("username-display");
+
+
+        // função para atualizar a exibição do nome do usuário
+        function updateUsernameDisplay() {
+          const username = localStorage.getItem("username");
+          if (username) {
+            // se o nome do usuário estiver definido na localStorage, atualiza a exibição em todos os documentos HTML
+            usernameDisplay.textContent = username;
+          }
+        }
+        updateUsernameDisplay();
+      </script>
+
+      <!--dependencias do bootstrap-->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+
+
+      <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+      <!-- Inicialize os Feather Icons (opcional) -->
+      <script>
+        feather.replace();
+        updateBadge();
+</script>
+
+      <script src="assets/dist/js/script.js"></script>
+</body>
+
+</html>

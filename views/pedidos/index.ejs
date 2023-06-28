@@ -1,0 +1,753 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rosa Vermelha</title>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="icon" type="image/x-icon" href="../img/fiveicon.png">
+  <link href="/node_modules_bot/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="../assets/dist/css/aos.min.css">
+  <link rel="stylesheet" href="../assets/dist/css/animate.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+    integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+    integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <link rel="stylesheet" href="../assets/dist/css/style.css">
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+
+    .parallax {
+      /* The image used */
+      background-image: url("../img/p1.jpg");
+      /* Set a specific height */
+      min-height: 500px;
+
+      /* Create the parallax scrolling effect */
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="navbar navbar-dark sticky-top bg-heade flex-md-nowrap p-0 shadow fixar">
+    <a class="navbar-brand col-md-3 col-lg-2 p-1" href="/"><img src="assets/img/logo-white.png" width="170px"
+        height="50px" alt=""></a>
+    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
+      data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <input class="form-control form-control-dark rounded-2 w-100" type="text" placeholder="Search" aria-label="Search">
+    <div class="navbar-nav">
+      <div class="nav-item d-flex align-items-center">
+        <div class=" rounded-3 mx-2 p-1">
+          <a href="#" data-bs-toggle="modal" data-bs-target="#empresasModal">
+            <img class="" src="assets/svg/hand-holding-usd-white.png" width="40" height="40" alt="Doação">
+          </a>
+        </div>
+        <button type="button"
+          class="btn btn-outline-secondary mx-1 text-uppercase d-flex align-items-center justify-content-center"
+          style="width: 60px;
+                                                                                                                                          height: 40px;">
+          <a href="login" class="nav-link" style="font-size: small;"> Login</a></button>
+        <button type="button"
+          class="btn btn-secondary mx-1 text-uppercase d-flex align-items-center justify-content-center"
+          style="width: 90px;
+                                                                                                                                    height: 40px;">
+          <a href="cadastro" class="nav-link" style="font-size: small;"> Cadastrar</a></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="container-fluid">
+    <div class="row">
+      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse text-uppercase">
+        <div class="position-sticky pt-3">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/">
+                <span data-feather="home"></span>
+                Inicio
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="sobre">
+                <span data-feather="file"></span>
+                Sobre
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="produtos">
+                <span data-feather="shopping-bag"></span>
+                Produtos
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contato">
+                <span data-feather="users"></span>
+                Contato
+              </a>
+            </li>
+          </ul>
+
+          <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+            <span class="text-primary">Conta</span>
+          </h6>
+          <ul class="nav flex-column mb-2">
+            <li class="nav-item">
+              <a class="nav-link" href="myAcount">
+                <span data-feather="user"></span>
+                Perfil
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="myCard">
+                <span data-feather="credit-card"></span>
+                Meus Cartões
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="endereco">
+                <span data-feather="map-pin"></span>
+                Endereço
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="minhas-compras">
+                <span data-feather="briefcase"></span>
+                Minhas Compras
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="carrinho">
+                <span data-feather="shopping-cart"></span>
+                Carrinho
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="dropdown mt-5">
+          <a href="#"
+            class="d-block bg-light camada border-1 rounded-5 user p-1 link-dark text-decoration-none dropdown-toggle"
+            id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+            <img id="profile-pic-preview" src="assets/svg/ghost.svg" alt="mdo" width="32" height="32"
+              class="rounded-circle"><span id="username-display">Usuario</span>
+                      </a>
+          <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+            <li><a class="dropdown-item" href="login">Sair</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <main class="col-md-9 ms-sm-auto col-lg-10 col-xl-10 p-0 m-0" style="background-color: #f4fff3;">
+        <!--space modals-->
+        <!--modal do doar-->
+        <div class="portfolio-modal modal fade" id="empresasModal" tabindex="-1" aria-labelledby="empresasModal"
+          aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content portfolioback">
+              <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal"
+                  aria-label="Close"></button></div>
+              <div class="modal-body pb-5">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 text-center">
+                      <!-- Curses Modal - Title-->
+                      <h2 class="portfolio-modal-title text-dark text-uppercase text-center">Doação</h2>
+                      <p class="portfolio-modal-title text-dark text-center mt-3">Segue o QR Code para ajudar na
+                        manutenção e
+                        suporte da plataforma</p>
+                      <div class="text-center">
+                        <img src="assets/img/pix.png" width="100" height="100" alt="">
+                        <img src="assets/img/qr.png" width="150" height="150"
+                          alt="QR Code para doar para a plataforma iPlant's">
+                      </div>
+                      <p class="mt-3"><b>Chave PIX</b>
+                      </p>
+                      <div class=" rounded-5 bg-success p-3 row d-flex align-items-center justify-content-between">
+                        <div class="col-9">
+                          <span class="text-white" id="dadoDoar">62f5c5e6-e95a-4cfa-92f4-2e7b027fbaf1</span>
+                        </div>
+                        <div class="col-2">
+                          <a href="#"> <img class="mx-3" src="assets/svg/copy.png" width="20" height="30" alt="copiar"
+                              onclick="copyToClickBoard()"></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--modal do mapa do site-->
+        <div class="modal fade" id="mapaSite" tabindex="-1" aria-labelledby="mapaSite" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content portfolioback">
+              <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal"
+                  aria-label="Close"></button></div>
+              <div class="modal-body pb-5">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                      <!-- Curses Modal - Title-->
+                      <h2 class="portfolio-modal-title text-dark text-uppercase text-center">Mapa do Site</h2>
+                      <hr>
+                      <ul>
+                        <li><a href="cadastro">Cadastro</a></li>
+                        <li><a href="login">Login</a></li>
+                        <li><a href="/">Home</a>
+                          <ul>
+                            <li><a href="myAcount">Usuário</a>
+                              <ul><a href="myAcount">Minha Conta</a></ul>
+                            </li>
+                          </ul>
+                        </li>
+                        <li><a href="sobre">Sobre</a>
+                          <ul>
+                            <li><a href="sobre">Sobre a Empresa</a></li>
+                            <li><a href="sobre">Sobre os Desenvolvedores</a></li>
+                          </ul>
+                        </li>
+                        <li><a href="produtos">Produtos</a>
+                          <ul>
+                            <li><a href="produtos">Todos os Produtos</a></li>
+                          </ul>
+                        </li>
+                        <li><a href="contato">Contato</a>
+                          <ul>
+                            <li><a href="contato">Formulário de Contato</li></a>
+                          </ul>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--modal termos de privacidade-->
+        <div class="modal fade" id="privacidade" tabindex="-1" role="dialog" aria-labelledby="privacidadeTitle"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title justify-content-center" id="privacidadeTitle">Aviso de Uso de Dados e Privacidade
+                </h5>
+                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <p>Aviso de Uso de Dados e Privacidade</p>
+                <p>Ao utilizar nossos serviços, você concorda com a coleta e uso de suas informações de acordo com este
+                  aviso
+                  de privacidade. Os dados que você insere em nosso site serão armazenados em um banco de dados privado
+                  e
+                  serão utilizados exclusivamente para fins de melhorar a qualidade de nossos serviços e oferecer a você
+                  uma
+                  experiência mais personalizada.</p>
+                <p>Os dados coletados podem incluir, mas não se limitam a, informações de contato, endereço de e-mail,
+                  informações demográficas e comportamentais. Essas informações podem ser compartilhadas com nossos
+                  parceiros
+                  de negócios para fins de marketing, mas somente com o seu consentimento expresso.</p>
+                <p>Comprometemo-nos a manter seus dados seguros e protegidos contra acessos não autorizados, alterações,
+                  divulgações ou destruição. Nós nunca venderemos ou alugaremos suas informações a terceiros sem o seu
+                  consentimento prévio.</p>
+                <p>Ao utilizar nossos serviços, você concorda em nos fornecer informações precisas e atualizadas. Se
+                  houver
+                  qualquer alteração em suas informações pessoais, por favor, nos informe imediatamente para que
+                  possamos
+                  atualizar nossos registros.</p>
+                <p>Ao continuar a usar nossos serviços, você reconhece que leu e entendeu este aviso de privacidade e
+                  concorda
+                  com a coleta, armazenamento e uso de suas informações pessoais como descrito acima.</p>
+                <p>Se tiver alguma dúvida ou preocupação sobre a privacidade de seus dados, entre em contato conosco
+                  através
+                  do nosso site.</p>
+              </div>
+              <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-success btn-lg" data-bs-dismiss="modal"
+                  aria-label="Close">Entendi</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--end space modals-->
+
+        <!--Titulo principal-->
+        <!--Conteúdo que desce-->
+        <div class="container-fluid carrossel2">
+          <div class="row">
+
+            <div class="row w-100">
+              <div class="col-md-4 col-sm-12">
+
+                <div class="pt-5 pb-5 pe-3 ps-3">
+                  <!--text-->
+                  <div class="container">
+                    <div class="row d-flex align-items-center">
+                      <div class="col-md-12">
+                        <div class="owl-carousel owl-theme">
+                          <div class="item">
+                            <div class="col">
+                              <div class="card shadow-sm d-flex-justify-content: center">
+                                <img class="img-fluid" src="../assets/flores/rosa/Rosa-Banner.png" alt="rosa"
+                                  title="rosa" id="jardim">
+                              </div>
+                            </div>
+                          </div>
+                          <!--card 2-->
+                          <div class="item">
+                            <div class="col">
+                              <div class="card shadow-sm">
+                                <img class="img-fluid" src="../assets/flores/rosa/10.png" alt="rosa"
+                                  title="rosa" id="jardim">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-8 col-sm-12 p-2">
+                <div>
+                  <h4 class="mt-5">Sobre o Produto</h4>
+                  <div class="d-flex lead">
+                    <p class="mx-2 fw-bolder">
+                      As rosas são plantas ornamentais que produzem flores grandes e vistosas em muitas cores
+                      diferentes, como vermelho, rosa, amarelo, branco e laranja. Elas possuem espinhos em seus
+                      caules e
+                      suas flores podem ter uma fragrância doce e agradável.
+                      As rosas são frequentemente usadas em arranjos florais e são um símbolo popular de amor e
+                      romance.
+                      <br>
+                      <br>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-4 col-sm-12" style="display: flex;flex-direction: column;align-items: center;">
+
+                  <div class="form-group p-0 w-100 mt-3">
+                    <textarea class="rounded-3 w-100" style="resize: none; border-color: #29db38;" name="" id="" cols="30" rows="11"
+                      placeholder="       Diga!, o que achou do produto?"></textarea>
+                  </div>
+
+                  <button type="button" class="btn btn-primary btn-sm w-100 p-2">enviar</button>
+
+                </div>
+                <!--div-->
+                <div class="col-md-8 col-sm-12">
+                  <h3 class="titulo mx-3">Rosa para casamento 10cm 30g</h3>
+
+                  <div>
+                    <div class="estrela pt-1 mx-3">
+                      <a href="javascript:void(0)" onclick="Avaliar(1)">
+                        <img src="../assets/img/star1.png" id="s1" style="width: 25px;"></a>
+
+                      <a href="javascript:void(0)" onclick="Avaliar(2)">
+                        <img src="../assets/img/star1.png" id="s2" style="width: 25px;"></a>
+
+                      <a href="javascript:void(0)" onclick="Avaliar(3)">
+                        <img src="../assets/img/star1.png" id="s3" style="width: 25px;"></a>
+
+                      <a href="javascript:void(0)" onclick="Avaliar(4)">
+                        <img src="../assets/img/star1.png" id="s4" style="width: 25px;"></a>
+
+                      <a href="javascript:void(0)" onclick="Avaliar(5)">
+                        <img src="../assets/img/star1.png" id="s5" style="width: 25px;"></a>
+                    </div>
+                  </div>
+
+                  <div class=" mb-2 p-3 mt-2">
+                    <span class="p-2 bg-success text-white rounded-pill frete">Frete Grátis</span>
+                    <span class="bg-primary text-white p-2 rounded-pill oferta">50% OFF</span>
+
+                    <div>
+                      <br>
+                      <p class="lead"><b> Agradecemos sinceramente por escolher nossos produtos. Valorizamos sua confiança em nossa marca
+                        e estamos comprometidos em fornecer-lhe produtos de alta qualidade.
+                        Satisfação é nossa prioridade, e estamos aqui para ajudar em qualquer dúvida ou problema que
+                        possa surgir. Sua escolha nos motiva a continuar oferecendo excelência em nossos produtos e
+                        serviços. Mais uma vez, obrigado por sua preferência.</b></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+          <div class="container-fluid mb-5">
+            <div class="row">
+              <div class="col-sm-4 col-md-4 col-lg-4">
+                <div class="container-fluid mt-5">
+                  <div class="row p-3 border-start border-success border-3 rounded-2"
+                    style="background-color: #d8f1da;">
+                    <h4>Detalhes</h4>
+                    <p class="mt-1"><b>Tipo:</b><span> Flor</span></p>
+
+                    <div class="col-sm-12 col-md-6 col-lg-10">
+                      <p class="mt-1"><b>Categoria:</b><span> Casamento</span></p>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-10">
+                      <p class="mt-1"><b>Tamanho:</b><span> 10 cm</span></p>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-10">
+                      <p class="mt-1"><b>Peso:</b> 30g</span></span></p>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-10 mb-5">
+                      <p class="mt-1"><b>Vendido por:</b><span> Aurimar Flores</span></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--pagamento-->
+              <div class="col-sm-4 col-md-4 col-lg-4">
+                <div class="container-fluid mt-5">
+                  <div class="row p-3 border-start border-success border-3 rounded-2"
+                    style="background-color: #d8f1da;">
+                    <h4>Pagamento</h4>
+                    <div class="col-sm-12 col-md-6 col-lg-10">
+                      <del style="color: gray;">De: R$</del><del id="preco-antigo" style="color: gray;">60.00</del>
+                      <span style="color: rgb(4, 4, 4);">De: R$</span><span id="preco-novo"
+                        style="color: rgb(4, 4, 4);">30.00</span>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-10">
+                      <p class="mt-4"><b> Quantidade:</b> <span>3</span></p>
+                    </div>
+
+                    <div class="col-sm-12 col-md-6 col-lg-10">
+                      <img src="../assets/img/cartao crédito.png" alt="Cartão" width="20px"
+                        style="margin-right: 10px;"><span></span> 2x de </span>
+                      <p class="m-0" id="preco-juros" style="display: contents;">45.00 sem juros.</p><br><br>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-10">
+                      <p class="m-0" id="preco-juros" style="display: contents;"><b>Cartão de Crédito</b></p>
+                      <br><br>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-10">
+                      <img src="../assets/svg/cc-visa.svg" alt="Cartão" width="30px" style="margin-right: 10px;">
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-10 mt-2">
+                      <h5 class="por-apenas mb-4">Total R$<strong id="preco-produto"
+                          style="color: rgb(3, 3, 3);">90.00</strong></h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--endereço-->
+              <div class="col-sm-4 col-md-4 col-lg-4">
+                <div class="container-fluid mt-5">
+                  <div class="row p-3 border-start border-success border-3 rounded-2"
+                    style="background-color: #d8f1da;">
+                    <h4>Endereço</h4>
+                    <div class="col-sm-12 col-md-6 col-lg-10">
+                      <img src="../assets/img/frete-removebg-preview.png" alt="Frete Caminhão" width="40px" class="p-0 m-0">
+                      <span class="m-0">Enviado para o cep: <span>24343242</span></span>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-10">
+                      <p class="mt-4"><b> Nome:</b> <span>Maria da Silva</span></p>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-10">
+                      <p class="mt-1"><b> Remetente:</b><span> Maria da Silva</span></p>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-10">
+                      <p class="mt-1"><b>Rua:</b><span> Avenida das flores</span></p>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-10">
+                      <p class="mt-1"><b>Cidade:</b><span> Caraguatatuba-<span>SP</span></span></p>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-10">
+                      <p class="mt-1"><b>Bairro:</b><span> Rua das crianças</span></p>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr class="border-3 border-success">
+        </div>
+          <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+            <img class=" img-fluid mt-3 h-25" src="../../assets/img/Agradecemos.png" alt="">
+          </div>
+              <!--===== as ondinhas ====-->
+              <section id="hero1">
+                <svg class="hero-waves1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28 " preserveAspectRatio="none">
+                <defs>
+                  <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z">
+                </defs>
+                <g class="wave11">
+                  <use xlink:href="#wave-path" x="50" y="3" fill="rgba(161,161,161, .4)">
+                </g>
+                <g class="wave21">
+                  <use xlink:href="#wave-path" x="50" y="0" fill="rgba(161,161,161, .5)">
+                </g>
+                <g class="wave31">
+                  <use xlink:href="#wave-path" x="50" y="9" fill="#a1a1a1">
+                </g>
+              </svg>
+            </section>
+          <!--fim do conteudo-->
+          <footer class="footer mt-auto text-center p-0 ">
+            <div class="container-fluid footer-back p-0">
+              <div class="nav-scroller">
+                <nav class="nav nav-underline footer-sub " aria-label="Secondary navigation">
+                  <a class="nav-link" data-bs-toggle="modal" data-bs-target="#mapaSite" href="#">Mapa do Site</a>
+                  <a class="nav-link" data-bs-toggle="modal" data-bs-target="#privacidade" href="#">Termo de
+                    Privacidade</a>
+                  <a class="nav-link" href="contato">Fale Conosco</a>
+                </nav>
+              </div>
+              <div>
+                <img src="assets/img/logo-cinza.png" width="190" height="70" alt="">
+              </div>
+              <p class="mt-3">Redes Sociais</p>
+              <div class="text-center mt-1 foter-imagem">
+                <img src="assets/svg/instagram.png" width="30" height="30" alt="Instagram">
+                <img src="assets/svg/youtube.png" width="36" height="36" alt="Youtube">
+                <img src="assets/svg/facebook-square.png" width="30" height="30" alt="Facebook">
+              </div>
+              <hr>
+              <span class="text-dark">iPlant's | Av. Bahia - Instituto Federal - Caraguatatuba - São Paulo</span>
+            </div>
+          </footer>
+    </div>
+
+    </main>
+    <script>
+      const profilePicPreview = document.getElementById('profile-pic-preview');
+      const localStorageKey = 'profilePicUrl';
+
+      const storedImageUrl = localStorage.getItem(localStorageKey);
+      if (storedImageUrl) {
+        profilePicPreview.src = storedImageUrl;
+      }
+    </script>
+    <script>
+
+      /*Preço*/
+      function atualizarPreco() {
+        const quantidade = document.getElementById("number-qtd").value;
+        const preco = quantidade * 30;
+        const precoJuros = preco / 2;
+        const precoAntigo = preco * 2;
+        document.getElementById("preco-produto").textContent = preco.toFixed(2);
+        document.getElementById("preco-juros").textContent = precoJuros.toFixed(2);
+        document.getElementById("preco-antigo").textContent = precoAntigo.toFixed(2);
+      }
+
+      /*Estrela*/
+
+      function Avaliar(estrela) {
+
+        var url = window.location;
+        url = url.toString()
+        url = url.split("detales-produtos12.html");
+        url = url[0];
+
+        var s1 = document.getElementById("s1").src;
+        var s2 = document.getElementById("s2").src;
+        var s3 = document.getElementById("s3").src;
+        var s4 = document.getElementById("s4").src;
+        var s5 = document.getElementById("s5").src;
+        var avaliacao = 0;
+
+        if (estrela == 5) {
+          if (s5 == url + "../img/star0.png") {
+            document.getElementById("s1").src = "../assets/img/star1.png";
+            document.getElementById("s2").src = "../assets/img/star1.png";
+            document.getElementById("s3").src = "../assets/img/star1.png";
+            document.getElementById("s4").src = "../assets/img/star1.png";
+            document.getElementById("s5").src = "../assets/img/star1.png";
+            avaliacao = 5;
+          } else {
+            document.getElementById("s1").src = "../assets/img/star1.png";
+            document.getElementById("s2").src = "../assets/img/star1.png";
+            document.getElementById("s3").src = "../assets/img/star1.png";
+            document.getElementById("s4").src = "../assets/img/star1.png";
+            document.getElementById("s5").src = "../assets/img/star1.png";
+            avaliacao = 4;
+          }
+        }
+
+        //ESTRELA 4
+        if (estrela == 4) {
+          if (s4 == url + "../img/star0.png") {
+            document.getElementById("s1").src = "../assets/img/star1.png";
+            document.getElementById("s2").src = "../assets/img/star1.png";
+            document.getElementById("s3").src = "../assets/img/star1.png";
+            document.getElementById("s4").src = "../assets/img/star1.png";
+            document.getElementById("s5").src = "../assets/img/star0.png";
+            avaliacao = 4;
+          } else {
+            document.getElementById("s1").src = "../assets/img/star1.png";
+            document.getElementById("s2").src = "../assets/img/star1.png";
+            document.getElementById("s3").src = "../assets/img/star1.png";
+            document.getElementById("s4").src = "../assets/img/star1.png";
+            document.getElementById("s5").src = "../assets/img/star0.png";
+            avaliacao = 3;
+          }
+        }
+
+        //ESTRELA 3
+        if (estrela == 3) {
+          if (s3 == url + "../img/star0.png") {
+            document.getElementById("s1").src = "../assets/img/star1.png";
+            document.getElementById("s2").src = "../assets/img/star1.png";
+            document.getElementById("s3").src = "../assets/img/star1.png";
+            document.getElementById("s4").src = "../assets/img/star0.png";
+            document.getElementById("s5").src = "../assets/img/star0.png";
+            avaliacao = 3;
+          } else {
+            document.getElementById("s1").src = "../assets/img/star1.png";
+            document.getElementById("s2").src = "../assets/img/star1.png";
+            document.getElementById("s3").src = "../assets/img/star1.png";
+            document.getElementById("s4").src = "../assets/img/star0.png";
+            document.getElementById("s5").src = "../assets/img/star0.png";
+            avaliacao = 2;
+          }
+        }
+
+        //ESTRELA 2
+        if (estrela == 2) {
+          if (s2 == url + "../img/star0.png") {
+            document.getElementById("s1").src = "../assets/img/star1.png";
+            document.getElementById("s2").src = "../assets/img/star1.png";
+            document.getElementById("s3").src = "../assets/img/star0.png";
+            document.getElementById("s4").src = "../assets/img/star0.png";
+            document.getElementById("s5").src = "../assets/img/star0.png";
+            avaliacao = 2;
+          } else {
+            document.getElementById("s1").src = "../assets/img/star1.png";
+            document.getElementById("s2").src = "../assets/img/star1.png";
+            document.getElementById("s3").src = "../assets/img/star0.png";
+            document.getElementById("s4").src = "../assets/img/star0.png";
+            document.getElementById("s5").src = "../assets/img/star0.png";
+            avaliacao = 1;
+          }
+        }
+
+        //ESTRELA 1
+        if (estrela == 1) {
+          if (s1 == url + "../img/star0.png") {
+            document.getElementById("s1").src = "../assets/img/star1.png";
+            document.getElementById("s2").src = "../assets/img/star0.png";
+            document.getElementById("s3").src = "../assets/img/star0.png";
+            document.getElementById("s4").src = "../assets/img/star0.png";
+            document.getElementById("s5").src = "../assets/img/star0.png";
+            avaliacao = 1;
+          } else {
+            document.getElementById("s1").src = "../assets/img/star1.png";
+            document.getElementById("s2").src = "../assets/img/star0.png";
+            document.getElementById("s3").src = "../assets/img/star0.png";
+            document.getElementById("s4").src = "../assets/img/star0.png";
+            document.getElementById("s5").src = "../assets/img/star0.png";
+            avaliacao = 0;
+          }
+        }
+      }
+
+      //copiar qr
+      function copyToClickBoard() {
+        var content = document.getElementById('dado').innerHTML;
+
+        navigator.clipboard.writeText(content)
+
+      }
+    </script>
+    <!--dependencias do bootstrap-->
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/aos.min.js"></script>
+    <script src="../js/bs-init.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
+      integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE"
+      crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"
+      integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha"
+      crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"></script>
+    <script src="../js/script.js"></script>
+    <!--carousel infinito-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
+      integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
+      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+      integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
+      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+      //carousel infinito
+      $('.owl-carousel').owlCarousel({
+        loop: true,
+        margin: 10,
+        nav: true,
+        responsive: {
+          0: {
+            items: 1
+          },
+          600: {
+            items: 3
+          },
+          1000: {
+            items: 1
+          }
+        }
+      })
+    </script>
+    <!-- Inclua o JavaScript dos Feather Icons (opcional) -->
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <!-- Inicialize os Feather Icons (opcional) -->
+    <script>
+      feather.replace();
+    </script>
+    <script>
+      // Nome do usuario
+      // seleciona elementos do HTML
+      const usernameInput = document.getElementById("username-input");
+      const submitButton = document.getElementById("submit-button");
+      const usernameDisplay = document.getElementById("username-display");
+
+
+      // função para atualizar a exibição do nome do usuário
+      function updateUsernameDisplay() {
+        const username = localStorage.getItem("username");
+        if (username) {
+          // se o nome do usuário estiver definido na localStorage, atualiza a exibição em todos os documentos HTML
+          usernameDisplay.textContent = username;
+        }
+      }
+      updateUsernameDisplay();
+    </script>
+</body>
+
+</html>

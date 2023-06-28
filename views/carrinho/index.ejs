@@ -1,0 +1,1009 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Carrinho</title>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="icon" type="image/x-icon" href="assets/img/fiveicon.png">
+
+  <link href="/node_modules_bot/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.css">
+  <link rel="stylesheet" href="assets/dist/css/style.css">
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+
+    .parallax {
+      /* The image used */
+      background-image: url("assets/img/p1.jpg");
+      /* Set a specific height */
+      min-height: 500px;
+
+      /* Create the parallax scrolling effect */
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    .hidden{
+      display:none;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <header class="navbar navbar-dark sticky-top bg-heade flex-md-nowrap p-0 shadow fixar">
+    <a class="navbar-brand col-md-3 col-lg-2 p-1" href="/"><img src="assets/img/logo-white.png" width="170px"
+        height="50px" alt=""></a>
+    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
+      data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <input class="form-control form-control-dark rounded-2 w-100" type="text" placeholder="Search" aria-label="Search">
+    <div class="navbar-nav">
+      <div class="nav-item d-flex align-items-center">
+        <div class=" rounded-3 mx-2 p-1">
+          <a href="#" data-bs-toggle="modal" data-bs-target="#empresasModal">
+            <img class="" src="assets/svg/hand-holding-usd-white.png" width="40" height="40" alt="Doação">
+          </a>
+        </div>
+        <% if (typeof user==='undefined' ) { %>
+          <button type="button"
+            class="btn btn-outline-secondary mx-1 text-uppercase d-flex align-items-center justify-content-center"
+            style="width: 60px;
+                                                                                                                                            height: 40px;">
+            <a href="login" class="nav-link" style="font-size: small;"> Login</a></button>
+          <button type="button"
+            class="btn btn-secondary mx-1 text-uppercase d-flex align-items-center justify-content-center"
+            style="width: 90px;
+                                                                                                                                      height: 40px;">
+            <a href="cadastro" class="nav-link" style="font-size: small;"> Cadastrar</a></button>
+          <% } else { %>
+      </div>
+      <% } %>
+    </div>
+  </header>
+
+  <div class="container-fluid">
+    <div class="row">
+      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse text-uppercase">
+        <div class="position-sticky pt-3">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/">
+                <span data-feather="home"></span>
+                Inicio
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="sobre">
+                <span data-feather="file"></span>
+                Sobre
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="produtos">
+                <span data-feather="shopping-bag"></span>
+                Produtos
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contato">
+                <span data-feather="users"></span>
+                Contato
+              </a>
+            </li>
+          </ul>
+
+          <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+            <span class="text-primary">Conta</span>
+          </h6>
+          <ul class="nav flex-column mb-2">
+            <li class="nav-item">
+              <a class="nav-link" href="myAcount">
+                <span data-feather="user"></span>
+                Perfil
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="myCard">
+                <span data-feather="credit-card"></span>
+                Meus Cartões
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="endereco">
+                <span data-feather="map-pin"></span>
+                Endereço
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="minhas-compras">
+                <span data-feather="briefcase"></span>
+                Minhas Compras
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="carrinho">
+                <span data-feather="shopping-cart"></span>
+                <span class=" position-relative">CARRINHO
+                  <span id="badge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    
+                    <span class="visually-hidden"></span>
+                  </span>
+                </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="dropdown mt-5">
+          <a href="#"
+            class="d-block bg-light camada border-1 rounded-5 user p-1 link-dark text-decoration-none dropdown-toggle"
+            id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+            <img id="profile-pic-preview" src="assets/svg/ghost.svg" alt="mdo" width="32" height="32"
+              class="rounded-circle"><span id="username-display">Usuario</span>
+          </a>
+          <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+            <li><a class="dropdown-item" href="logout">Sair</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <main class="col-md-9 ms-sm-auto col-lg-10 col-xl-10 p-0 m-0">
+        <!--space modals-->
+        <!--modal do doar-->
+        <div class="portfolio-modal modal fade" id="empresasModal" tabindex="-1" aria-labelledby="empresasModal"
+          aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content portfolioback">
+              <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal"
+                  aria-label="Close"></button></div>
+              <div class="modal-body pb-5">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 text-center">
+                      <!-- Curses Modal - Title-->
+                      <h2 class="portfolio-modal-title text-dark text-uppercase text-center">Doação</h2>
+                      <p class="portfolio-modal-title text-dark text-center mt-3">Segue o QR Code para ajudar na
+                        manutenção e
+                        suporte da plataforma</p>
+                      <div class="text-center">
+                        <img src="assets/img/pix.png" width="100" height="100" alt="">
+                        <img src="assets/img/qr.png" width="150" height="150"
+                          alt="QR Code para doar para a plataforma iPlant's">
+                      </div>
+                      <p class="mt-3"><b>Chave PIX</b>
+                      </p>
+                      <div class=" rounded-5 bg-success p-3 row d-flex align-items-center justify-content-between">
+                        <div class="col-9">
+                          <span class="text-white" id="dadoDoar">62f5c5e6-e95a-4cfa-92f4-2e7b027fbaf1</span>
+                        </div>
+                        <div class="col-2">
+                          <a href="#"> <img class="mx-3" src="assets/svg/copy.png" width="20" height="30" alt="copiar"
+                              onclick="copyToClickBoard()"></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--modal do mapa do site-->
+        <div class="modal fade" id="mapaSite" tabindex="-1" aria-labelledby="mapaSite" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content portfolioback">
+              <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal"
+                  aria-label="Close"></button></div>
+              <div class="modal-body pb-5">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                      <!-- Curses Modal - Title-->
+                      <h2 class="portfolio-modal-title text-dark text-uppercase text-center">Mapa do Site</h2>
+                      <hr>
+                      <ul>
+                        <li><a href="cadastro">Cadastro</a></li>
+                        <li><a href="login">Login</a></li>
+                        <li><a href="/">Home</a>
+                          <ul>
+                            <li><a href="myAcount">Usuário</a>
+                              <ul><a href="myAcount">Minha Conta</a></ul>
+                            </li>
+                          </ul>
+                        </li>
+                        <li><a href="sobre">Sobre</a>
+                          <ul>
+                            <li><a href="sobre">Sobre a Empresa</a></li>
+                            <li><a href="sobre">Sobre os Desenvolvedores</a></li>
+                          </ul>
+                        </li>
+                        <li><a href="produtos">Produtos</a>
+                          <ul>
+                            <li><a href="produtos">Todos os Produtos</a></li>
+                          </ul>
+                        </li>
+                        <li><a href="contato">Contato</a>
+                          <ul>
+                            <li><a href="contato">Formulário de Contato</li></a>
+                          </ul>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--modal termos de privacidade-->
+        <div class="modal fade" id="privacidade" tabindex="-1" role="dialog" aria-labelledby="privacidadeTitle"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title justify-content-center" id="privacidadeTitle">Aviso de Uso de Dados e Privacidade
+                </h5>
+                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <p>Aviso de Uso de Dados e Privacidade</p>
+                <p>Ao utilizar nossos serviços, você concorda com a coleta e uso de suas informações de acordo com este
+                  aviso
+                  de privacidade. Os dados que você insere em nosso site serão armazenados em um banco de dados privado
+                  e
+                  serão utilizados exclusivamente para fins de melhorar a qualidade de nossos serviços e oferecer a você
+                  uma
+                  experiência mais personalizada.</p>
+                <p>Os dados coletados podem incluir, mas não se limitam a, informações de contato, endereço de e-mail,
+                  informações demográficas e comportamentais. Essas informações podem ser compartilhadas com nossos
+                  parceiros
+                  de negócios para fins de marketing, mas somente com o seu consentimento expresso.</p>
+                <p>Comprometemo-nos a manter seus dados seguros e protegidos contra acessos não autorizados, alterações,
+                  divulgações ou destruição. Nós nunca venderemos ou alugaremos suas informações a terceiros sem o seu
+                  consentimento prévio.</p>
+                <p>Ao utilizar nossos serviços, você concorda em nos fornecer informações precisas e atualizadas. Se
+                  houver
+                  qualquer alteração em suas informações pessoais, por favor, nos informe imediatamente para que
+                  possamos
+                  atualizar nossos registros.</p>
+                <p>Ao continuar a usar nossos serviços, você reconhece que leu e entendeu este aviso de privacidade e
+                  concorda
+                  com a coleta, armazenamento e uso de suas informações pessoais como descrito acima.</p>
+                <p>Se tiver alguma dúvida ou preocupação sobre a privacidade de seus dados, entre em contato conosco
+                  através
+                  do nosso site.</p>
+              </div>
+              <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-success btn-lg" data-bs-dismiss="modal"
+                  aria-label="Close">Entendi</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--modal finalizando compra-->
+        <div class="modal fade modal-xl" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+          tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header bg-success">
+                <h5 class="modal-title text-center text-white" id="staticBackdropLabel">Finalizando Compra...</h5>
+                <button type="button" class="btn-close bg-light" style="color: #edebeb;" data-bs-dismiss="modal"
+                  aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <div class="row">
+                  <div class="col-sm-12 col-md-6 col-lg-6 d-flex flex-column align-items-center">
+                    <div class="mt-3 d-flex justify-content-center align-items-center">
+                      <h3>Formatos de Pagamentos</h3>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-12 text-center mt-2">
+                      <p class="lead"><b>PIX<img src="assets/img/pix.png" width="20px" height="20px" alt=""></b></p>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                      <div class="text-center">
+                        <img src="assets/img/qr.png" width="150" height="150"
+                          alt="QR Code para doar para a plataforma iPlant's">
+                      </div>
+                      <p class="mt-3 text-center"><b>Chave PIX</b></p>
+                      <p class="p-3">
+                        <input type="checkbox" name="keypix" id="keypix" /> Gerar chave pix
+                      </p>
+                      <div id="pagKeyPix" class=" rounded-5 p-1 row d-flex align-items-center justify-content-between"
+                        style="background-color: #00bdae4f;">
+                        <div class="col-9">
+                          <span class="text-dark" id="dado"></span>
+                        </div>
+                        <div class="col-2">
+                          <a href="#"> <img class="mx-3" src="assets/svg/copy.svg" width="20" height="30" alt="copiar"
+                              onclick="copy1ToClickBoard()"></a>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                      <hr class="border-1 border-dark">
+                      <p class="lead mt-3 text-center"><b>Dinheiro<img src="assets/svg/money.png" width="20px"
+                            height="20px" alt="dinheiro"></b></p>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+                      <p class="lead mt-1 text-center"><b>Pegar o código para a retirada dos produtos</b></p>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+                      <button id="dinheiro" class="btn p-2 " style="background-color: #a8ffab;">Clicando aqui!</button>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-12  w-25 mt-2">
+                      <div class="input-group input-group-sm mb-3">
+                        <input id="dinheiroTexto" type="text" class="form-control border-1 border-dark"
+                          aria-label="Small" aria-describedby="inputGroup-sizing-sm" id="inputDinheiro" value="">
+                      </div>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-12 ">
+                      <p class="mt-2 text-center">Endereço: Av Bahia, 1739- indaiá, Caraguatatuba-sp, 11665-071</p>
+                    </div>
+
+
+                    <div class="col-sm-12 col-md-12 col-lg-12 mt-3">
+                      <hr class="border-1 border-dark">
+                      <p class="lead text-center mt-3"><b>Cartão de crédito ou Débito <img src="assets/img/cartao.png"
+                            width="20px" height="20px" alt=""></b></p>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+
+                      <!-- cartão -->
+                      <div class="row d-flex justify-content-center">
+                        <% for (const cartao of cartoes) { %>
+                          <% const cartaoPrefixo=cartao.numeroCartao.substring(0, 4); %>
+                            <div
+                              class="col-sm-4 col-md-3 col-lg-3 rounded-3 mx-1 mt-2 <%= cartaoPrefixo === '1616' ? 'custom-div' : (cartaoPrefixo === '3232' ? 'custom-div2' : (cartaoPrefixo === '3838' ? 'custom-div3' : '')) %>">
+                              <p class="mt-3 lead"><b>
+                                  <%= cartao.numeroCartao.substring(cartao.numeroCartao.length - 4) %>
+                                </b></p> <br>
+                              <div class="form-check">
+                                <input class="form-check-input border-1 border-dark" type="radio" name="cartao"
+                                  value="<%= cartao.tipoCartao %>">
+                              </div>
+                            </div>
+                            <% } %>
+                      </div>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                      <p class="lead mt-2 text-center">Parcela em até 12x sem juros</p>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+
+                      <select class="form-select form-select-sm mb-3" id="media" aria-label=".form-select-sm example">
+
+                      </select>
+
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-12 text-center mt-2">
+                      <a class="lead" href="myCard">Alterar formato de pagamento</a>
+                    </div>
+                  </div>
+
+                  <!-- =====parte 2 do mesmo modal ==== -->
+                  <div class="col-sm-12 col-md-6 col-lg-6 d-flex flex-column align-items-center">
+                    <div class="row">
+                      <div class="col-sm-12 col-md-12 col-lg-12">
+                        <div class="row d-flex justify-content-center">
+                          <h3 class="mt-3 text-center">Endereço</h3>
+                          <!-- endereços -->
+                          <% for (const endereco of enderecos) { %>
+                            <div class="col-sm-12 col-md-3 col-lg-3 rounded-3 mx-1 mt-2"
+                              style="background-color: #eeeeee;">
+                              <p class="mt-1">Rua: <%= endereco.rua %>
+                              </p>
+                              <p class="mt-1">Bairro: <%= endereco.bairro %>
+                              </p>
+                              <p class="mt-1">CEP: <%= endereco.cep %>
+                              </p>
+                              <p class="mt-1">Cidade: <%= endereco.cidade %>
+                              </p>
+                              <p class="mt-1">UF: <%= endereco.uf %>
+                              </p>
+                              <div class="form-check">
+                                <input class="form-check-input border-1 border-dark" type="radio" name="endereco"
+                                  value="end1">
+                              </div>
+                            </div>
+                            <% } %>
+                        </div>
+                      </div>
+                      <div class="col-sm-12 col-md-12 col-lg-12 text-center mt-2">
+                        <a class="lead" href="endereco">Alterar endereço</a>
+                      </div>
+                      <!-- === tabela de preços dos produtos=== -->
+                      <div class="row justify-content-md-center w-100 mt-4">
+                        <div class="col-md-8 col-sm-12 bg-light">
+                          <form action="/comprarProdutos" method="post" id="formComprarProdutos">
+                            <table class="table table-hover" id="table1">
+                              <thead>
+                                <tr>
+                                  <th scope="col">Produto</th>
+                                  <th scope="col">Quantidade</th>
+                                  <th scope="col">Data</th>
+                                  <th scope="col">Preço</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <% for (const item of itensCarrinho) { %>
+                                  <tr data-id="<%= item.id %>">
+                                    <td>
+                                      <%= item.produto %>
+                                    </td>
+                                    <td>
+                                      <%= item.quantidade %>
+                                    </td>
+                                    <td>
+                                      <%= item.data.toLocaleDateString('pt-BR') %>
+                                    </td>
+                                    <td>
+                                      <%= item.preco %>
+                                    </td>
+                                  </tr>
+                                  <% } %>
+                                    <tr class="text-dark" style="background-color: #c1c1c2;">
+                                      <th scope="row">Total</th>
+                                      <th scope="row">0</th>
+                                      <th scope="row"></th>
+                                      <th scope="row">0</th>
+                                    </tr>
+                              </tbody>
+                            </table>
+                        </div>
+                      </div>
+                      <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+                        <!-- compra aprovada --> <!--id do modal-->
+                        <button class=" btn btn-lg btn-success" id="confirmarCompra">Confirmar Compra</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- modal gueste-->
+        <div class="modal fade modal-xl" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false"
+          tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content p-1">
+              <div class="modal-header bg-warning">
+                <h5 class="modal-title text-center text-dark" id="staticBackdropLabel">Ops... aconteceu algo de errado!
+                </h5>
+                <button type="button" class="btn-close bg-light" style="color: #edebeb;" data-bs-dismiss="modal"
+                  aria-label="Close"></button>
+              </div>
+              <div class="modal-body m-0">
+                <div class="row">
+                  <div class="col-sm-12 col-md-12 col-lg-12 m-0 p-0 img-fluid"
+                    style="background-image: url(assets/img/pensando3.png); width: 100%; height:550px ;">
+                    <div class="col-6 p-3" style="margin-top: 222px; margin-left: 100px;">
+                      <div class="col-12">
+                        <h1>Faça Login ou Cadastre-se</h1>
+                      </div>
+                      <br>
+                      <div class="col-12">
+                        <button class="btn btn-success p-2 btn-lg shadow">
+                          <a href="login" class="nav-link text-white">Clicando Aqui!</a>
+                        </button>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- modal compra pendente-->
+        <div class="modal fade modal-xl" id="staticBackdrop4" data-bs-backdrop="static" data-bs-keyboard="false"
+          tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header bg-warning">
+                <h5 class="modal-title text-white" id="staticBackdropLabel">Aguarde um pouquinho...
+                </h5>
+                <button type="button" class="btn-close bg-light" style="color: #edebeb;" data-bs-dismiss="modal"
+                  aria-label="Close"></button>
+              </div>
+              <div class="modal-body m-0">
+                <div class="row">
+                  <div class="col-sm-12 col-md-12 col-lg-12 m-0 p-0 img-fluid" style="width: 100%; height:550px ;">
+                    <div class="col-12 p-3 mt-5 text-center">
+                      <div class="col-12 mt-5 ">
+                        <img src="assets/svg/exclamation-triangle.png" class="img-fluid mt-5" width="100px" alt="">
+                      </div>
+                      <br>
+                      <div class="col-12">
+                        <h1 class="text-dark">Compra Pendente</h1>
+                      </div>
+                      <div class="col-12">
+                        <h3 class="text-dark">O seu pedido de compra está pendente e aguardando a validação da empresa.
+                          Por favor, aguarde enquanto processamos a sua solicitação e verificamos os detalhes da compra.
+                        </h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- modal loading compra-->
+        <div class="modal fade modal-xl" id="staticBackdrop5" data-bs-backdrop="static" data-bs-keyboard="false"
+          tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header bg-success">
+                <h5 class="modal-title text-white" id="staticBackdropLabel">Aguarde um pouquinho...
+                </h5>
+                <button type="button" class="btn-close bg-light" style="color: #edebeb;" data-bs-dismiss="modal"
+                  aria-label="Close"></button>
+              </div>
+              <div class="modal-body m-0">
+                <div class="row">
+                  <div class="col-sm-12 col-md-12 col-lg-12 m-0 p-0 img-fluid">
+                    <div class="col-12 p-3 mt-5 text-center">
+                      <div class="col-12 mt-5 ">
+                        <img src="../assets/img/logo.png" class="img-fluid mt-5" width="500px" alt="">
+                      </div>
+                      <br>
+                      <div class="col-12 mb-5 d-flex justify-content-center align-items-center">
+                        <div class="text-white bg-success rounded-2 p-2 w-50">
+                          <span class="spinner-border spinner-border-lg text-white" role="status"
+                            aria-hidden="true"></span>
+                          <span style="font-size: 30px;"><b>Loading...</b></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- modal compra aprovada-->
+        <div class="modal fade modal-xl" id="staticBackdrop3" data-bs-backdrop="static" data-bs-keyboard="false"
+          tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content">
+              <div class="modal-header bg-success">
+                <h5 class="modal-title text-white" id="staticBackdropLabel">Compra Finalizada!
+                </h5>
+                <a href="minhas-compras"><button type="button" class="btn-close bg-light" style="color: #edebeb;"
+                    data-bs-dismiss="modal" aria-label="Close"></button></a>
+              </div>
+              <div class="modal-body m-0"  style="background-image: url(assets/img/confete.gif); width: 100%; height:100%;">
+                <div class="row">
+                  <div class="col-sm-12 col-md-12 col-lg-12 m-0 p-0">
+                    <div class="col-12 p-3 mt-5 text-center">
+                      <div class="col-12 mt-5 ">
+                        <img src="assets/svg/confirmado.png" class="img-fluid mt-5" width="100px" alt="">
+                      </div>
+                      <br>
+                      <div class="col-12">
+                        <h1 class="text-success">Compra Aprovada</h1>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- modal compra negada-->
+        <div class="modal fade modal-xl" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false"
+          tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header bg-danger">
+                <h5 class="modal-title text-white" id="staticBackdropLabel">Ops...
+                </h5>
+                <button type="button" class="btn-close bg-light" style="color: #edebeb;" data-bs-dismiss="modal"
+                  aria-label="Close"></button>
+              </div>
+              <div class="modal-body m-0">
+                <div class="row">
+                  <div class="col-sm-12 col-md-12 col-lg-12 m-0 p-0 img-fluid" style="width: 100%; height:550px ;">
+                    <div class="col-12 p-3 mt-5 text-center">
+                      <div class="col-12 mt-5 ">
+                        <img src="assets/svg/times-circle.png" class="img-fluid mt-5" width="100px" alt="">
+                      </div>
+                      <br>
+                      <div class="col-12">
+                        <h1 class="text-danger">Compra negada</h1>
+                      </div>
+                      <div class="col-12">
+                        <h3 class="text-danger">informações inválidas ou saldo indisponível</h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--end space modals-->
+
+        <!--carrossel produtos-->
+        <div class="back arrumar">
+          <div class="row justify-content-md-center w-100 carrinho">
+            <div class="col-md-8 col-sm-12 bg-light p-4">
+              <h1 class="text-center text-dark mt-5 mb-5">Carrinho <img src="assets/svg/cart-arrow-down.svg"
+                  width="30px" height="30px" alt="carrinho de compra"></h1>
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">Produto</th>
+                    <th scope="col">Quantidade</th>
+                    <th scope="col">Data</th>
+                    <th scope="col">Preço</th>
+                    <th scope="col">Ações</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% for (const item of itensCarrinho) { %>
+                    <tr data-id="<%= item.id %>">
+                      <td>
+                        <%= item.produto %>
+                      </td>
+                      <td>
+                        <%= item.quantidade %>
+                      </td>
+                      <td>
+                        <%= item.data.toLocaleDateString('pt-BR') %>
+                      </td>
+                      <td>
+                        <%= item.preco %>
+                      </td>
+                      <td>
+                        <button class="w-100 btn btn-outline-danger" onclick="removerLinha(this)">Remover</button>
+                      </td>
+                    </tr>
+                    <% } %>
+                      <tr class="text-dark" style="background-color: #c1c1c2;">
+                        <th scope="row">Total</th>
+                        <th scope="row" class="quantidadeValorAqui">0</th>
+                        <th scope="row"></th>
+                        <th scope="row" class="precoValorAqui">0</th>
+                        <th></th>
+                      </tr>
+                </tbody>
+              </table>
+              <div class="row w-100 ">
+                <div class="container-fluid p-0">
+                <div class="col-12 text-center">
+                  <!-- finalizar compra -->
+                  <% if (typeof user !=='undefined' ) { %>
+                    <button class=" w-100 ml-2 btn btn-success " data-bs-toggle="modal"
+                      data-bs-target="#staticBackdrop" style="margin-left: 13px;">Finalizar</button>
+                    <% } else { %>
+                      <!-- modo gueste -->
+                      <button class=" w-100 btn btn-success " data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop1" style="margin-left: 13px;">Finalizar</button>
+                      <% } %>
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--===== as ondinhas ====-->
+          <section id="hero1">
+            <svg class="hero-waves1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+              viewBox="0 24 150 28 " preserveAspectRatio="none">
+              <defs>
+                <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z">
+              </defs>
+              <g class="wave11">
+                <use xlink:href="#wave-path" x="50" y="3" fill="rgba(161,161,161, .4)">
+              </g>
+              <g class="wave21">
+                <use xlink:href="#wave-path" x="50" y="0" fill="rgba(161,161,161, .5)">
+              </g>
+              <g class="wave31">
+                <use xlink:href="#wave-path" x="50" y="9" fill="#a1a1a1">
+              </g>
+            </svg>
+          </section>
+          <!--fim do conteudo-->
+          <footer class="footer mt-auto text-center p-0 ">
+            <div class="container-fluid footer-back p-0">
+              <div class="nav-scroller">
+                <nav class="nav nav-underline footer-sub " aria-label="Secondary navigation">
+                  <a class="nav-link" data-bs-toggle="modal" data-bs-target="#mapaSite" href="#">Mapa do Site</a>
+                  <a class="nav-link" data-bs-toggle="modal" data-bs-target="#privacidade" href="#">Termo de
+                    Privacidade</a>
+                  <a class="nav-link" href="contato">Fale Conosco</a>
+                </nav>
+              </div>
+              <div>
+                <img src="assets/img/logo-cinza.png" width="190" height="70" alt="">
+              </div>
+              <p class="mt-3">Redes Sociais</p>
+              <div class="text-center mt-1 foter-imagem">
+                <img src="assets/svg/instagram.png" width="30" height="30" alt="Instagram">
+                <img src="assets/svg/youtube.png" width="36" height="36" alt="Youtube">
+                <img src="assets/svg/facebook-square.png" width="30" height="30" alt="Facebook">
+              </div>
+              <hr>
+              <span class="text-dark">iPlant's | Av. Bahia - Instituto Federal - Caraguatatuba - São Paulo</span>
+            </div>
+          </footer>
+
+        </div>
+      </main>
+      <script>
+        // Função para verificar as decisões antes de enviar o formulário
+        function verificarDecisoes(event) {
+          // Verificar se o input "end1" está selecionado
+          const enderecoSelecionado = document.querySelector('input[name="endereco"]:checked');
+          const keypixCheckbox = document.getElementById('keypix');
+          const cartoesSelecionados = document.querySelectorAll('input[name="cartao"]:checked');
+
+          if (enderecoSelecionado && keypixCheckbox.checked && !cartoesSelecionados.length) {
+            event.preventDefault(); // Cancelar o envio do formulário
+            setTimeout(() => {
+              // Enviar os dados do formulário
+              document.getElementById('formComprarProdutos').submit();
+              setTimeout(() => {
+                window.location.href = '/minhas-compras';
+              }, 23000); // Aguardar 23 segundos para redirecionar para a página de compras
+            }, 23000); // Aguardar 23 segundos antes de enviar os dados
+          } else if (enderecoSelecionado && cartoesSelecionados.length && !keypixCheckbox.checked) {
+            event.preventDefault(); // Cancelar o envio do formulário
+            setTimeout(() => {
+              // Enviar os dados do formulário
+              document.getElementById('formComprarProdutos').submit();
+              setTimeout(() => {
+                window.location.href = '/minhas-compras';
+              }, 23000); // Aguardar 23 segundos para redirecionar para a página de compras
+            }, 23000); // Aguardar 23 segundos antes de enviar os dados
+          } else if (enderecoSelecionado && !cartoesSelecionados.length && !keypixCheckbox.checked) {
+            event.preventDefault(); // Cancelar o envio do formulário
+          } else if (!enderecoSelecionado && !cartoesSelecionados.length && !keypixCheckbox.checked) {
+            event.preventDefault(); // Cancelar o envio do formulário
+            ;
+          } else if (keypixCheckbox.checked && !enderecoSelecionado) {
+            event.preventDefault(); // Cancelar o envio do formulário
+          } else if (cartoesSelecionados.length && !enderecoSelecionado) {
+            event.preventDefault(); // Cancelar o envio do formulário
+          }
+        }
+
+        // Adicionar o evento de clique no botão "Confirmar Compra"
+        const confirmarCompraBtn = document.getElementById('confirmarCompra');
+        confirmarCompraBtn.addEventListener('click', verificarDecisoes);
+      </script>
+
+
+      <script>
+        // Função para calcular o total da tabela com ID "table1"
+        function calcularTotal() {
+          const linhasProdutos = document.querySelectorAll('#table1 tbody tr:not(.text-dark)');
+          let totalQuantidade = 0;
+          let totalPreco = 0;
+
+          linhasProdutos.forEach(linha => {
+            const quantidade = parseInt(linha.querySelector('td:nth-child(2)').textContent);
+            const preco = parseFloat(linha.querySelector('td:nth-child(4)').textContent);
+
+            if (!isNaN(quantidade)) {
+              totalQuantidade += quantidade;
+            }
+
+            if (!isNaN(preco)) {
+              totalPreco += preco;
+            }
+          });
+
+          const linhaTotalQuantidade = document.querySelector('#table1 tbody tr.text-dark th:nth-child(2)');
+          const linhaTotalPreco = document.querySelector('#table1 tbody tr.text-dark th:nth-child(4)');
+          // Elemento da tabela "Corpo"
+          const linhaTotalQuantidadeTabelaCorpo = document.querySelector('.quantidadeValorAqui');
+          const linhaTotalPrecoTabelaCorpo = document.querySelector('.precoValorAqui');
+          //Adiciona elementos tabela "#Table1"
+          linhaTotalQuantidade.textContent = totalQuantidade;
+          linhaTotalPreco.textContent = totalPreco.toFixed(2);
+          //Adiciona elementos tabela corpo da página 
+          linhaTotalQuantidadeTabelaCorpo.textContent = totalQuantidade;
+          linhaTotalPrecoTabelaCorpo.textContent = totalPreco.toFixed(2);
+        }
+
+        // Função para atualizar o cálculo quando houver alterações
+        function atualizarCalculo() {
+          calcularTotal();
+        }
+
+        // Adicionar eventos de input para os elementos editáveis da tabela com ID "table1"
+        const elementosEditaveis = document.querySelectorAll('#table1 tbody td:nth-child(2), #table1 tbody td:nth-child(4)');
+        elementosEditaveis.forEach(elemento => {
+          elemento.addEventListener('input', atualizarCalculo);
+        });
+
+        // Função para lidar com o clique no botão "Finalizar"
+        function handleFinalizarClique() {
+          calcularTotal();
+        }
+
+        // Selecionar o botão "Finalizar" e adicionar o evento de clique
+        const botaoFinalizar = document.querySelector('button[data-bs-target="#staticBackdrop"]');
+        botaoFinalizar.addEventListener('click', handleFinalizarClique);
+
+        // Chamar a função inicialmente para calcular os valores corretos
+        calcularTotal();
+
+      </script>
+
+      <script>
+        function adicionarParcelasSelect() {
+          const selectParcelas = document.getElementById('media');
+          const linhaTotalPreco = document.querySelector('#table1 tbody tr.text-dark th:nth-child(4)');
+          const totalPreco = parseFloat(linhaTotalPreco.textContent);
+
+          selectParcelas.innerHTML = '';
+
+          for (let i = 1; i <= 12; i++) {
+            const valorParcela = (totalPreco / i).toFixed(2);
+            const option = document.createElement('option');
+            option.value = i;
+            option.text = `Parcela até R$ ${valorParcela} ${i}x sem juros`;
+            selectParcelas.appendChild(option);
+          }
+        }
+
+        // Chamar a função para adicionar as parcelas no carregamento da página
+        adicionarParcelasSelect();
+      </script>
+      <script>
+        // Identifica a tabela na página HTML
+        const table = document.querySelector('table');
+
+        // Variável para armazenar a soma total
+        let total = 0;
+
+        // Identifica as células da coluna desejada usando o índice da coluna
+        const columnCells = table.querySelectorAll('td:nth-child(3)');
+
+        // Percorre as células da coluna e adiciona o valor numérico à soma total
+        for (let i = 0; i < columnCells.length; i++) {
+          const value = parseFloat(columnCells[i].textContent);
+          total += value;
+        }
+
+        // Exibe o valor total da soma
+        console.log('Total: ' + total);
+
+        //copiar qr
+        function copyToClickBoard() {
+          var content = document.getElementById('dado').innerHTML;
+
+          navigator.clipboard.writeText(content)
+
+        }
+        //copiar qr
+        function copy1ToClickBoard() {
+          var content = document.getElementById('dado').innerHTML;
+
+          navigator.clipboard.writeText(content)
+
+        }
+      </script>
+      <script>
+        const profilePicPreview = document.getElementById('profile-pic-preview');
+        const localStorageKey = 'profilePicUrl';
+
+        const storedImageUrl = localStorage.getItem(localStorageKey);
+        if (storedImageUrl) {
+          profilePicPreview.src = storedImageUrl;
+        }
+      </script>
+
+
+      <!--dependencias do bootstrap-->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+
+
+
+      <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+      <!-- Inicialize os Feather Icons (opcional) -->
+      <script>
+        feather.replace();
+      </script>
+
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+      <script src="assets/dist/js/script.js"></script>
+      <script>
+        // Nome do usuario
+        // seleciona elementos do HTML
+        const usernameInput = document.getElementById("username-input");
+        const submitButton = document.getElementById("submit-button");
+        const usernameDisplay = document.getElementById("username-display");
+
+
+        // função para atualizar a exibição do nome do usuário
+        function updateUsernameDisplay() {
+          const username = localStorage.getItem("username");
+          if (username) {
+            // se o nome do usuário estiver definido na localStorage, atualiza a exibição em todos os documentos HTML
+            usernameDisplay.textContent = username;
+          }
+        }
+
+// remover linha do carrinho e a quantidade 
+function removerLinha(botao) {
+  const linha = botao.closest('tr');
+  const id = linha.getAttribute('data-id');
+
+  // Remover a linha da tabela HTML
+  linha.remove();
+
+  // Encontrar a linha correspondente na tabela "table1" e removê-la também
+  const tabela1 = document.getElementById('table1');
+  const linhaTabela1 = tabela1.querySelector(`tr[data-id="${id}"]`);
+  if (linhaTabela1) {
+    linhaTabela1.remove();
+  }
+
+  // Enviar uma requisição para remover a linha do banco de dados
+  fetch(`/carrinho/${id}`, {
+    method: 'DELETE'
+  })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Erro ao remover a linha do banco de dados.');
+      }
+
+      // Recalcular o total após remover a linha
+      calcularTotal();
+
+      
+    })
+    .catch(error => {
+      console.error(error);
+    });
+  }
+
+ updateBadge();
+
+      </script>
+</body>
+
+</html>
+
+<!--end space modals-->
+<!-- meus cartões-->
